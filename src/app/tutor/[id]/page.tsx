@@ -99,47 +99,52 @@ export default function TutorProfile() {
               {tutor.about && (
                 <p className="text-slate-600 mt-5 leading-relaxed text-base">{tutor.about}</p>
               )}
-              
-              {/* Teaching Specs — Subjects, Grades, Mediums, Syllabuses */}
-              <div className="mt-6 flex flex-col gap-3 w-full">
-                {tutor.teachingSubjects.map((ts: any) => (
-                  <div key={ts.subject} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2.5">
-                    <span className="text-primary font-bold text-sm">{ts.subject}</span>
-                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600">
-                      {ts.grades?.length > 0 && (
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-slate-500">Grades:</span>
-                          <div className="flex gap-1 flex-wrap">
-                            {ts.grades.map((g: string) => (
-                              <span key={g} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{g}</span>
-                            ))}
-                          </div>
+            </div>
+          </motion.div>
+
+          {/* Teaching Subjects — Separate Section */}
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+              <GraduationCap className="w-5 h-5 text-primary" /> Teaching Subjects
+            </h3>
+            <div className="flex flex-col gap-3">
+              {tutor.teachingSubjects.map((ts: any) => (
+                <div key={ts.subject} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2.5">
+                  <span className="text-primary font-bold text-sm">{ts.subject}</span>
+                  <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600">
+                    {ts.grades?.length > 0 && (
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-slate-500">Grades:</span>
+                        <div className="flex gap-1 flex-wrap">
+                          {ts.grades.map((g: string) => (
+                            <span key={g} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{g}</span>
+                          ))}
                         </div>
-                      )}
-                      {ts.mediums?.length > 0 && (
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-slate-500">Medium:</span>
-                          <div className="flex gap-1 flex-wrap">
-                            {ts.mediums.map((m: string) => (
-                              <span key={m} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{m}</span>
-                            ))}
-                          </div>
+                      </div>
+                    )}
+                    {ts.mediums?.length > 0 && (
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-slate-500">Medium:</span>
+                        <div className="flex gap-1 flex-wrap">
+                          {ts.mediums.map((m: string) => (
+                            <span key={m} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{m}</span>
+                          ))}
                         </div>
-                      )}
-                      {ts.syllabuses?.length > 0 && (
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-slate-500">Syllabus:</span>
-                          <div className="flex gap-1 flex-wrap">
-                            {ts.syllabuses.map((s: string) => (
-                              <span key={s} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{s}</span>
-                            ))}
-                          </div>
+                      </div>
+                    )}
+                    {ts.syllabuses?.length > 0 && (
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-slate-500">Syllabus:</span>
+                        <div className="flex gap-1 flex-wrap">
+                          {ts.syllabuses.map((s: string) => (
+                            <span key={s} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{s}</span>
+                          ))}
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
