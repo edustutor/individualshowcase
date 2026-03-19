@@ -33,7 +33,7 @@ export default function RootLayout({
         <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/80 to-primary/50 shrink-0" />
 
         <header className="w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 sticky top-0 shadow-sm shadow-gray-100/50">
-          <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center md:justify-between">
             <Link href="/" className="flex items-center gap-3 cursor-pointer group">
               <Image 
                 src="/EDUSLogo .jpg" 

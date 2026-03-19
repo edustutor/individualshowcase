@@ -12,7 +12,8 @@ export default function TutorProfile() {
   const router = useRouter();
   const [tutor, setTutor] = useState<any>(null);
   const [bookingForm, setBookingForm] = useState({
-    studentName: "",
+    firstName: "",
+    lastName: "",
     studentEmail: "",
     studentPhone: "",
     grade: "",
@@ -28,6 +29,7 @@ export default function TutorProfile() {
     if (found) {
       setTutor(found);
     }
+    window.scrollTo(0, 0);
   }, [params.id]);
 
   if (!tutor) return <div className="min-h-screen flex items-center justify-center font-medium text-slate-500 bg-slate-50">Loading profile...</div>;
@@ -55,6 +57,12 @@ export default function TutorProfile() {
 
   const classesPerMonth = tutor.pricing.weeklyClasses * 4;
   const { admissionFee, pricePerClass, totalFirstMonth, feePerMonth, currency } = tutor.pricing;
+
+  // Derive unique options from tutor's teaching subjects
+  const allSubjects = [...new Set(tutor.teachingSubjects.map((ts: any) => ts.subject))];
+  const allGrades = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.grades || []))];
+  const allMediums = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.mediums || []))];
+  const allSyllabuses = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.syllabuses || []))];
 
   return (
     <main className="min-h-screen bg-slate-50 pb-24 font-sans selection:bg-primary selection:text-white">
@@ -92,11 +100,44 @@ export default function TutorProfile() {
                 <p className="text-slate-600 mt-5 leading-relaxed text-base">{tutor.about}</p>
               )}
               
-              <div className="flex flex-wrap gap-2 mt-6 justify-center sm:justify-start">
+              {/* Teaching Specs — Subjects, Grades, Mediums, Syllabuses */}
+              <div className="mt-6 flex flex-col gap-3 w-full">
                 {tutor.teachingSubjects.map((ts: any) => (
-                  <span key={ts.subject} className="bg-blue-50/80 text-primary border border-primary/10 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
-                    {ts.subject}
-                  </span>
+                  <div key={ts.subject} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2.5">
+                    <span className="text-primary font-bold text-sm">{ts.subject}</span>
+                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600">
+                      {ts.grades?.length > 0 && (
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-slate-500">Grades:</span>
+                          <div className="flex gap-1 flex-wrap">
+                            {ts.grades.map((g: string) => (
+                              <span key={g} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{g}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {ts.mediums?.length > 0 && (
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-slate-500">Medium:</span>
+                          <div className="flex gap-1 flex-wrap">
+                            {ts.mediums.map((m: string) => (
+                              <span key={m} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{m}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {ts.syllabuses?.length > 0 && (
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-slate-500">Syllabus:</span>
+                          <div className="flex gap-1 flex-wrap">
+                            {ts.syllabuses.map((s: string) => (
+                              <span key={s} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-semibold">{s}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -121,7 +162,7 @@ export default function TutorProfile() {
             {/* Timetable / Schedule Card */}
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
               <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
-                <Calendar className="w-5 h-5 text-primary" /> Live Teaching Schedule
+                <Calendar className="w-5 h-5 text-primary" /> Available Time
               </h3>
               <div className="flex flex-col gap-3 flex-1">
                 {tutor.availableTimes?.map((schedule: any) => (
@@ -175,7 +216,7 @@ export default function TutorProfile() {
                   <CheckCircle className="w-10 h-10 text-success" />
                 </div>
                 <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Request Subjected!</h3>
-                <p className="text-slate-500 mb-8 max-w-xs leading-relaxed text-sm">Thank you, {bookingForm.studentName}. Your admission is processing securely and we will contact you shortly.</p>
+                <p className="text-slate-500 mb-8 max-w-xs leading-relaxed text-sm">Thank you, {bookingForm.firstName}. Your admission is processing securely and we will contact you shortly.</p>
                 <button onClick={() => router.push('/')} className="w-full py-4 rounded-xl font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors text-sm">
                   Return to Home
                 </button>
@@ -221,9 +262,15 @@ export default function TutorProfile() {
                 <form onSubmit={handleBooking} className="flex flex-col gap-5">
                   <h4 className="text-slate-900 font-bold mb-1 uppercase tracking-wide text-xs">Student Registration Details</h4>
                   
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="studentName" className="text-xs font-medium text-slate-500 ml-1">Full Name</label>
-                    <input id="studentName" required type="text" onChange={(e) => setBookingForm({...bookingForm, studentName: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="John Doe" />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="firstName" className="text-xs font-medium text-slate-500 ml-1">First Name</label>
+                      <input id="firstName" required type="text" onChange={(e) => setBookingForm({...bookingForm, firstName: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="John" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="lastName" className="text-xs font-medium text-slate-500 ml-1">Last Name</label>
+                      <input id="lastName" required type="text" onChange={(e) => setBookingForm({...bookingForm, lastName: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="Doe" />
+                    </div>
                   </div>
                   
                   <div className="flex flex-col gap-1.5">
@@ -232,24 +279,58 @@ export default function TutorProfile() {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="studentPhone" className="text-xs font-medium text-slate-500 ml-1">Phone Number</label>
-                    <input id="studentPhone" required type="tel" onChange={(e) => setBookingForm({...bookingForm, studentPhone: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="+94 77 123 4567" />
+                    <label htmlFor="studentPhone" className="text-xs font-medium text-slate-500 ml-1">Phone Number <span className="text-slate-400">(with country code)</span></label>
+                    <input id="studentPhone" required type="tel" onChange={(e) => setBookingForm({...bookingForm, studentPhone: e.target.value.replace(/\D/g, '')})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="e.g. 94707072072" />
+                    <span className="text-[10px] text-slate-400 ml-1">Digits only, starting with country code (e.g. 94 for Sri Lanka, 91 for India)</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mt-1">
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="grade" className="text-xs font-medium text-slate-500 ml-1">Grade</label>
-                      <select id="grade" required onChange={(e) => setBookingForm({...bookingForm, grade: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                        <option value="">Select</option>
-                        {[1,2,3,4,5,6,7,8,9,10,11,12,13].map(g => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
-                      </select>
+                      <label htmlFor="subject" className="text-xs font-medium text-slate-500 ml-1">Subject</label>
+                      {allSubjects.length === 1 ? (
+                        <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allSubjects[0] as string}</div>
+                      ) : (
+                        <select id="subject" required value={bookingForm.subject} onChange={(e) => setBookingForm({...bookingForm, subject: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          <option value="">Select</option>
+                          {allSubjects.map((s: any) => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      )}
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="subject" className="text-xs font-medium text-slate-500 ml-1">Subject</label>
-                      <select id="subject" required onChange={(e) => setBookingForm({...bookingForm, subject: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                        <option value="">Select</option>
-                        {tutor.teachingSubjects.map((ts: any) => <option key={ts.subject} value={ts.subject}>{ts.subject}</option>)}
-                      </select>
+                      <label htmlFor="grade" className="text-xs font-medium text-slate-500 ml-1">Grade</label>
+                      {allGrades.length === 1 ? (
+                        <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">Grade {allGrades[0] as string}</div>
+                      ) : (
+                        <select id="grade" required value={bookingForm.grade} onChange={(e) => setBookingForm({...bookingForm, grade: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          <option value="">Select</option>
+                          {allGrades.map((g: any) => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
+                        </select>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="medium" className="text-xs font-medium text-slate-500 ml-1">Medium</label>
+                      {allMediums.length === 1 ? (
+                        <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allMediums[0] as string}</div>
+                      ) : (
+                        <select id="medium" required value={bookingForm.medium} onChange={(e) => setBookingForm({...bookingForm, medium: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          <option value="">Select</option>
+                          {allMediums.map((m: any) => <option key={m} value={m}>{m}</option>)}
+                        </select>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="syllabus" className="text-xs font-medium text-slate-500 ml-1">Syllabus</label>
+                      {allSyllabuses.length === 1 ? (
+                        <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allSyllabuses[0] as string}</div>
+                      ) : (
+                        <select id="syllabus" required value={bookingForm.syllabus} onChange={(e) => setBookingForm({...bookingForm, syllabus: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          <option value="">Select</option>
+                          {allSyllabuses.map((s: any) => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      )}
                     </div>
                   </div>
 
