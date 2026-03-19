@@ -19,7 +19,8 @@ export default function TutorProfile() {
     grade: "",
     subject: "",
     medium: "",
-    syllabus: ""
+    syllabus: "",
+    classesPerWeek: "2"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
@@ -366,6 +367,15 @@ export default function TutorProfile() {
                         </select>
                       )}
                     </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="classesPerWeek" className="text-xs font-medium text-slate-500 ml-1">Classes per Week</label>
+                    <select id="classesPerWeek" required value={bookingForm.classesPerWeek} onChange={(e) => setBookingForm({...bookingForm, classesPerWeek: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                      {[2, 3, 4, 5, 6, 7].map((n) => (
+                        <option key={n} value={n}>{n} Classes</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className="flex items-start gap-2.5 mt-2 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
