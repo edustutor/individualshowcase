@@ -1,0 +1,3497 @@
+[
+  {
+    "id": "tutor-mrs-rajamanohary-jeyakanthan",
+    "firstName": "Mrs. Rajamanohary",
+    "lastName": "Jeyakanthan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "3"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "ENV",
+        "grades": [
+          "3"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Tamil",
+        "grades": [
+          "3",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National",
+          "Cambridge"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "02:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-fathima-nihadha",
+    "firstName": "Mrs. Fathima",
+    "lastName": "Nihadha",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "English",
+        "grades": [
+          "3",
+          "4"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "02:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-ananthavel-mathiruban",
+    "firstName": "Mr. Ananthavel",
+    "lastName": "Mathiruban",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Intelligence%20Quotient%20(IQ)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Intelligence Quotient",
+        "grades": [
+          "3",
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "08:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-ninthusha-kirubakaran",
+    "firstName": "Mrs. Ninthusha",
+    "lastName": "Kirubakaran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "ENV",
+        "grades": [
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Tamil",
+        "grades": [
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-akshaya-indreshan-",
+    "firstName": "Ms. Akshaya",
+    "lastName": "Indreshan ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "English",
+        "grades": [
+          "5"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-farhana-mohamed-haniffa",
+    "firstName": "Mrs. Farhana",
+    "lastName": "Mohamed Haniffa",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 188,
+      "totalFirstMonth": 4000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "SpokenEnglish",
+        "grades": [
+          "5"
+        ],
+        "mediums": [
+          "English",
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "08:00 AM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-sarmily-puvanendran",
+    "firstName": "Ms. Sarmily",
+    "lastName": "Puvanendran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "6"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Science",
+        "grades": [
+          "6"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "ICT",
+        "grades": [
+          "7"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-shovenja-theivendiran",
+    "firstName": "Ms. Shovenja",
+    "lastName": "Theivendiran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "6",
+          "9"
+        ],
+        "mediums": [
+          "English",
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-balakrishnan-vidhurshika-",
+    "firstName": "MRs. Balakrishnan",
+    "lastName": "Vidhurshika ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Science",
+        "grades": [
+          "6"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "10:30 AM" , "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms--sarmily-puvanendran",
+    "firstName": "Ms .",
+    "lastName": "Sarmily Puvanendran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "6"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-vithurshan-srikanthan",
+    "firstName": "Mr. Vithurshan",
+    "lastName": "Srikanthan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "6",
+          "8",
+          "9",
+          "7",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English",
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-luxana-sujan",
+    "firstName": "Ms. Luxana",
+    "lastName": "Sujan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "History",
+        "grades": [
+          "6",
+          "7"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Sunday",
+        "times": [
+          "04:00 PM",
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-shabna-kaleelur-rahman",
+    "firstName": "Ms. Shabna",
+    "lastName": "Kaleelur Rahman",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Tamil",
+        "grades": [
+          "6"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-fathima-afnaan",
+    "firstName": "Ms. Fathima",
+    "lastName": "Afnaan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "English",
+        "grades": [
+          "6",
+          "8",
+          "9"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-uthayananthan-suventhiran",
+    "firstName": "Mr. Uthayananthan",
+    "lastName": "Suventhiran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "7",
+          "8",
+          "10"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Sunday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-uthayadharshini-sasikumar",
+    "firstName": "Ms. Uthayadharshini",
+    "lastName": "Sasikumar",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "7",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-rajendran-suthakaran",
+    "firstName": "Mr. Rajendran",
+    "lastName": "Suthakaran",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Science",
+        "grades": [
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-balakrishnan-vidhurshika",
+    "firstName": "Mrs. Balakrishnan",
+    "lastName": "Vidhurshika",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Science",
+        "grades": [
+          "7",
+          "8",
+          "6",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-fathima-abdul-razzak",
+    "firstName": "Ms. Fathima",
+    "lastName": "Abdul Razzak",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "7"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Sunday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-manikkam-yathurshini",
+    "firstName": "Ms. Manikkam",
+    "lastName": "Yathurshini",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Tamil",
+        "grades": [
+          "7",
+          "6",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "English",
+        "grades": [
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Religion",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-sumeerjitha-thangarajah",
+    "firstName": "Ms. Sumeerjitha",
+    "lastName": "Thangarajah",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "English",
+        "grades": [
+          "7",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Wednesday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-subahary-senthilrajah",
+    "firstName": "Ms. Subahary",
+    "lastName": "Senthilrajah",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "8"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-fathima-farha",
+    "firstName": "Ms. Fathima",
+    "lastName": "Farha",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "8"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-jenil-jeyanthan",
+    "firstName": "Mr. Jenil",
+    "lastName": "Jeyanthan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "History",
+        "grades": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-kajananthini-varathalojan",
+    "firstName": "Mrs. Kajananthini",
+    "lastName": "Varathalojan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Tamil",
+        "grades": [
+          "8",
+          "9"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "06:30 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-mayoory-nishanth",
+    "firstName": "Mrs. Mayoory",
+    "lastName": "Nishanth",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 125,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Science",
+        "grades": [
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-mathangi-kiritharan",
+    "firstName": "Ms. Mathangi",
+    "lastName": "Kiritharan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 1000,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 250,
+      "totalFirstMonth": 3500
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English",
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-fathima-abdul-razzak",
+    "firstName": "Mr. Fathima",
+    "lastName": "Abdul Razzak",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "10"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "06:30 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "02:00 PM",
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-niththyanantha-muththulingam",
+    "firstName": "Mr. Niththyanantha",
+    "lastName": "Muththulingam",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Tamil",
+        "grades": [
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-ainkaran-ainkaran-vallipuram",
+    "firstName": "Mr. Ainkaran",
+    "lastName": "Ainkaran Vallipuram",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "11"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM",
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-rabith-ahmed",
+    "firstName": "Mr. Rabith",
+    "lastName": "Ahmed",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 1200,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 150,
+      "totalFirstMonth": 3700
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-arunakirinathan-jeyasuthan",
+    "firstName": "Mr. Arunakirinathan",
+    "lastName": "Jeyasuthan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Physics%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Physics",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "08:00 AM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "08:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-muzoufil-mohamed-muhthaseem",
+    "firstName": "Mr. Muzoufil",
+    "lastName": "Mohamed Muhthaseem",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Maths",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-sajeth-thuraisingam",
+    "firstName": "Mr. Sajeth",
+    "lastName": "Thuraisingam",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-arunasalam-kabilthas-",
+    "firstName": "Mr. Arunasalam",
+    "lastName": "Kabilthas ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Physics",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "02:00 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-arunakirinathan-jeyasuthan-",
+    "firstName": "Mr. Arunakirinathan",
+    "lastName": "Jeyasuthan  ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Physics",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Wednesday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "08:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-somasundaram-senthilraj-",
+    "firstName": "Mr. Somasundaram",
+    "lastName": "Senthilraj  ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Combined Maths",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "02:00 PM",
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-vijayasiri-ranjithkumara-",
+    "firstName": "Mr. Vijayasiri",
+    "lastName": "Ranjithkumara   ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Combined Maths",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-sajeth-thuraisingam-",
+    "firstName": "Mr. Sajeth",
+    "lastName": "Thuraisingam   ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "06:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-annathurai-tharsan-",
+    "firstName": "Mr. Annathurai",
+    "lastName": "Tharsan ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Biology",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-krishnakumar-nivedshanker-",
+    "firstName": "Mr. Krishnakumar",
+    "lastName": "Nivedshanker ",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 2,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 313,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Chemistry",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Wednesday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-fathima-asma",
+    "firstName": "Ms. Fathima",
+    "lastName": "Asma",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel"
+        ]
+      },
+      {
+        "subject": "ICT",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "02:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-nazhath-amaniya",
+    "firstName": "Mrs. Nazhath",
+    "lastName": "Amaniya",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel",
+          "National"
+        ]
+      },
+      {
+        "subject": "English",
+        "grades": [
+          "1",
+          "2",
+          "6",
+          "7",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Sunday",
+        "times": [
+          "02:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-mareesha-reen-faris",
+    "firstName": "Ms. Mareesha",
+    "lastName": "Reen Faris",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "History",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "English",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "04:00 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-umasuthan-ayushyaa",
+    "firstName": "Mr. Umasuthan",
+    "lastName": "Ayushyaa",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Physics%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel",
+          "National"
+        ]
+      },
+      {
+        "subject": "Physics",
+        "grades": [
+          "6",
+          "8",
+          "9"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Chemistry",
+        "grades": [
+          "8"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Maths",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "ICT",
+        "grades": [
+          "6",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-luxana-sujan",
+    "firstName": "Mrs. Luxana",
+    "lastName": "Sujan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Logic%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Logic",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "History",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Geography",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Christianity",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-fathima-mahudoon",
+    "firstName": "Mrs. Fathima",
+    "lastName": "Mahudoon",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel",
+          "National"
+        ]
+      },
+      {
+        "subject": "English",
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Elocution",
+        "grades": [
+          "3",
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Sunday",
+        "times": [
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tuesday",
+        "times": [
+          "02:00 PM",
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-iraguraman-haridharan",
+    "firstName": "Mr. Iraguraman",
+    "lastName": "Haridharan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Mathematics",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English",
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mrs-jayadharshanie-niroshalyan",
+    "firstName": "Mrs. Jayadharshanie",
+    "lastName": "Niroshalyan",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National",
+          "Cambridge"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-thilinika-jayasinghe",
+    "firstName": "Ms. Thilinika",
+    "lastName": "Jayasinghe",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/tgbNymZ7vqY"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Saturday",
+        "times": [
+          "06:30 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-mr-vijayasiri-ranjithkumara",
+    "firstName": "Mr. Vijayasiri",
+    "lastName": "Ranjithkumara",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "Cambridge Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "A/L"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "Cambridge",
+          "Edexcel",
+          "National"
+        ]
+      },
+      {
+        "subject": "Mathematics",
+        "grades": [
+          "7"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "SFT",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thursday",
+        "times": [
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "08:00 AM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-subahary-senthilrajah-2",
+    "firstName": "Ms. ",
+    "lastName": "Subahary Senthilrajah",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "General",
+        "grades": [
+          "6",
+          "7"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      },
+      {
+        "subject": "Mathematics",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "Tamil",
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
+    "availableTimes": [
+      {
+        "day": "Tuesday",
+        "times": [
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sunday",
+        "times": [
+          "04:00 PM",
+          "08:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-mathumitha-ratnakumar",
+    "firstName": "Ms. Mathumitha",
+    "lastName": "Ratnakumar",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Media%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/jNQXAC9IVRw",
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/9bZkp7q19f0"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Media Studies",
+        "grades": [
+          "A/L"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
+    "availableTimes": [
+      {
+        "day": "Thursday",
+        "times": [
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Monday",
+        "times": [
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Saturday",
+        "times": [
+          "04:00 PM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  },
+  {
+    "id": "tutor-ms-fathima-abdul-rassak",
+    "firstName": "Ms. Fathima",
+    "lastName": "Abdul Rassak",
+    "qualifications": [
+      "EDUS Verified Tutor",
+      "National Syllabus Expert"
+    ],
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/tgbNymZ7vqY",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk"
+    ],
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 2500,
+      "currency": "LKR",
+      "admissionFee": 2500,
+      "pricePerClass": 625,
+      "totalFirstMonth": 5000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "ICT",
+        "grades": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "mediums": [
+          "English"
+        ],
+        "syllabuses": [
+          "National"
+        ]
+      }
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
+    "availableTimes": [
+      {
+        "day": "Monday",
+        "times": [
+          "04:00 PM",
+          "08:00 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wednesday",
+        "times": [
+          "08:00 AM",
+          "10:30 AM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Friday",
+        "times": [
+          "02:00 PM",
+          "04:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ]
+  }
+]
