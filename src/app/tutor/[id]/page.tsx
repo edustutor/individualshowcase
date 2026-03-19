@@ -93,14 +93,16 @@ export default function TutorProfile() {
               <div className="flex justify-between items-start w-full">
                 <div>
                   <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
-                  <div className="flex items-center gap-2 mt-2 text-slate-500 font-medium text-sm justify-center sm:justify-start">
-                    <Video className="w-4 h-4 text-primary" /> Available Online
+                  <div className="flex items-center mt-2 justify-center sm:justify-start">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
+                      <Video className="w-3.5 h-3.5" /> Available Online
+                    </span>
                   </div>
                 </div>
               </div>
               
               {tutor.about && (
-                <p className="text-slate-600 mt-5 leading-relaxed text-base">{tutor.about}</p>
+                <p className="text-slate-600 mt-4 leading-relaxed text-base">{tutor.about}</p>
               )}
             </div>
           </motion.div>
@@ -218,8 +220,8 @@ export default function TutorProfile() {
             <h3 className="text-lg font-bold flex items-center gap-2 mb-2 text-slate-900">
               <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules
             </h3>
-            <p className="text-slate-500 text-sm mb-5 leading-relaxed">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
-            <ol className="flex flex-col gap-3 list-none">
+            <p className="text-slate-500 text-sm mb-7 leading-relaxed">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
+            <ol className="flex flex-col gap-2.5 list-none">
               {[
                 "Your Internet Connection and device has to be fit for Online learning.",
                 "Your attendance to class will be strictly monitored. Failure to attend more than 3 consecutive classes will be resulting in dropout from classes.",
@@ -287,6 +289,7 @@ export default function TutorProfile() {
                       </div>
                       <span className="text-3xl font-black text-white">{currency} {totalFirstMonth}</span>
                     </div>
+                    <p className="text-[10px] text-slate-400 mt-3 leading-relaxed text-center">Class count can be adjusted according to your preference and schedule. We recommend at least 2 classes per week for best results.</p>
                   </div>
                 </div>
 
