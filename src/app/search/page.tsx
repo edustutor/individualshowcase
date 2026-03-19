@@ -24,27 +24,46 @@ function SearchContent() {
     fetchTutors();
   }, [searchParams]);
 
-  const hasFilters = searchParams.get("grade") || searchParams.get("subject") || searchParams.get("medium");
+  const grade = searchParams.get("grade");
+  const subject = searchParams.get("subject");
+  const medium = searchParams.get("medium");
+  const syllabus = searchParams.get("syllabus");
+  const hasFilters = grade || subject || medium || syllabus;
 
   return (
     <div className="w-full max-w-7xl mx-auto relative z-10">
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-gray-200/50 pb-8">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-900 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Discover Tutors
           </h1>
-          <p className="text-gray-600 mt-3 text-lg flex items-center gap-2">
-            {hasFilters ? (
-              <>
-                Showing results for
-                <span className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100/50 text-indigo-700 font-medium border border-indigo-200/50">
-                  {searchParams.get("grade") && `Grade ${searchParams.get("grade")} `}
-                  {searchParams.get("subject") && ` ${searchParams.get("subject")} `}
-                  {searchParams.get("medium") && ` (${searchParams.get("medium")}) `}
+          {hasFilters ? (
+            <div className="flex flex-wrap items-center gap-2 mt-3">
+              <span className="text-gray-600 text-lg">Showing results for</span>
+              {syllabus && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
+                  {syllabus}
                 </span>
-              </>
-            ) : "All subjects and grades available."}
-          </p>
+              )}
+              {grade && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
+                  Grade {grade}
+                </span>
+              )}
+              {subject && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
+                  {subject}
+                </span>
+              )}
+              {medium && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
+                  {medium} Medium
+                </span>
+              )}
+            </div>
+          ) : (
+            <p className="text-gray-600 mt-3 text-lg">All subjects and grades available.</p>
+          )}
         </motion.div>
         
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>

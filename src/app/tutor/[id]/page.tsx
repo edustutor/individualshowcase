@@ -58,16 +58,13 @@ export default function TutorProfile() {
 
   return (
     <main className="min-h-screen bg-slate-50 pb-24 font-sans selection:bg-primary selection:text-white">
-      {/* Navigation Bar inside the page but below header */}
-      <div className="w-full bg-white border-b border-gray-200 sticky top-20 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
-          <button onClick={() => router.back()} className="text-slate-600 hover:text-primary flex items-center gap-2 transition-colors font-medium text-sm">
-            <ArrowLeft className="w-4 h-4" /> Back to Search
-          </button>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-6 mb-2 flex justify-end">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-primary transition-all border border-gray-200/80 px-5 py-2.5 rounded-2xl bg-white/70 backdrop-blur-md hover:bg-white hover:shadow-md hover:-translate-y-0.5 cursor-pointer">
+          <ArrowLeft className="w-4 h-4" /> Back to Search
+        </button>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-8 flex flex-col lg:flex-row gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-4 flex flex-col lg:flex-row gap-8">
         
         {/* Left Column: Profile & Info */}
         <div className="w-full lg:w-[65%] flex flex-col gap-8">
