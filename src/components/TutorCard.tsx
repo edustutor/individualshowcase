@@ -27,7 +27,7 @@ export default function TutorCard({ tutor }: { tutor: any }) {
           />
         </div>
         
-        <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-primary transition-colors">
+        <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-primary transition-colors text-center">
           {tutor.firstName} {tutor.lastName}
         </h3>
         <p className="text-sm text-slate-500 mt-2 flex items-center justify-center gap-1.5 text-center px-4 font-medium leading-relaxed line-clamp-2">
