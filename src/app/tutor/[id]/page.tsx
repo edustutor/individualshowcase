@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, Video, X, AlertTriangle } from "lucide-react";
 import tutorsData from "@/data/tutors.json";
 
 export default function TutorProfile() {
@@ -23,6 +23,8 @@ export default function TutorProfile() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [agreeRules, setAgreeRules] = useState(false);
+  const [showRulesModal, setShowRulesModal] = useState(false);
 
   useEffect(() => {
     const found = tutorsData.find(t => t.id === params.id);
@@ -65,6 +67,7 @@ export default function TutorProfile() {
   const allSyllabuses = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.syllabuses || []))];
 
   return (
+    <>
     <main className="min-h-screen bg-slate-50 pb-24 font-sans selection:bg-primary selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-6 mb-2 flex justify-end">
         <button onClick={() => router.back()} className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-primary transition-all border border-gray-200/80 px-5 py-2.5 rounded-2xl bg-white/70 backdrop-blur-md hover:bg-white hover:shadow-md hover:-translate-y-0.5 cursor-pointer">
@@ -91,7 +94,7 @@ export default function TutorProfile() {
                 <div>
                   <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
                   <div className="flex items-center gap-2 mt-2 text-slate-500 font-medium text-sm justify-center sm:justify-start">
-                    <MapPin className="w-4 h-4 text-primary" /> Available Online
+                    <Video className="w-4 h-4 text-primary" /> Available Online
                   </div>
                 </div>
               </div>
@@ -208,6 +211,29 @@ export default function TutorProfile() {
                 <span className="text-sm font-medium">No demo videos uploaded yet</span>
               </div>
             )}
+          </motion.div>
+
+          {/* Class Rules Section */}
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-2 text-slate-900">
+              <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules
+            </h3>
+            <p className="text-slate-500 text-sm mb-5 leading-relaxed">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
+            <ol className="flex flex-col gap-3 list-none">
+              {[
+                "Your Internet Connection and device has to be fit for Online learning.",
+                "Your attendance to class will be strictly monitored. Failure to attend more than 3 consecutive classes will be resulting in dropout from classes.",
+                "Student must answer and respond to questions from tutor while learning. You'll be removed from class if not responding.",
+                "You have to ask and discuss all your subject related doubts during the class.",
+                "Students are requested to complete all required academic works by the tutor on time without fail."
+              ].map((rule, i) => (
+                <li key={`rule-${i}`} className="flex gap-3 items-start text-sm text-slate-700 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
+                  <span className="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold">{i + 1}</span>
+                  <span className="leading-relaxed">{rule}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="text-xs text-slate-400 mt-5 text-center">Our coordinator will help you all the ways possible for you to peacefully study to achieve excellence in your learning at EDUS.</p>
           </motion.div>
 
         </div>
@@ -339,7 +365,15 @@ export default function TutorProfile() {
                     </div>
                   </div>
 
-                  <button disabled={isSubmitting} type="submit" className="mt-4 w-full py-4 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:hover:translate-y-0 flex justify-center items-center gap-2 text-sm shadow-primary/20">
+                  <div className="flex items-start gap-2.5 mt-2 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
+                    <input id="agreeRules" type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 w-4 h-4 accent-primary cursor-pointer flex-shrink-0" />
+                    <label htmlFor="agreeRules" className="text-xs text-slate-600 leading-relaxed">
+                      I agree to the{' '}
+                      <button type="button" onClick={() => setShowRulesModal(true)} className="text-primary font-semibold underline underline-offset-2 hover:text-primary-hover transition-colors cursor-pointer">Class Rules & Policies</button>
+                    </label>
+                  </div>
+
+                  <button disabled={isSubmitting || !agreeRules} type="submit" className="mt-4 w-full py-4 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex justify-center items-center gap-2 text-sm shadow-primary/20">
                     {isSubmitting ? "Processing..." : "Enroll Now"} <ChevronRight className="w-4 h-4" />
                   </button>
                   <p className="text-[11px] text-center text-slate-400 mt-2 font-medium flex items-center justify-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5"/> Information is secure and encrypted</p>
@@ -351,5 +385,43 @@ export default function TutorProfile() {
 
       </div>
     </main>
+
+    {/* Class Rules Modal */}
+    {showRulesModal && (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onClick={() => setShowRulesModal(false)}>
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules & Policies
+            </h3>
+            <button onClick={() => setShowRulesModal(false)} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors cursor-pointer">
+              <X className="w-4 h-4 text-slate-600" />
+            </button>
+          </div>
+          <div className="px-6 py-5">
+            <p className="text-slate-500 text-sm mb-5 leading-relaxed">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
+            <ol className="flex flex-col gap-3 list-none">
+              {[
+                "Your Internet Connection and device has to be fit for Online learning.",
+                "Your attendance to class will be strictly monitored. Failure to attend more than 3 consecutive classes will be resulting in dropout from classes.",
+                "Student must answer and respond to questions from tutor while learning. You'll be removed from class if not responding.",
+                "You have to ask and discuss all your subject related doubts during the class.",
+                "Students are requested to complete all required academic works by the tutor on time without fail."
+              ].map((rule, i) => (
+                <li key={`modal-rule-${i}`} className="flex gap-3 items-start text-sm text-slate-700 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
+                  <span className="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold">{i + 1}</span>
+                  <span className="leading-relaxed">{rule}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="text-xs text-slate-400 mt-5 text-center leading-relaxed">Our coordinator will help you all the ways possible for you to peacefully study to achieve excellence in your learning at EDUS.</p>
+            <button onClick={() => { setShowRulesModal(false); setAgreeRules(true); }} className="mt-6 w-full py-3.5 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover transition-all text-sm cursor-pointer">
+              I Agree & Accept
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    )}
+    </>
   );
 }

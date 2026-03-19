@@ -7,10 +7,11 @@ import { BookOpen, Star, Sparkles, ChevronRight } from "lucide-react";
 
 export default function TutorCard({ tutor }: { tutor: any }) {
   return (
+    <Link href={`/tutor/${tutor.id}`} className="block h-full">
     <motion.div
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-200/60 overflow-hidden flex flex-col h-full relative group"
+      className="bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-200/60 overflow-hidden flex flex-col h-full relative group cursor-pointer"
     >
       <div className="p-8 flex flex-col items-center relative z-10">
         <div className="absolute top-5 right-5 bg-gradient-to-r from-accent/20 to-accent/10 text-yellow-700 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm border border-accent/30">
@@ -64,13 +65,12 @@ export default function TutorCard({ tutor }: { tutor: any }) {
               <span className="text-sm text-slate-400 font-medium">/mo</span>
             </div>
           </div>
-          <Link href={`/tutor/${tutor.id}`}>
-            <div className="bg-slate-900 text-white w-12 h-12 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors shadow-md group-hover:shadow-[0_4px_14px_0_rgba(4,60,252,0.39)]">
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
-            </div>
-          </Link>
+          <div className="bg-slate-900 text-white w-12 h-12 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors shadow-md group-hover:shadow-[0_4px_14px_0_rgba(4,60,252,0.39)]">
+            <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+          </div>
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 }

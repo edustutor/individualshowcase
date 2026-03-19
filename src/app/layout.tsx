@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -58,6 +59,7 @@ export default function RootLayout({
           </div>
         </header>
 
+        <ScrollToTop />
         {children}
 
         {/* Global floating call button */}

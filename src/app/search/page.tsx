@@ -117,7 +117,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen bg-[#FDFDFD] relative overflow-hidden py-12 px-6 sm:px-12 lg:px-24">
+    <main className="min-h-screen bg-[#FDFDFD] relative pt-8 pb-12 px-6 sm:px-12 lg:px-24">
       {/* Premium ambient background elements */}
       <div className="fixed top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-br from-indigo-100/40 to-purple-100/40 blur-[120px] -z-10 pointer-events-none"></div>
       <div className="fixed bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-tl from-emerald-50/40 to-teal-50/40 blur-[100px] -z-10 pointer-events-none"></div>
