@@ -1,5 +1,98 @@
 [
   {
+    "id": "tutor-dr-aruni-perera",
+    "firstName": "Dr. Aruni",
+    "lastName": "Perera",
+    "isVerified": true,
+    "qualifications": [
+      "PhD in Theoretical Physics",
+      "Senior Mathematics & Physics Specialist"
+    ],
+    "rating": 4.9,
+    "reviewCount": 124,
+    "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
+    "demoVideos": [
+      "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/jNQXAC9IVRw"
+    ],
+    "sessionRate": 3000,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "With over 15 years of academic experience, I specialize in simplifying complex scientific concepts. My goal is to transform \"I can't do math\" into \"I love problem-solving.\" I've helped 500+ students achieve top grades in Cambridge/Edexcel ALs.",
+    "pricing": {
+      "weeklyClasses": 1,
+      "feePerMonth": 12000,
+      "currency": "LKR",
+      "admissionFee": 5000,
+      "pricePerClass": 3000,
+      "totalFirstMonth": 17000
+    },
+    "teachingSubjects": [
+      {
+        "subject": "Mathematics",
+        "grades": ["Grade 10", "A/L"],
+        "mediums": ["English"],
+        "syllabuses": ["Cambridge", "Edexcel"]
+      }
+    ],
+    "assignedGroups": [
+      {
+        "name": "Grade 10 Maths - Batch A",
+        "schedule": "Every Sat, Sun | 08:00 AM",
+        "seatsLeft": 6,
+        "totalSeats": 20
+      },
+      {
+        "name": "AS Level Physics - Core",
+        "schedule": "Every Wed | 06:00 PM",
+        "status": "Limited",
+        "totalSeats": 25
+      }
+    ],
+    "feedback": [
+      {
+        "name": "Kasun T.",
+        "grade": "Grade 13",
+        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
+        "stars": 5
+      },
+      {
+        "name": "Sarah M.",
+        "grade": "Undergraduate",
+        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
+        "stars": 5
+      }
+    ],
+    "availableTimes": [
+      {
+        "day": "Mon",
+        "times": ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]
+      },
+      {
+        "day": "Tue",
+        "times": ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]
+      },
+      {
+        "day": "Wed",
+        "times": ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]
+      },
+      {
+        "day": "Thu",
+        "times": ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]
+      },
+      {
+        "day": "Fri",
+        "times": ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]
+      }
+    ]
+  },
+  {
     "id": "tutor-mrs-rajamanohary-jeyakanthan",
     "firstName": "Mrs. Rajamanohary",
     "lastName": "Jeyakanthan",

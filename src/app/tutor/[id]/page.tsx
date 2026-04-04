@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, Video, X, AlertTriangle } from "lucide-react";
+import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, X, AlertTriangle, Star } from "lucide-react";
 import tutorsData from "@/data/tutors.json";
 
 export default function TutorProfile() {
@@ -25,6 +25,7 @@ export default function TutorProfile() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [agreeRules, setAgreeRules] = useState(false);
+  const [activeVideo, setActiveVideo] = useState(0);
   const [showRulesModal, setShowRulesModal] = useState(false);
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function TutorProfile() {
         {/* Left Column: Profile & Info */}
         <div className="w-full lg:w-[65%] flex flex-col gap-8">
           
-          {/* Main Profile Identity Card */}
+          {/* Bio / Main Profile Identity Card */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="bg-white rounded-[2rem] p-8 sm:p-10 shadow-sm border border-gray-200/60 flex flex-col sm:flex-row gap-8 items-center sm:items-start text-center sm:text-left relative overflow-hidden">
             {/* Subtle brand color accent line */}
             <div className="absolute top-0 left-0 w-full h-1.5 bg-primary"></div>
@@ -91,25 +92,54 @@ export default function TutorProfile() {
             </div>
             
             <div className="flex flex-col flex-1 pt-2 w-full">
-              <div className="flex justify-between items-start w-full">
-                <div>
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
-                  <div className="flex items-center mt-2 justify-center sm:justify-start">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
-                      <Video className="w-3.5 h-3.5" /> Available Online
-                    </span>
-                  </div>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center sm:justify-start">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
+                {tutor.isVerified && (
+                  <span className="inline-flex items-center px-2 py-0.5 bg-[#63FF94] text-[#0A4D27] text-[10px] font-bold uppercase tracking-wider rounded-md border border-[#4ADE80]">
+                    VERIFIED
+                  </span>
+                )}
+              </div>
+
+              <p className="text-xl font-bold text-[#3B4CB8] mt-2">
+                {tutor.id === 'tutor-dr-aruni-perera' ? "Senior Mathematics & Physics Specialist" : (tutor.qualifications[1] || tutor.qualifications[0]) || "EDUS Certified Tutor"}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-4 text-sm font-medium text-slate-500">
+                <div className="flex items-center gap-1.5">
+                  <Star className="w-4 h-4 text-orange-400 fill-orange-400" />
+                  <span className="text-slate-900 font-bold">{tutor.rating || "5.0"}</span>
+                  <span className="text-slate-500">({tutor.reviewCount || "0"} Reviews)</span>
+                </div>
+                <span className="text-slate-300 hidden sm:block">•</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-600">{tutor.qualifications[0]}</span>
                 </div>
               </div>
               
               {tutor.about && (
-                <p className="text-slate-600 mt-4 leading-relaxed text-base">{tutor.about}</p>
+                <p className="text-slate-600 mt-6 leading-relaxed text-base">{tutor.about}</p>
               )}
             </div>
           </motion.div>
 
-          {/* Teaching Subjects — Separate Section */}
+          {/* 2. Education & Specializations Card */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+              <GraduationCap className="w-5 h-5 text-primary" /> Education & Specializations
+            </h3>
+            <ul className="flex flex-col gap-4">
+              {tutor.qualifications.map((qual: string) => (
+                <li key={qual} className="flex gap-3 text-slate-700 items-start">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="leading-relaxed text-sm font-medium">{qual}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* 3. Teaching Subjects Section */}
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <GraduationCap className="w-5 h-5 text-primary" /> Teaching Subjects
             </h3>
@@ -154,64 +184,151 @@ export default function TutorProfile() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Qualifications Card */}
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
-                <GraduationCap className="w-5 h-5 text-primary" /> Education & Specializations
-              </h3>
-              <ul className="flex flex-col gap-4 flex-1">
-                {tutor.qualifications.map((qual: string) => (
-                  <li key={qual} className="flex gap-3 text-slate-700 items-start">
-                    <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="leading-relaxed text-sm font-medium">{qual}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          {/* 4. Available Time Card */}
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+              <Calendar className="w-5 h-5 text-primary" /> Available Time
+            </h3>
+            <div className="flex flex-col gap-3">
+              {tutor.availableTimes?.map((schedule: any) => (
+                <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col group hover:border-primary/30 transition-colors">
+                  <div className="font-semibold text-slate-800 text-sm mb-2">{schedule.day}</div>
+                  <div className="flex flex-wrap gap-2">
+                    {schedule.times.map((time: string) => (
+                      <span key={time} className="bg-white text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-md border border-slate-200 shadow-sm">{time}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-            {/* Timetable / Schedule Card */}
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
+          {/* 5. Assigned Group Classes Card */}
+          {tutor.assignedGroups && tutor.assignedGroups.length > 0 && (
+            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
               <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
-                <Calendar className="w-5 h-5 text-primary" /> Available Time
+                <ShieldCheck className="w-5 h-5 text-primary" /> Assigned Group Classes
               </h3>
-              <div className="flex flex-col gap-3 flex-1">
-                {tutor.availableTimes?.map((schedule: any) => (
-                  <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col group hover:border-primary/30 transition-colors">
-                    <div className="font-semibold text-slate-800 text-sm mb-2">{schedule.day}</div>
-                    <div className="flex flex-wrap gap-2">
-                      {schedule.times.map((time: string) => (
-                        <span key={time} className="bg-white text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-md border border-slate-200 shadow-sm">{time}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {tutor.assignedGroups.map((group: any) => (
+                  <div key={group.name} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2 group hover:border-primary/30 transition-colors">
+                    <div className="flex justify-between items-start">
+                      <span className="font-bold text-slate-900 text-sm">{group.name}</span>
+                      {group.status === "Limited" && (
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-bold uppercase rounded">Limited</span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{group.schedule}</span>
+                    </div>
+                    {group.seatsLeft !== undefined && (
+                      <div className="w-full bg-slate-200 rounded-full h-1 mt-2">
+                        <div 
+                          className="bg-primary h-1 rounded-full transition-all" 
+                          style={{ width: `${((group.totalSeats - group.seatsLeft) / group.totalSeats) * 100}%` }}
+                        ></div>
+                        <div className="flex justify-between mt-1.5">
+                          <span className="text-[9px] font-semibold text-slate-400 capitalize">{group.seatsLeft} Seats Left</span>
+                          <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-tighter">{group.totalSeats} Total</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* End of stacked sections */}
+
+          {/* Video Demos - Professional Player UI */}
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full mb-8 overflow-hidden">
+            {tutor.demoVideos && tutor.demoVideos.length > 0 ? (
+              <div className="flex flex-col lg:flex-row gap-8">
+                {/* Main Player Area */}
+                <div className="flex-1 w-full">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-bold flex items-center gap-2 text-slate-900">
+                      <PlayCircle className="w-5 h-5 text-primary" /> 
+                      {tutor.demoVideos.length > 1 ? `Watching Preview ${activeVideo + 1}` : "Watch Demo Class"}
+                    </h3>
+                    <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
+                      <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Now Playing</span>
+                    </div>
+                  </div>
+                  
+                  <div className="rounded-[1.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-200 aspect-video relative bg-slate-950 w-full group transition-all duration-500 ring-4 ring-white/50">
+                    <iframe 
+                      key={tutor.demoVideos[activeVideo]}
+                      src={tutor.demoVideos[activeVideo]} 
+                      className="w-full h-full absolute inset-0 z-10" 
+                      allowFullScreen 
+                      title={`Featured Demo Video`}
+                    ></iframe>
+                    {/* Background glows for premium look */}
+                    <div className="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[100px] rounded-full"></div>
+                    <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/10 blur-[100px] rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* Thumbnail Strip / Sidebar */}
+                {tutor.demoVideos.length > 1 && (
+                  <div className="w-full lg:w-72 flex flex-col pt-0 lg:pt-1">
+                    <div className="flex items-center justify-between mb-4 px-1">
+                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Next Previews</h4>
+                      <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">{activeVideo + 1} / {tutor.demoVideos.length}</span>
+                    </div>
+                    
+                    <div className="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[380px] pb-4 lg:pb-0 scroll-smooth no-scrollbar">
+                      {tutor.demoVideos.map((videoUrl: string, index: number) => (
+                        <button 
+                          key={videoUrl} 
+                          onClick={() => setActiveVideo(index)}
+                          className={`flex-shrink-0 flex items-center gap-3 p-3 rounded-2xl transition-all text-left group border ${activeVideo === index 
+                            ? 'bg-primary/5 border-primary/20 shadow-sm ring-1 ring-primary/10' 
+                            : 'bg-white hover:bg-slate-50 border-gray-100 shadow-sm hover:shadow-md'}`}
+                        >
+                           <div className="w-20 h-14 rounded-xl bg-slate-900 border border-slate-200 flex-shrink-0 relative overflow-hidden flex items-center justify-center">
+                             {/* Small Play Overly */}
+                             <div className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity ${activeVideo === index ? 'bg-primary/20' : 'bg-black/30 opacity-0 group-hover:opacity-100'}`}>
+                               <PlayCircle className={`w-6 h-6 ${activeVideo === index ? 'text-white' : 'text-white/80'}`} />
+                             </div>
+                             {/* Placeholder generic preview frame */}
+                             <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950"></div>
+                           </div>
+                           
+                           <div className="flex flex-col gap-0.5 min-w-0 pr-2">
+                             <span className={`text-[11px] font-bold truncate leading-tight ${activeVideo === index ? 'text-primary' : 'text-slate-700'}`}>Lesson Preview {index + 1}</span>
+                             <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wide">Ready to Watch</span>
+                           </div>
+
+                           {activeVideo === index && (
+                             <div className="ml-auto flex gap-0.5 self-center">
+                               {[1, 2, 3].map(i => (
+                                 <motion.div 
+                                   key={i} 
+                                   animate={{ scaleY: [1, 1.8, 1] }} 
+                                   transition={{ repeat: Infinity, duration: 0.6, delay: i * 0.15 }} 
+                                   className="w-0.5 h-3 bg-primary rounded-full"
+                                 ></motion.div>
+                               ))}
+                             </div>
+                           )}
+                        </button>
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Video Demos - Full Width */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full mb-8">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
-              <PlayCircle className="w-5 h-5 text-primary" /> Watch Demo Classes
-            </h3>
-            {tutor.demoVideos && tutor.demoVideos.length > 0 ? (
-              <div className={`grid gap-6 ${tutor.demoVideos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
-                {tutor.demoVideos.map((videoUrl: string, index: number) => (
-                  <div key={videoUrl} className="rounded-xl overflow-hidden shadow-sm border border-slate-200 aspect-video relative bg-slate-100 w-full group">
-                    <iframe 
-                      src={videoUrl} 
-                      className="w-full h-full absolute inset-0 z-10" 
-                      allowFullScreen 
-                      title={`Demo Video ${index + 1}`}
-                    ></iframe>
-                  </div>
-                ))}
+                )}
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center p-10 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 text-slate-400">
-                <PlayCircle className="w-8 h-8 mb-2 opacity-50" />
-                <span className="text-sm font-medium">No demo videos uploaded yet</span>
+              <div className="flex flex-col items-center justify-center p-14 bg-slate-50 rounded-[1.5rem] border-2 border-dashed border-slate-200 text-slate-400">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 border border-slate-100">
+                  <PlayCircle className="w-8 h-8 opacity-30 text-primary" />
+                </div>
+                <span className="text-sm font-semibold text-slate-500">No demo videos uploaded yet</span>
+                <p className="text-xs text-slate-400 mt-1 italic">Tutor hasn't provided session previews</p>
               </div>
             )}
           </motion.div>
