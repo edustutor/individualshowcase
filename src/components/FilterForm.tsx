@@ -49,8 +49,9 @@ export default function FilterForm() {
             >
               <option value="">Any Grade</option>
               {[3, 4, 5, 6, 7, 8, 9, 10, 11].map(g => (
-                <option key={g} value={g.toString()}>Grade {g}</option>
+                <option key={g} value={`Grade ${g}`}>Grade {g}</option>
               ))}
+              <option value="A/L">A/L</option>
             </select>
           </div>
 

@@ -47,7 +47,7 @@ function SearchContent() {
               )}
               {grade && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
-                  Grade {grade}
+                  {grade}
                 </span>
               )}
               {subject && (
