@@ -120,14 +120,14 @@ export default function TutorProfile() {
                 </div>
                 
                 {tutor.about && (
-                  <p className="text-slate-600 m-0 leading-relaxed text-base border-t border-slate-100 pt-5">{tutor.about}</p>
+                  <p className="text-slate-600 m-0 leading-relaxed text-base border-t border-slate-100 pt-4">{tutor.about}</p>
                 )}
               </div>
           </motion.div>
 
           {/* 2. Education & Specializations Card */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
               <GraduationCap className="w-5 h-5 text-primary" /> Education & Specializations
             </h3>
             <ul className="flex flex-col gap-4">
@@ -142,7 +142,7 @@ export default function TutorProfile() {
 
           {/* 3. Teaching Subjects Section */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
               <GraduationCap className="w-5 h-5 text-primary" /> Teaching Subjects
             </h3>
             <div className="flex flex-col gap-3">
@@ -188,7 +188,7 @@ export default function TutorProfile() {
 
           {/* 4. Available Time Card */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+            <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
               <Calendar className="w-5 h-5 text-primary" /> Available Time
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -213,7 +213,7 @@ export default function TutorProfile() {
           {/* 5. Assigned Group Classes Card */}
           {tutor.assignedGroups && tutor.assignedGroups.length > 0 && (
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
-              <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
+              <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
                 <ShieldCheck className="w-5 h-5 text-primary" /> Assigned Group Classes
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -346,7 +346,7 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* Class Rules Section */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 sm:p-10 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300 h-fit flex flex-col gap-6">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 sm:p-10 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300 h-fit flex flex-col gap-5">
             <h3 className="text-lg font-bold flex items-center gap-2 text-slate-900 m-0">
               <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules
             </h3>
