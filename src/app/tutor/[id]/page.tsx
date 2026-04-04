@@ -113,6 +113,7 @@ export default function TutorProfile() {
                 </div>
                 <span className="text-slate-300 hidden sm:block">•</span>
                 <div className="flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-slate-400" />
                   <span className="text-slate-600">{tutor.qualifications[0]}</span>
                 </div>
               </div>
@@ -124,7 +125,7 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* 2. Education & Specializations Card */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <GraduationCap className="w-5 h-5 text-primary" /> Education & Specializations
             </h3>
@@ -139,7 +140,7 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* 3. Teaching Subjects Section */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <GraduationCap className="w-5 h-5 text-primary" /> Teaching Subjects
             </h3>
@@ -185,7 +186,7 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* 4. Available Time Card */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <Calendar className="w-5 h-5 text-primary" /> Available Time
             </h3>
@@ -205,7 +206,7 @@ export default function TutorProfile() {
 
           {/* 5. Assigned Group Classes Card */}
           {tutor.assignedGroups && tutor.assignedGroups.length > 0 && (
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300">
+            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
               <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
                 <ShieldCheck className="w-5 h-5 text-primary" /> Assigned Group Classes
               </h3>
@@ -334,7 +335,7 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* Class Rules Section */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300 h-fit">
             <h3 className="text-lg font-bold flex items-center gap-2 mb-2 text-slate-900">
               <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules
             </h3>
