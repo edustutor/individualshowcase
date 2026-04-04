@@ -91,7 +91,7 @@ export default function TutorProfile() {
               <Image src={tutor.profileImageUrl || `https://i.pravatar.cc/150?u=${tutor.firstName}`} alt={`${tutor.firstName}'s Profile`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             
-              <div className="flex flex-col gap-6 w-full">
+              <div className="flex flex-col gap-5 w-full">
                 <div className="flex flex-col gap-1">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center sm:justify-start">
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
@@ -120,7 +120,7 @@ export default function TutorProfile() {
                 </div>
                 
                 {tutor.about && (
-                  <p className="text-slate-600 leading-relaxed text-base border-t border-slate-100 pt-6">{tutor.about}</p>
+                  <p className="text-slate-600 m-0 leading-relaxed text-base border-t border-slate-100 pt-5">{tutor.about}</p>
                 )}
               </div>
           </motion.div>
@@ -346,12 +346,12 @@ export default function TutorProfile() {
           </motion.div>
 
           {/* Class Rules Section */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300 h-fit">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-2 text-slate-900">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="bg-white rounded-[2rem] p-8 sm:p-10 shadow-sm border border-gray-200/60 w-full hover:shadow-md transition-shadow duration-300 h-fit flex flex-col gap-6">
+            <h3 className="text-lg font-bold flex items-center gap-2 text-slate-900 m-0">
               <AlertTriangle className="w-5 h-5 text-amber-500" /> Class Rules
             </h3>
-            <p className="text-slate-500 text-sm mb-7 leading-relaxed">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
-            <ol className="flex flex-col gap-2.5 list-none">
+            <p className="text-slate-500 text-sm leading-relaxed m-0">Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.</p>
+            <ol className="flex flex-col gap-3 list-none m-0">
               {[
                 "Your Internet Connection and device has to be fit for Online learning.",
                 "Your attendance to class will be strictly monitored. Failure to attend more than 3 consecutive classes will be resulting in dropout from classes.",
@@ -359,13 +359,13 @@ export default function TutorProfile() {
                 "You have to ask and discuss all your subject related doubts during the class.",
                 "Students are requested to complete all required academic works by the tutor on time without fail."
               ].map((rule, i) => (
-                <li key={`rule-${i}`} className="flex gap-3 items-start text-sm text-slate-700 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
-                  <span className="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold">{i + 1}</span>
-                  <span className="leading-relaxed">{rule}</span>
+                <li key={`rule-${i}`} className="flex gap-4 items-start text-sm text-slate-700 bg-amber-50/10 border border-amber-100/50 rounded-2xl p-4 transition-colors hover:bg-amber-50/30">
+                  <span className="flex-shrink-0 w-7 h-7 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-black shadow-sm">{i + 1}</span>
+                  <span className="leading-relaxed font-medium">{rule}</span>
                 </li>
               ))}
             </ol>
-            <p className="text-xs text-slate-400 mt-5 text-center">Our coordinator will help you all the ways possible for you to peacefully study to achieve excellence in your learning at EDUS.</p>
+            <p className="text-xs text-slate-400 text-center m-0 italic px-4">Our coordinator will help you all the ways possible for you to peacefully study to achieve excellence in your learning at EDUS.</p>
           </motion.div>
 
         </div>
