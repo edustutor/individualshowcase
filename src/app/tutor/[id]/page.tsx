@@ -6,11 +6,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, X, AlertTriangle, Star } from "lucide-react";
 import tutorsData from "@/data/tutors.json";
+import type { Tutor, TeachingSubject, AvailableTime, AssignedGroup, DemoVideo } from "@/types/tutor";
 
 export default function TutorProfile() {
   const params = useParams();
   const router = useRouter();
-  const [tutor, setTutor] = useState<any>(null);
+  const [tutor, setTutor] = useState<Tutor | null>(null);
   const [bookingForm, setBookingForm] = useState({
     firstName: "",
     lastName: "",
@@ -29,7 +30,7 @@ export default function TutorProfile() {
   const [showRulesModal, setShowRulesModal] = useState(false);
 
   useEffect(() => {
-    const found = tutorsData.find(t => t.id === params.id);
+    const found = (tutorsData as unknown as Tutor[]).find(t => t.id === params.id);
     if (found) {
       setTutor(found);
     }
@@ -63,10 +64,10 @@ export default function TutorProfile() {
   const { admissionFee, pricePerClass, totalFirstMonth, feePerMonth, currency } = tutor.pricing;
 
   // Derive unique options from tutor's teaching subjects
-  const allSubjects = [...new Set(tutor.teachingSubjects.map((ts: any) => ts.subject))];
-  const allGrades = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.grades || []))];
-  const allMediums = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.mediums || []))];
-  const allSyllabuses = [...new Set(tutor.teachingSubjects.flatMap((ts: any) => ts.syllabuses || []))];
+  const allSubjects = [...new Set(tutor.teachingSubjects.map((ts: TeachingSubject) => ts.subject))];
+  const allGrades = [...new Set(tutor.teachingSubjects.flatMap((ts: TeachingSubject) => ts.grades || []))];
+  const allMediums = [...new Set(tutor.teachingSubjects.flatMap((ts: TeachingSubject) => ts.mediums || []))];
+  const allSyllabuses = [...new Set(tutor.teachingSubjects.flatMap((ts: TeachingSubject) => ts.syllabuses || []))];
 
   return (
     <>
@@ -146,7 +147,7 @@ export default function TutorProfile() {
               <GraduationCap className="w-5 h-5 text-primary" /> Teaching Subjects
             </h3>
             <div className="flex flex-col gap-3">
-              {tutor.teachingSubjects.map((ts: any) => (
+              {tutor.teachingSubjects.map((ts: TeachingSubject) => (
                 <div key={ts.subject} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2.5">
                   <span className="text-primary font-bold text-sm">{ts.subject}</span>
                   <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600">
@@ -192,7 +193,7 @@ export default function TutorProfile() {
               <Calendar className="w-5 h-5 text-primary" /> Available Time
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {tutor.availableTimes?.map((schedule: any) => (
+              {tutor.availableTimes?.map((schedule: AvailableTime) => (
                 <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-1.5 h-6 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
@@ -217,37 +218,41 @@ export default function TutorProfile() {
                 <ShieldCheck className="w-5 h-5 text-primary" /> Assigned Group Classes
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {tutor.assignedGroups.map((group: any) => (
-                  <div key={group.name} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col gap-3 group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
+                {tutor.assignedGroups.map((group: string | AssignedGroup, index: number) => {
+                  const groupObj = typeof group === 'string' ? { name: group } as AssignedGroup : group;
+                  return (
+                  <div key={groupObj.name || index} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col gap-3 group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
                     <div className="flex justify-between items-start gap-2">
-                      <span className="font-bold text-slate-900 text-sm leading-tight">{group.name}</span>
-                      {group.status === "Limited" && (
+                      <span className="font-bold text-slate-900 text-sm leading-tight">{groupObj.name}</span>
+                      {groupObj.status === "Limited" && (
                         <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase rounded-md flex-shrink-0">Limited</span>
                       )}
                     </div>
+                    {groupObj.schedule && (
                     <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
                       <Calendar className="w-4 h-4 text-slate-400" />
-                      <span className="font-medium">{group.schedule}</span>
+                      <span className="font-medium">{groupObj.schedule}</span>
                     </div>
+                    )}
 
-                    {group.seatsLeft !== undefined && (
+                    {groupObj.seatsLeft !== undefined && groupObj.totalSeats !== undefined && (
                       <div className="w-full mt-auto">
                         <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
-                            animate={{ width: `${((group.totalSeats - group.seatsLeft) / group.totalSeats) * 100}%` }}
+                            animate={{ width: `${((groupObj.totalSeats - groupObj.seatsLeft) / groupObj.totalSeats) * 100}%` }}
                             transition={{ duration: 1, ease: "easeOut" }}
                             className="bg-primary h-full rounded-full" 
                           />
                         </div>
                         <div className="flex justify-between mt-2 px-0.5">
-                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">{group.seatsLeft} Seats Left</span>
-                          <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-tighter">{group.totalSeats} Total</span>
+                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">{groupObj.seatsLeft} Seats Left</span>
+                          <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-tighter">{groupObj.totalSeats} Total</span>
                         </div>
                       </div>
                     )}
                   </div>
-                ))}
+                )})}
               </div>
             </motion.div>
           )}
@@ -273,8 +278,8 @@ export default function TutorProfile() {
                   
                   <div className="rounded-[1.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-200 aspect-video relative bg-slate-950 w-full group transition-all duration-500 ring-4 ring-white/50">
                     <iframe 
-                      key={tutor.demoVideos[activeVideo]}
-                      src={tutor.demoVideos[activeVideo]} 
+                      key={typeof tutor.demoVideos[activeVideo] === 'string' ? (tutor.demoVideos[activeVideo] as string) : (tutor.demoVideos[activeVideo] as DemoVideo)?.url || ''}
+                      src={(tutor.demoVideos[activeVideo] as DemoVideo)?.url || (tutor.demoVideos[activeVideo] as string)} 
                       className="w-full h-full absolute inset-0 z-10" 
                       allowFullScreen 
                       title={`Featured Demo Video`}
@@ -294,9 +299,11 @@ export default function TutorProfile() {
                     </div>
                     
                     <div className="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[380px] pb-4 lg:pb-0 scroll-smooth no-scrollbar">
-                      {tutor.demoVideos.map((videoUrl: string, index: number) => (
+                      {tutor.demoVideos.map((video: string | DemoVideo, index: number) => {
+                        const videoUrl = typeof video === 'string' ? video : (video as DemoVideo).url;
+                        return (
                         <button 
-                          key={videoUrl} 
+                          key={videoUrl || index} 
                           onClick={() => setActiveVideo(index)}
                           className={`flex-shrink-0 flex items-center gap-3 p-3 rounded-2xl transition-all text-left group border ${activeVideo === index 
                             ? 'bg-primary/5 border-primary/20 shadow-sm ring-1 ring-primary/10' 
@@ -329,7 +336,7 @@ export default function TutorProfile() {
                              </div>
                            )}
                         </button>
-                      ))}
+                      )})}
                     </div>
                   </div>
                 )}
@@ -340,7 +347,7 @@ export default function TutorProfile() {
                   <PlayCircle className="w-8 h-8 opacity-30 text-primary" />
                 </div>
                 <span className="text-sm font-semibold text-slate-500">No demo videos uploaded yet</span>
-                <p className="text-xs text-slate-400 mt-1 italic">Tutor hasn't provided session previews</p>
+                <p className="text-xs text-slate-400 mt-1 italic">Tutor hasn&apos;t provided session previews</p>
               </div>
             )}
           </motion.div>
@@ -456,7 +463,7 @@ export default function TutorProfile() {
                       ) : (
                         <select id="subject" required value={bookingForm.subject} onChange={(e) => setBookingForm({...bookingForm, subject: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
                           <option value="">Select</option>
-                          {allSubjects.map((s: any) => <option key={s} value={s}>{s}</option>)}
+                          {allSubjects.map((s: string) => <option key={s} value={s}>{s}</option>)}
                         </select>
                       )}
                     </div>
@@ -467,7 +474,7 @@ export default function TutorProfile() {
                       ) : (
                         <select id="grade" required value={bookingForm.grade} onChange={(e) => setBookingForm({...bookingForm, grade: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
                           <option value="">Select</option>
-                          {allGrades.map((g: any) => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
+                          {allGrades.map((g: string) => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
                         </select>
                       )}
                     </div>
@@ -481,7 +488,7 @@ export default function TutorProfile() {
                       ) : (
                         <select id="medium" required value={bookingForm.medium} onChange={(e) => setBookingForm({...bookingForm, medium: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
                           <option value="">Select</option>
-                          {allMediums.map((m: any) => <option key={m} value={m}>{m}</option>)}
+                          {allMediums.map((m: string) => <option key={m} value={m}>{m}</option>)}
                         </select>
                       )}
                     </div>
@@ -492,7 +499,7 @@ export default function TutorProfile() {
                       ) : (
                         <select id="syllabus" required value={bookingForm.syllabus} onChange={(e) => setBookingForm({...bookingForm, syllabus: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
                           <option value="">Select</option>
-                          {allSyllabuses.map((s: any) => <option key={s} value={s}>{s}</option>)}
+                          {allSyllabuses.map((s: string) => <option key={s} value={s}>{s}</option>)}
                         </select>
                       )}
                     </div>

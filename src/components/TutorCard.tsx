@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Star, Sparkles, ChevronRight } from "lucide-react";
+import type { Tutor, TeachingSubject } from "@/types/tutor";
 
-export default function TutorCard({ tutor }: { tutor: any }) {
+export default function TutorCard({ tutor }: { readonly tutor: Tutor }) {
   return (
     <Link href={`/tutor/${tutor.id}`} className="block h-full">
     <motion.div
@@ -42,8 +43,8 @@ export default function TutorCard({ tutor }: { tutor: any }) {
             <span className="text-xs uppercase tracking-widest text-slate-500 font-bold">Expertise</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {tutor.teachingSubjects.slice(0, 3).map((ts: any, idx: number) => (
-              <span key={idx} className="bg-white text-slate-700 border border-gray-200 shadow-sm text-xs px-2.5 py-1 rounded-lg font-medium">
+            {tutor.teachingSubjects.slice(0, 3).map((ts: TeachingSubject) => (
+              <span key={ts.subject} className="bg-white text-slate-700 border border-gray-200 shadow-sm text-xs px-2.5 py-1 rounded-lg font-medium">
                 {ts.subject}
               </span>
             ))}
