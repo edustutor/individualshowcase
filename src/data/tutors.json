@@ -52,6 +52,7 @@
         "name": "AS Level Physics - Core",
         "schedule": "Every Wed | 06:00 PM",
         "status": "Limited",
+        "seatsLeft": 5,
         "totalSeats": 25
       }
     ],

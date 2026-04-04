@@ -190,13 +190,18 @@ export default function TutorProfile() {
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <Calendar className="w-5 h-5 text-primary" /> Available Time
             </h3>
-            <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {tutor.availableTimes?.map((schedule: any) => (
-                <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col group hover:border-primary/30 transition-colors">
-                  <div className="font-semibold text-slate-800 text-sm mb-2">{schedule.day}</div>
-                  <div className="flex flex-wrap gap-2">
+                <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1.5 h-6 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
+                    <span className="font-bold text-slate-900 text-sm">{schedule.day}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5">
                     {schedule.times.map((time: string) => (
-                      <span key={time} className="bg-white text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-md border border-slate-200 shadow-sm">{time}</span>
+                      <span key={time} className="bg-white text-slate-700 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm transition-transform hover:scale-105">
+                        {time}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -212,26 +217,31 @@ export default function TutorProfile() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {tutor.assignedGroups.map((group: any) => (
-                  <div key={group.name} className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2 group hover:border-primary/30 transition-colors">
-                    <div className="flex justify-between items-start">
-                      <span className="font-bold text-slate-900 text-sm">{group.name}</span>
+                  <div key={group.name} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col gap-3 group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
+                    <div className="flex justify-between items-start gap-2">
+                      <span className="font-bold text-slate-900 text-sm leading-tight">{group.name}</span>
                       {group.status === "Limited" && (
-                        <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-bold uppercase rounded">Limited</span>
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase rounded-md flex-shrink-0">Limited</span>
                       )}
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{group.schedule}</span>
+                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
+                      <Calendar className="w-4 h-4 text-slate-400" />
+                      <span className="font-medium">{group.schedule}</span>
                     </div>
+
                     {group.seatsLeft !== undefined && (
-                      <div className="w-full bg-slate-200 rounded-full h-1 mt-2">
-                        <div 
-                          className="bg-primary h-1 rounded-full transition-all" 
-                          style={{ width: `${((group.totalSeats - group.seatsLeft) / group.totalSeats) * 100}%` }}
-                        ></div>
-                        <div className="flex justify-between mt-1.5">
-                          <span className="text-[9px] font-semibold text-slate-400 capitalize">{group.seatsLeft} Seats Left</span>
-                          <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-tighter">{group.totalSeats} Total</span>
+                      <div className="w-full mt-auto">
+                        <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            animate={{ width: `${((group.totalSeats - group.seatsLeft) / group.totalSeats) * 100}%` }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            className="bg-primary h-full rounded-full" 
+                          />
+                        </div>
+                        <div className="flex justify-between mt-2 px-0.5">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">{group.seatsLeft} Seats Left</span>
+                          <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-tighter">{group.totalSeats} Total</span>
                         </div>
                       </div>
                     )}
