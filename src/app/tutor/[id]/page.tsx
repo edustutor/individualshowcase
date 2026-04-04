@@ -91,37 +91,38 @@ export default function TutorProfile() {
               <Image src={tutor.profileImageUrl || `https://i.pravatar.cc/150?u=${tutor.firstName}`} alt={`${tutor.firstName}'s Profile`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             
-            <div className="flex flex-col flex-1 pt-2 w-full">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center sm:justify-start">
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
-                {tutor.isVerified && (
-                  <span className="inline-flex items-center px-2 py-0.5 bg-[#63FF94] text-[#0A4D27] text-[10px] font-bold uppercase tracking-wider rounded-md border border-[#4ADE80]">
-                    VERIFIED
-                  </span>
+              <div className="flex flex-col gap-6 w-full">
+                <div className="flex flex-col gap-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center sm:justify-start">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{tutor.firstName} {tutor.lastName}</h1>
+                    {tutor.isVerified && (
+                      <span className="inline-flex items-center px-2 py-0.5 bg-[#63FF94] text-[#0A4D27] text-[10px] font-bold uppercase tracking-wider rounded-md border border-[#4ADE80]">
+                        VERIFIED
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-xl font-bold text-[#3B4CB8]">
+                    {tutor.id === 'tutor-dr-aruni-perera' ? "Senior Mathematics & Physics Specialist" : (tutor.qualifications[1] || tutor.qualifications[0]) || "EDUS Certified Tutor"}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-sm font-medium text-slate-500">
+                  <div className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
+                    <Star className="w-4 h-4 text-orange-400 fill-orange-400" />
+                    <span className="text-slate-900 font-bold">{tutor.rating || "5.0"}</span>
+                    <span className="text-slate-500">({tutor.reviewCount || "0"} Reviews)</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
+                    <GraduationCap className="w-4 h-4 text-slate-400" />
+                    <span className="text-slate-600 font-bold">{tutor.qualifications[0]}</span>
+                  </div>
+                </div>
+                
+                {tutor.about && (
+                  <p className="text-slate-600 leading-relaxed text-base border-t border-slate-100 pt-6">{tutor.about}</p>
                 )}
               </div>
-
-              <p className="text-xl font-bold text-[#3B4CB8] mt-2">
-                {tutor.id === 'tutor-dr-aruni-perera' ? "Senior Mathematics & Physics Specialist" : (tutor.qualifications[1] || tutor.qualifications[0]) || "EDUS Certified Tutor"}
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-4 text-sm font-medium text-slate-500">
-                <div className="flex items-center gap-1.5">
-                  <Star className="w-4 h-4 text-orange-400 fill-orange-400" />
-                  <span className="text-slate-900 font-bold">{tutor.rating || "5.0"}</span>
-                  <span className="text-slate-500">({tutor.reviewCount || "0"} Reviews)</span>
-                </div>
-                <span className="text-slate-300 hidden sm:block">•</span>
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-600">{tutor.qualifications[0]}</span>
-                </div>
-              </div>
-              
-              {tutor.about && (
-                <p className="text-slate-600 mt-6 leading-relaxed text-base">{tutor.about}</p>
-              )}
-            </div>
           </motion.div>
 
           {/* 2. Education & Specializations Card */}
@@ -130,8 +131,8 @@ export default function TutorProfile() {
               <GraduationCap className="w-5 h-5 text-primary" /> Education & Specializations
             </h3>
             <ul className="flex flex-col gap-4">
-              {tutor.qualifications.map((qual: string) => (
-                <li key={qual} className="flex gap-3 text-slate-700 items-start">
+              {tutor.qualifications.map((qual: string, index: number) => (
+                <li key={`${qual}-${index}`} className="flex gap-3 text-slate-700 items-start">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed text-sm font-medium">{qual}</span>
                 </li>
@@ -190,7 +191,7 @@ export default function TutorProfile() {
             <h3 className="text-lg font-bold flex items-center gap-2 mb-6 text-slate-900">
               <Calendar className="w-5 h-5 text-primary" /> Available Time
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tutor.availableTimes?.map((schedule: any) => (
                 <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
                   <div className="flex items-center gap-2 mb-3">
