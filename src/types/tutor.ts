@@ -5,9 +5,14 @@ export interface TeachingSubject {
   grades: string[];
 }
 
+export interface AssignedGroupSchedule {
+  day: string;
+  times: string[];
+}
+
 export interface AssignedGroup {
   name?: string;
-  schedule?: string;
+  schedules?: AssignedGroupSchedule[];
   seatsLeft?: number;
   totalSeats?: number;
   [key: string]: unknown;

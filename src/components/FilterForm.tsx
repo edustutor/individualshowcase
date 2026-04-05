@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search, ChevronDown } from "lucide-react";
 import tutorsData from "@/data/tutors.json";
 import type { Tutor, TeachingSubject } from "@/types/tutor";
 
@@ -51,81 +51,106 @@ export default function FilterForm() {
           
           <div className="flex flex-col gap-2">
             <label htmlFor="classType" className="text-sm font-semibold text-slate-700 ml-1">Class Type</label>
-            <select
-              id="classType"
-              name="classType"
-              value={formData.classType}
-              onChange={handleChange}
-              className="px-4 py-3.5 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm"
-            >
-              <option value="">Any Type</option>
-              <option value="Individual">Individual</option>
-              <option value="Group">Group</option>
-            </select>
+            <div className="relative">
+              <select
+                id="classType"
+                name="classType"
+                value={formData.classType}
+                onChange={handleChange}
+                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+              >
+                <option value="">Any Type</option>
+                <option value="Individual">Individual</option>
+                <option value="Group">Group</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="grade" className="text-sm font-semibold text-slate-700 ml-1">Grade</label>
-            <select
-              id="grade"
-              name="grade"
-              value={formData.grade}
-              onChange={handleChange}
-              className="px-4 py-3.5 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm"
-            >
-              <option value="">Any Grade</option>
-              {allGrades.map(g => (
-                <option key={g} value={g}>{g.includes("Grade") ? g : `Grade ${g}`}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="grade"
+                name="grade"
+                value={formData.grade}
+                onChange={handleChange}
+                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+              >
+                <option value="">Any Grade</option>
+                {allGrades.map(g => (
+                  <option key={g} value={g}>{g.includes("Grade") ? g : `Grade ${g}`}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="subject" className="text-sm font-semibold text-slate-700 ml-1">Subject</label>
-            <select
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              className="px-4 py-3.5 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm"
-            >
-              <option value="">Any Subject</option>
-              {allSubjects.map(s => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+              >
+                <option value="">Any Subject</option>
+                {allSubjects.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="medium" className="text-sm font-semibold text-slate-700 ml-1">Medium</label>
-            <select
-              id="medium"
-              name="medium"
-              value={formData.medium}
-              onChange={handleChange}
-              className="px-4 py-3.5 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm"
-            >
-              <option value="">Any Medium</option>
-              {allMediums.map(m => (
-                <option key={m} value={m}>{m}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="medium"
+                name="medium"
+                value={formData.medium}
+                onChange={handleChange}
+                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+              >
+                <option value="">Any Medium</option>
+                {allMediums.map(m => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="syllabus" className="text-sm font-semibold text-slate-700 ml-1">Syllabus</label>
-            <select
-              id="syllabus"
-              name="syllabus"
-              value={formData.syllabus}
-              onChange={handleChange}
-              className="px-4 py-3.5 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm"
-            >
-              <option value="">Any Syllabus</option>
-              {allSyllabuses.map(s => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="syllabus"
+                name="syllabus"
+                value={formData.syllabus}
+                onChange={handleChange}
+                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+              >
+                <option value="">Any Syllabus</option>
+                {allSyllabuses.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </div>
           </div>
 
         </div>

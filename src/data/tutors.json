@@ -65,16 +65,30 @@
     "assignedGroups": [
       {
         "name": "Grade 10 Maths - Batch A",
-        "schedule": "Every Sat, Sun | 08:00 AM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Sat, Sun",
+            "times": [
+              "08:00 AM"
+            ]
+          }
+        ]
       },
       {
         "name": "AS Level Physics - Core",
-        "schedule": "Every Wed | 06:00 PM",
         "status": "Limited",
         "seatsLeft": 5,
-        "totalSeats": 25
+        "totalSeats": 25,
+        "schedules": [
+          {
+            "day": "Wednesday",
+            "times": [
+              "06:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -277,9 +291,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Mon | 04:00 PM",
         "seatsLeft": 2,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -391,9 +412,16 @@
     "assignedGroups": [
       {
         "name": "English - Batch A",
-        "schedule": "Every Fri | 06:30 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Friday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -489,10 +517,30 @@
     ],
     "assignedGroups": [
       {
-        "name": "Intelligence Quotient - Batch A",
-        "schedule": "Every Tue | 08:00 PM",
+        "name": "Intelligence Quotient - Master Batch",
         "seatsLeft": 9,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "08:00 PM"
+            ]
+          },
+          {
+            "day": "Thursday",
+            "times": [
+              "06:00 PM"
+            ]
+          },
+          {
+            "day": "Saturday",
+            "times": [
+              "10:00 AM",
+              "01:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -510,7 +558,6 @@
       }
     ],
     "classTypes": [
-      "Individual",
       "Group"
     ]
   },
@@ -902,9 +949,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Fri | 02:00 PM",
         "seatsLeft": 3,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Friday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1001,9 +1055,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Thu | 08:00 AM",
         "seatsLeft": 5,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "08:00 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1091,9 +1152,16 @@
     "assignedGroups": [
       {
         "name": "Science - Batch A",
-        "schedule": "Every Thu | 10:30 AM",
         "seatsLeft": 8,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "10:30 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1194,9 +1262,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Mon | 02:00 PM",
         "seatsLeft": 9,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1306,9 +1381,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Thu | 04:00 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1412,9 +1494,16 @@
     "assignedGroups": [
       {
         "name": "History - Batch A",
-        "schedule": "Every Sun | 04:00 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Sunday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1524,9 +1613,16 @@
     "assignedGroups": [
       {
         "name": "Tamil - Batch A",
-        "schedule": "Every Thu | 06:30 PM",
         "seatsLeft": 7,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1887,9 +1983,16 @@
     "assignedGroups": [
       {
         "name": "Science - Batch A",
-        "schedule": "Every Tue | 06:30 PM",
         "seatsLeft": 4,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -1992,9 +2095,16 @@
     "assignedGroups": [
       {
         "name": "Science - Batch A",
-        "schedule": "Every Thu | 04:00 PM",
         "seatsLeft": 7,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2074,9 +2184,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Sun | 02:00 PM",
         "seatsLeft": 2,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Sunday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2219,9 +2336,16 @@
     "assignedGroups": [
       {
         "name": "Tamil - Batch A",
-        "schedule": "Every Thu | 08:00 PM",
         "seatsLeft": 3,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "08:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2325,9 +2449,16 @@
     "assignedGroups": [
       {
         "name": "English - Batch A",
-        "schedule": "Every Wed | 04:00 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Wednesday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2429,9 +2560,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Mon | 04:00 PM",
         "seatsLeft": 9,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2540,9 +2678,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Tue | 04:00 PM",
         "seatsLeft": 5,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -2901,9 +3046,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Sat | 04:00 PM",
         "seatsLeft": 9,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Saturday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3000,9 +3152,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Sat | 06:30 PM",
         "seatsLeft": 9,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Saturday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3085,9 +3244,16 @@
     "assignedGroups": [
       {
         "name": "Tamil - Batch A",
-        "schedule": "Every Tue | 04:00 PM",
         "seatsLeft": 4,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3189,9 +3355,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Mon | 02:00 PM",
         "seatsLeft": 8,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3286,9 +3459,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Fri | 06:30 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Friday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3399,9 +3579,16 @@
     "assignedGroups": [
       {
         "name": "Physics - Batch A",
-        "schedule": "Every Sat | 08:00 AM",
         "seatsLeft": 2,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Saturday",
+            "times": [
+              "08:00 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3502,9 +3689,16 @@
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
-        "schedule": "Every Mon | 08:00 AM",
         "seatsLeft": 3,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "08:00 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3857,9 +4051,16 @@
     "assignedGroups": [
       {
         "name": "Combined Maths - Batch A",
-        "schedule": "Every Sat | 02:00 PM",
         "seatsLeft": 8,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Saturday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -3948,9 +4149,16 @@
     "assignedGroups": [
       {
         "name": "Combined Maths - Batch A",
-        "schedule": "Every Fri | 02:00 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Friday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -4031,9 +4239,16 @@
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
-        "schedule": "Every Tue | 04:00 PM",
         "seatsLeft": 6,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -4126,9 +4341,16 @@
     "assignedGroups": [
       {
         "name": "Biology - Batch A",
-        "schedule": "Every Mon | 10:30 AM",
         "seatsLeft": 10,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Monday",
+            "times": [
+              "10:30 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -4236,9 +4458,16 @@
     "assignedGroups": [
       {
         "name": "Chemistry - Batch A",
-        "schedule": "Every Wed | 02:00 PM",
         "seatsLeft": 8,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Wednesday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -4356,9 +4585,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Tue | 02:00 PM",
         "seatsLeft": 4,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -4489,9 +4725,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Sun | 02:00 PM",
         "seatsLeft": 4,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Sunday",
+            "times": [
+              "02:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5025,9 +5268,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Sun | 08:00 PM",
         "seatsLeft": 7,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Sunday",
+            "times": [
+              "08:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5121,9 +5371,16 @@
     "assignedGroups": [
       {
         "name": "Mathematics - Batch A",
-        "schedule": "Every Thu | 04:00 PM",
         "seatsLeft": 8,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5215,9 +5472,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Tue | 04:00 PM",
         "seatsLeft": 3,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5318,9 +5582,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Sat | 06:30 PM",
         "seatsLeft": 1,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Saturday",
+            "times": [
+              "06:30 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5461,9 +5732,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Tue | 08:00 PM",
         "seatsLeft": 10,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "08:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5584,9 +5862,16 @@
     "assignedGroups": [
       {
         "name": "General - Batch A",
-        "schedule": "Every Tue | 10:30 AM",
         "seatsLeft": 2,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Tuesday",
+            "times": [
+              "10:30 AM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [
@@ -5695,9 +5980,16 @@
     "assignedGroups": [
       {
         "name": "Media Studies - Batch A",
-        "schedule": "Every Thu | 04:00 PM",
         "seatsLeft": 7,
-        "totalSeats": 20
+        "totalSeats": 20,
+        "schedules": [
+          {
+            "day": "Thursday",
+            "times": [
+              "04:00 PM"
+            ]
+          }
+        ]
       }
     ],
     "feedback": [

@@ -212,35 +212,36 @@ export default function TutorProfile() {
             </div>
           </motion.div>
 
-          {/* 4. Available Time Card */}
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
-            <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
-              <Calendar className="w-5 h-5 text-primary" /> Available Time
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {tutor.availableTimes?.map((schedule: AvailableTime) => (
-                <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-1.5 h-6 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
-                    <span className="font-bold text-slate-900 text-sm">{schedule.day}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2.5">
-                    {schedule.times.map((time: string) => (
-                      <span key={time} className="bg-white text-slate-700 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm transition-transform hover:scale-105">
-                        {time}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* 5. Assigned Group Classes Card */}
-          {tutor.assignedGroups && tutor.assignedGroups.length > 0 && (
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit">
+          {/* Conditional Rendering of Timetables based on selected Class Type */}
+          {selectedClassType === "Individual" && tutor.availableTimes && tutor.availableTimes.length > 0 && (
+            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit mb-8">
               <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
-                <ShieldCheck className="w-5 h-5 text-primary" /> Assigned Group Classes
+                <Calendar className="w-5 h-5 text-primary" /> Individual Class Available Time
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {tutor.availableTimes.map((schedule: AvailableTime) => (
+                  <div key={schedule.day} className="bg-slate-50 border border-slate-200 rounded-[1.25rem] p-5 flex flex-col group hover:border-primary/30 transition-all duration-300 hover:shadow-sm">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1.5 h-6 bg-primary/20 rounded-full group-hover:bg-primary/40 transition-colors" />
+                      <span className="font-bold text-slate-900 text-sm">{schedule.day}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2.5">
+                      {schedule.times.map((time: string) => (
+                        <span key={time} className="bg-white text-slate-700 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm transition-transform hover:scale-105">
+                          {time}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {selectedClassType === "Group" && tutor.assignedGroups && tutor.assignedGroups.length > 0 && (
+            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow duration-300 h-fit mb-8">
+              <h3 className="text-lg font-bold flex items-center gap-2 mb-5 text-slate-900 m-0">
+                <ShieldCheck className="w-5 h-5 text-primary" /> Group Class Time Table
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {tutor.assignedGroups.map((group: string | AssignedGroup, index: number) => {
@@ -253,11 +254,24 @@ export default function TutorProfile() {
                         <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase rounded-md flex-shrink-0">Limited</span>
                       )}
                     </div>
-                    {groupObj.schedule && (
-                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
-                      <Calendar className="w-4 h-4 text-slate-400" />
-                      <span className="font-medium">{groupObj.schedule}</span>
-                    </div>
+                    {groupObj.schedules && groupObj.schedules.length > 0 && (
+                      <div className="flex flex-col gap-1.5 mb-2 mt-1">
+                        {groupObj.schedules.map((schedule: {day: string, times: string[]}, i: number) => (
+                          <div key={i} className="flex items-start gap-2 text-xs text-slate-500">
+                            <Calendar className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-slate-700">{schedule.day}</span>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {schedule.times.map((time: string, j: number) => (
+                                  <span key={j} className="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded text-[10px] font-medium border border-slate-200">
+                                    {time}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     )}
 
                     {groupObj.seatsLeft !== undefined && groupObj.totalSeats !== undefined && (
