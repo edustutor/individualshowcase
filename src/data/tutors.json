@@ -62,6 +62,77 @@
         ]
       }
     ],
+    "availableTimes": [
+      {
+        "day": "Mon",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Tue",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Wed",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Thu",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Fri",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sat",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM",
+          "04:30 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      },
+      {
+        "day": "Sun",
+        "times": [
+          "09:00 AM",
+          "11:30 AM",
+          "02:00 PM"
+        ],
+        "timezone": "Sri Lanka Time (IST)"
+      }
+    ],
     "assignedGroups": [
       {
         "name": "Grade 10 Maths - Batch A",
@@ -105,70 +176,6 @@
         "stars": 5
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Mon",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Tue",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Wed",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Thu",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Fri",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Sat",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM",
-          "04:30 PM"
-        ]
-      },
-      {
-        "day": "Sun",
-        "times": [
-          "09:00 AM",
-          "11:30 AM",
-          "02:00 PM"
-        ]
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -178,10 +185,13 @@
     "id": "tutor-mrs-rajamanohary-jeyakanthan",
     "firstName": "Mrs. Rajamanohary",
     "lastName": "Jeyakanthan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 55,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -193,6 +203,14 @@
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
       ]
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -211,7 +229,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 3"
         ],
@@ -223,7 +241,7 @@
         ]
       },
       {
-        "subject": "ENV",
+        "subject": "Environmental Studies",
         "grades": [
           "Grade 3"
         ],
@@ -252,7 +270,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -277,16 +294,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 55,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -326,10 +333,13 @@
     "id": "tutor-mrs-fathima-nihadha",
     "firstName": "Mrs. Fathima",
     "lastName": "Nihadha",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 65,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
@@ -341,6 +351,14 @@
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
       ]
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -372,7 +390,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -398,16 +415,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 65,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -447,10 +454,13 @@
     "id": "tutor-mr-ananthavel-mathiruban",
     "firstName": "Mr. Ananthavel",
     "lastName": "Mathiruban",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 145,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Intelligence%20Quotient%20(IQ)%202.webp",
     "demoVideos": {
       "individual": [
@@ -462,6 +472,14 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -480,7 +498,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Intelligence Quotient",
+        "subject": "Intelligence Quotient (IQ)",
         "grades": [
           "Grade 3",
           "Grade 4",
@@ -494,7 +512,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -504,16 +521,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 145,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -558,25 +565,38 @@
       }
     ],
     "classTypes": [
-      "Group"
+      "Group",
+      "Individual"
     ]
   },
   {
     "id": "tutor-mrs-ninthusha-kirubakaran",
     "firstName": "Mrs. Ninthusha",
     "lastName": "Kirubakaran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 80,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/tgbNymZ7vqY",
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -589,7 +609,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 4",
           "Grade 5"
@@ -602,7 +622,7 @@
         ]
       },
       {
-        "subject": "ENV",
+        "subject": "Environmental Studies",
         "grades": [
           "Grade 4",
           "Grade 5"
@@ -628,7 +648,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -653,16 +672,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 80,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -685,19 +694,31 @@
   {
     "id": "tutor-ms-akshaya-indreshan-",
     "firstName": "Ms. Akshaya",
-    "lastName": "Indreshan ",
+    "lastName": "Indreshan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 94,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk",
         "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "https://www.youtube.com/embed/9bZkp7q19f0"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -722,7 +743,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -740,16 +760,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 94,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -774,31 +784,43 @@
     "id": "tutor-mrs-farhana-mohamed-haniffa",
     "firstName": "Mrs. Farhana",
     "lastName": "Mohamed Haniffa",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 60,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 188,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 1500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 188,
+        "pricePerClass": 187,
         "totalFirstMonth": 4000
       }
     },
     "teachingSubjects": [
       {
-        "subject": "SpokenEnglish",
+        "subject": "Spoken English",
         "grades": [
           "Grade 5"
         ],
@@ -811,7 +833,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -821,16 +842,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 60,
-    "sessionRate": 188,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -855,16 +866,28 @@
     "id": "tutor-ms-sarmily-puvanendran",
     "firstName": "Ms. Sarmily",
     "lastName": "Puvanendran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 108,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -875,7 +898,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 6"
         ],
@@ -911,7 +934,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -935,16 +957,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 108,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -983,16 +995,28 @@
     "id": "tutor-ms-shovenja-theivendiran",
     "firstName": "Ms. Shovenja",
     "lastName": "Theivendiran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 115,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -1003,7 +1027,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 6",
           "Grade 9"
@@ -1017,7 +1041,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -1041,16 +1064,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 115,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1088,17 +1101,29 @@
   {
     "id": "tutor-mrs-balakrishnan-vidhurshika-",
     "firstName": "MRs. Balakrishnan",
-    "lastName": "Vidhurshika ",
+    "lastName": "Vidhurshika",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 66,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/9bZkp7q19f0"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -1121,7 +1146,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -1138,16 +1162,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 66,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1186,10 +1200,13 @@
     "id": "tutor-ms--sarmily-puvanendran",
     "firstName": "Ms .",
     "lastName": "Sarmily Puvanendran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 102,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -1201,6 +1218,14 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -1231,7 +1256,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -1248,16 +1272,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 102,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1297,10 +1311,13 @@
     "id": "tutor-mr-vithurshan-srikanthan",
     "firstName": "Mr. Vithurshan",
     "lastName": "Srikanthan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 123,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -1312,6 +1329,14 @@
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
       ]
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -1349,7 +1374,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -1367,16 +1391,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 123,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1416,10 +1430,13 @@
     "id": "tutor-ms-luxana-sujan",
     "firstName": "Ms. Luxana",
     "lastName": "Sujan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 78,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
     "demoVideos": {
       "individual": [
@@ -1431,6 +1448,14 @@
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
       ]
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -1463,7 +1488,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Sun",
@@ -1480,16 +1504,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 78,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1529,10 +1543,13 @@
     "id": "tutor-ms-shabna-kaleelur-rahman",
     "firstName": "Ms. Shabna",
     "lastName": "Kaleelur Rahman",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 111,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
     "demoVideos": {
       "individual": [
@@ -1544,6 +1561,14 @@
         "https://www.youtube.com/embed/tgbNymZ7vqY"
       ]
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -1575,7 +1600,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -1599,16 +1623,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 111,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -1648,18 +1662,30 @@
     "id": "tutor-ms-fathima-afnaan",
     "firstName": "Ms. Fathima",
     "lastName": "Afnaan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 120,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/tgbNymZ7vqY",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -1687,7 +1713,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -1712,16 +1737,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 120,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -1745,18 +1760,30 @@
     "id": "tutor-mr-uthayananthan-suventhiran",
     "firstName": "Mr. Uthayananthan",
     "lastName": "Suventhiran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 100,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/jNQXAC9IVRw"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -1769,7 +1796,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 7",
           "Grade 8",
@@ -1783,7 +1810,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Sun",
@@ -1792,16 +1818,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 100,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -1826,18 +1842,30 @@
     "id": "tutor-ms-uthayadharshini-sasikumar",
     "firstName": "Ms. Uthayadharshini",
     "lastName": "Sasikumar",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 73,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/kJQP7kiw5Fk",
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -1850,7 +1878,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 7",
           "Grade 9",
@@ -1865,7 +1893,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -1890,16 +1917,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 73,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -1923,16 +1940,28 @@
     "id": "tutor-mr-rajendran-suthakaran",
     "firstName": "Mr. Rajendran",
     "lastName": "Suthakaran",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 52,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/jNQXAC9IVRw"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -1959,7 +1988,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -1969,16 +1997,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 52,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2017,16 +2035,28 @@
     "id": "tutor-mrs-balakrishnan-vidhurshika",
     "firstName": "Mrs. Balakrishnan",
     "lastName": "Vidhurshika",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 110,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -2072,7 +2102,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -2081,16 +2110,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 110,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2129,16 +2148,28 @@
     "id": "tutor-ms-fathima-abdul-razzak",
     "firstName": "Ms. Fathima",
     "lastName": "Abdul Razzak",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 82,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -2161,7 +2192,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Sun",
@@ -2170,16 +2200,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 82,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2218,10 +2238,13 @@
     "id": "tutor-ms-manikkam-yathurshini",
     "firstName": "Ms. Manikkam",
     "lastName": "Yathurshini",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 84,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
     "demoVideos": {
       "individual": [
@@ -2233,6 +2256,14 @@
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
       ]
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2306,7 +2337,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -2322,16 +2352,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 84,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2371,10 +2391,13 @@
     "id": "tutor-ms-sumeerjitha-thangarajah",
     "firstName": "Ms. Sumeerjitha",
     "lastName": "Thangarajah",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 98,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
@@ -2386,6 +2409,14 @@
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
       ]
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2419,7 +2450,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Wed",
@@ -2435,16 +2465,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 98,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2484,10 +2504,13 @@
     "id": "tutor-ms-subahary-senthilrajah",
     "firstName": "Ms. Subahary",
     "lastName": "Senthilrajah",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 90,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -2499,6 +2522,14 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2517,7 +2548,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 8"
         ],
@@ -2529,7 +2560,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -2546,16 +2576,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 90,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2595,10 +2615,13 @@
     "id": "tutor-ms-fathima-farha",
     "firstName": "Ms. Fathima",
     "lastName": "Farha",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 126,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -2610,6 +2633,14 @@
         "https://www.youtube.com/embed/9bZkp7q19f0"
       ]
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -2640,7 +2671,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -2664,16 +2694,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 126,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -2713,18 +2733,30 @@
     "id": "tutor-mr-jenil-jeyanthan",
     "firstName": "Mr. Jenil",
     "lastName": "Jeyanthan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 94,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "https://www.youtube.com/embed/jNQXAC9IVRw"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2753,7 +2785,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -2762,16 +2793,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 94,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -2796,18 +2817,30 @@
     "id": "tutor-mrs-kajananthini-varathalojan",
     "firstName": "Mrs. Kajananthini",
     "lastName": "Varathalojan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 78,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/jNQXAC9IVRw",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2834,7 +2867,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -2859,16 +2891,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 78,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -2892,18 +2914,30 @@
     "id": "tutor-mrs-mayoory-nishanth",
     "firstName": "Mrs. Mayoory",
     "lastName": "Nishanth",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 93,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 125,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -2930,7 +2964,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -2955,16 +2988,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 93,
-    "sessionRate": 125,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -2988,16 +3011,28 @@
     "id": "tutor-ms-mathangi-kiritharan",
     "firstName": "Ms. Mathangi",
     "lastName": "Kiritharan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 90,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 250,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "group": {
         "feePerMonth": 400,
@@ -3023,7 +3058,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -3032,16 +3066,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 90,
-    "sessionRate": 250,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3080,16 +3104,28 @@
     "id": "tutor-mr-fathima-abdul-razzak",
     "firstName": "Mr. Fathima",
     "lastName": "Abdul Razzak",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 133,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "group": {
         "feePerMonth": 480,
@@ -3112,7 +3148,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -3138,16 +3173,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 133,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3186,16 +3211,28 @@
     "id": "tutor-mr-niththyanantha-muththulingam",
     "firstName": "Mr. Niththyanantha",
     "lastName": "Muththulingam",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 82,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Tamil%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/tgbNymZ7vqY"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "group": {
         "feePerMonth": 480,
@@ -3220,7 +3257,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -3230,16 +3266,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 82,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3278,10 +3304,13 @@
     "id": "tutor-mr-ainkaran-ainkaran-vallipuram",
     "firstName": "Mr. Ainkaran",
     "lastName": "Ainkaran Vallipuram",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 55,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -3293,6 +3322,14 @@
         "https://www.youtube.com/embed/tgbNymZ7vqY"
       ]
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -3311,7 +3348,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "Grade 11"
         ],
@@ -3323,7 +3360,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -3341,16 +3377,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 55,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3390,10 +3416,13 @@
     "id": "tutor-mr-rabith-ahmed",
     "firstName": "Mr. Rabith",
     "lastName": "Ahmed",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 91,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -3405,6 +3434,14 @@
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
       ]
     },
+    "sessionRate": 150,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
@@ -3435,7 +3472,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -3445,16 +3481,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 91,
-    "sessionRate": 150,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3494,10 +3520,13 @@
     "id": "tutor-mr-arunakirinathan-jeyasuthan",
     "firstName": "Mr. Arunakirinathan",
     "lastName": "Jeyasuthan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 54,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Physics%202.webp",
     "demoVideos": {
       "individual": [
@@ -3509,13 +3538,21 @@
         "https://www.youtube.com/embed/9bZkp7q19f0"
       ]
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       },
       "group": {
@@ -3539,7 +3576,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -3565,16 +3601,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 54,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3614,10 +3640,13 @@
     "id": "tutor-mr-muzoufil-mohamed-muhthaseem",
     "firstName": "Mr. Muzoufil",
     "lastName": "Mohamed Muhthaseem",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 99,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -3629,13 +3658,21 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       },
       "group": {
@@ -3647,7 +3684,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "A/L"
         ],
@@ -3659,7 +3696,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -3675,16 +3711,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 99,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -3724,25 +3750,37 @@
     "id": "tutor-mr-sajeth-thuraisingam",
     "firstName": "Mr. Sajeth",
     "lastName": "Thuraisingam",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 81,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "https://www.youtube.com/embed/9bZkp7q19f0"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       }
     },
@@ -3760,7 +3798,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -3770,16 +3807,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 81,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -3803,26 +3830,38 @@
   {
     "id": "tutor-mr-arunasalam-kabilthas-",
     "firstName": "Mr. Arunasalam",
-    "lastName": "Kabilthas ",
+    "lastName": "Kabilthas",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 104,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/jNQXAC9IVRw",
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       }
     },
@@ -3840,7 +3879,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -3858,16 +3896,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 104,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -3891,26 +3919,38 @@
   {
     "id": "tutor-mr-arunakirinathan-jeyasuthan-",
     "firstName": "Mr. Arunakirinathan",
-    "lastName": "Jeyasuthan  ",
+    "lastName": "Jeyasuthan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 52,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/aqz-KE-bpKQ"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       }
     },
@@ -3928,7 +3968,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Wed",
@@ -3954,16 +3993,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 52,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -3986,17 +4015,29 @@
   {
     "id": "tutor-mr-somasundaram-senthilraj-",
     "firstName": "Mr. Somasundaram",
-    "lastName": "Senthilraj  ",
+    "lastName": "Senthilraj",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 89,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -4007,7 +4048,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Combined Maths",
+        "subject": "Combined Mathematics",
         "grades": [
           "A/L"
         ],
@@ -4019,7 +4060,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -4037,16 +4077,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 89,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4084,17 +4114,29 @@
   {
     "id": "tutor-mr-vijayasiri-ranjithkumara-",
     "firstName": "Mr. Vijayasiri",
-    "lastName": "Ranjithkumara   ",
+    "lastName": "Ranjithkumara",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 82,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/jNQXAC9IVRw"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -4105,7 +4147,7 @@
     },
     "teachingSubjects": [
       {
-        "subject": "Combined Maths",
+        "subject": "Combined Mathematics",
         "grades": [
           "A/L"
         ],
@@ -4117,7 +4159,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Fri",
@@ -4135,16 +4176,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 82,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4182,17 +4213,29 @@
   {
     "id": "tutor-mr-sajeth-thuraisingam-",
     "firstName": "Mr. Sajeth",
-    "lastName": "Thuraisingam   ",
+    "lastName": "Thuraisingam",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 90,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/9bZkp7q19f0"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -4215,7 +4258,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -4225,16 +4267,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 90,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4272,11 +4304,14 @@
   {
     "id": "tutor-mr-annathurai-tharsan-",
     "firstName": "Mr. Annathurai",
-    "lastName": "Tharsan ",
+    "lastName": "Tharsan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 123,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -4288,13 +4323,21 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       },
       "group": {
@@ -4318,7 +4361,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -4327,16 +4369,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 123,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4375,11 +4407,14 @@
   {
     "id": "tutor-mr-krishnakumar-nivedshanker-",
     "firstName": "Mr. Krishnakumar",
-    "lastName": "Nivedshanker ",
+    "lastName": "Nivedshanker",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 143,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -4391,13 +4426,21 @@
         "https://www.youtube.com/embed/9bZkp7q19f0"
       ]
     },
+    "sessionRate": 313,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 2,
         "feePerMonth": 2500,
         "currency": "LKR",
         "admissionFee": 2500,
-        "pricePerClass": 313,
+        "pricePerClass": 312,
         "totalFirstMonth": 5000
       },
       "group": {
@@ -4421,7 +4464,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Wed",
@@ -4444,16 +4486,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 143,
-    "sessionRate": 313,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4493,10 +4525,13 @@
     "id": "tutor-ms-fathima-asma",
     "firstName": "Ms. Fathima",
     "lastName": "Asma",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 122,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
@@ -4508,6 +4543,14 @@
         "https://www.youtube.com/embed/9bZkp7q19f0"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -4561,7 +4604,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -4571,16 +4613,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 122,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4620,10 +4652,13 @@
     "id": "tutor-mrs-nazhath-amaniya",
     "firstName": "Mrs. Nazhath",
     "lastName": "Amaniya",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 61,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "individual": [
@@ -4635,6 +4670,14 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -4694,7 +4737,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Sun",
@@ -4711,16 +4753,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 61,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -4760,18 +4792,30 @@
     "id": "tutor-ms-mareesha-reen-faris",
     "firstName": "Ms. Mareesha",
     "lastName": "Reen Faris",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 132,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/History%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -4818,7 +4862,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -4836,16 +4879,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 132,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -4870,18 +4903,30 @@
     "id": "tutor-mr-umasuthan-ayushyaa",
     "firstName": "Mr. Umasuthan",
     "lastName": "Ayushyaa",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 80,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Physics%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -4940,7 +4985,7 @@
         ]
       },
       {
-        "subject": "Maths",
+        "subject": "Mathematics",
         "grades": [
           "A/L"
         ],
@@ -4968,7 +5013,6 @@
         ]
       }
     ],
-    "about": "Committed to student success by simplifying complex concepts and instilling a lifelong love for learning in a supportive setting.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -4978,16 +5022,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 80,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
@@ -5012,18 +5046,30 @@
     "id": "tutor-mrs-luxana-sujan",
     "firstName": "Mrs. Luxana",
     "lastName": "Sujan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 51,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Logic%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/jNQXAC9IVRw",
         "https://www.youtube.com/embed/aqz-KE-bpKQ",
         "https://www.youtube.com/embed/tgbNymZ7vqY"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -5100,7 +5146,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -5126,16 +5171,6 @@
         "timezone": "Sri Lanka Time (IST)"
       }
     ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 51,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
-    ],
     "assignedGroups": [],
     "feedback": [
       {
@@ -5159,16 +5194,28 @@
     "id": "tutor-mrs-fathima-mahudoon",
     "firstName": "Mrs. Fathima",
     "lastName": "Mahudoon",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 111,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -5237,7 +5284,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Sun",
@@ -5254,16 +5300,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 111,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5302,16 +5338,28 @@
     "id": "tutor-mr-iraguraman-haridharan",
     "firstName": "Mr. Iraguraman",
     "lastName": "Haridharan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 129,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/jNQXAC9IVRw"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -5341,7 +5389,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -5357,16 +5404,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 129,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5405,16 +5442,28 @@
     "id": "tutor-mrs-jayadharshanie-niroshalyan",
     "firstName": "Mrs. Jayadharshanie",
     "lastName": "Niroshalyan",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 139,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/English%202.webp",
     "demoVideos": {
       "group": [
         "https://www.youtube.com/embed/9bZkp7q19f0"
-      ]
+      ],
+      "individual": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "group": {
         "feePerMonth": 1000,
@@ -5442,7 +5491,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -5458,16 +5506,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 139,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5506,10 +5544,13 @@
     "id": "tutor-ms-thilinika-jayasinghe",
     "firstName": "Ms. Thilinika",
     "lastName": "Jayasinghe",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 101,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Science%203.webp",
     "demoVideos": {
       "individual": [
@@ -5521,6 +5562,14 @@
         "https://www.youtube.com/embed/dQw4w9WgXcQ"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -5558,7 +5607,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Sat",
@@ -5568,16 +5616,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 101,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5617,10 +5655,13 @@
     "id": "tutor-mr-vijayasiri-ranjithkumara",
     "firstName": "Mr. Vijayasiri",
     "lastName": "Ranjithkumara",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "Cambridge Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 55,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -5632,6 +5673,14 @@
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -5694,7 +5743,6 @@
         ]
       }
     ],
-    "about": "Dedicated to fostering a positive and engaging learning environment. Specialized in curriculum-aligned teaching that guarantees academic improvement.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -5718,16 +5766,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 55,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5765,12 +5803,15 @@
   },
   {
     "id": "tutor-ms-subahary-senthilrajah-2",
-    "firstName": "Ms. ",
+    "firstName": "Ms.",
     "lastName": "Subahary Senthilrajah",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 64,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Maths%202.webp",
     "demoVideos": {
       "individual": [
@@ -5782,6 +5823,14 @@
         "https://www.youtube.com/embed/tgbNymZ7vqY"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -5831,7 +5880,6 @@
         ]
       }
     ],
-    "about": "An enthusiastic and resourceful professional with a proven track record of inspiring students and driving academic excellence across multiple subjects.",
     "availableTimes": [
       {
         "day": "Tue",
@@ -5848,16 +5896,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 64,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -5897,10 +5935,13 @@
     "id": "tutor-ms-mathumitha-ratnakumar",
     "firstName": "Ms. Mathumitha",
     "lastName": "Ratnakumar",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 92,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Media%202.webp",
     "demoVideos": {
       "individual": [
@@ -5912,6 +5953,14 @@
         "https://www.youtube.com/embed/jNQXAC9IVRw"
       ]
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -5942,7 +5991,6 @@
         ]
       }
     ],
-    "about": "Passionate educator with years of experience helping students achieve their highest potential through tailored learning strategies and interactive approaches.",
     "availableTimes": [
       {
         "day": "Thu",
@@ -5966,16 +6014,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 92,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [
       {
@@ -6015,18 +6053,30 @@
     "id": "tutor-ms-fathima-abdul-rassak",
     "firstName": "Ms. Fathima",
     "lastName": "Abdul Rassak",
+    "isVerified": true,
     "qualifications": [
       "EDUS Verified Tutor",
       "National Syllabus Expert"
     ],
+    "rating": 4.9,
+    "reviewCount": 111,
     "profileImageUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/New%20_%20Thumb/Information%20and%20Communications%20Technology%20(ICT)%202.webp",
     "demoVideos": {
       "individual": [
         "https://www.youtube.com/embed/tgbNymZ7vqY",
         "https://www.youtube.com/embed/9bZkp7q19f0",
         "https://www.youtube.com/embed/kJQP7kiw5Fk"
-      ]
+      ],
+      "group": []
     },
+    "sessionRate": 625,
+    "currency": "LKR",
+    "teachingStyle": [
+      "Interactive Visual Whiteboarding",
+      "Real-world Case Applications",
+      "Custom Mastery Question Banks"
+    ],
+    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "pricing": {
       "individual": {
         "weeklyClasses": 1,
@@ -6056,7 +6106,6 @@
         ]
       }
     ],
-    "about": "Experienced in delivering high-quality education and mentorship, ensuring every student develops the confidence needed to excel in their academic journey.",
     "availableTimes": [
       {
         "day": "Mon",
@@ -6082,16 +6131,6 @@
         ],
         "timezone": "Sri Lanka Time (IST)"
       }
-    ],
-    "isVerified": true,
-    "rating": 4.9,
-    "reviewCount": 111,
-    "sessionRate": 625,
-    "currency": "LKR",
-    "teachingStyle": [
-      "Interactive Visual Whiteboarding",
-      "Real-world Case Applications",
-      "Custom Mastery Question Banks"
     ],
     "assignedGroups": [],
     "feedback": [
