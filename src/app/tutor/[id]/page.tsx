@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, ChevronDown, Info, ShieldCheck, X, AlertTriangle, Star } from "lucide-react";
@@ -11,6 +11,8 @@ import type { Tutor, TeachingSubject, AvailableTime, AssignedGroup, DemoVideo } 
 export default function TutorProfile() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const typeParam = searchParams.get("type") as "Individual" | "Group" | null;
   const [tutor, setTutor] = useState<Tutor | null>(null);
   const [bookingForm, setBookingForm] = useState({
     firstName: "",
@@ -34,12 +36,18 @@ export default function TutorProfile() {
     const found = (tutorsData as unknown as Tutor[]).find(t => t.id === params.id);
     if (found) {
       setTutor(found);
-      if (found.classTypes && found.classTypes.length > 0) {
-        setSelectedClassType(found.classTypes[0]);
+      
+      // Initialize class type: 
+      // 1. From URL parameter if valid
+      // 2. From tutor's offered types if missing or invalid
+      if (typeParam && found.classTypes?.includes(typeParam)) {
+        setSelectedClassType(typeParam);
+      } else if (found.classTypes && found.classTypes.length > 0) {
+        setSelectedClassType(found.classTypes[0] as "Individual" | "Group");
       }
     }
     window.scrollTo(0, 0);
-  }, [params.id]);
+  }, [params.id, typeParam]);
 
   if (!tutor) return <div className="min-h-screen flex items-center justify-center font-medium text-slate-500 bg-slate-50">Loading profile...</div>;
 
@@ -436,26 +444,14 @@ export default function TutorProfile() {
                 <div className="bg-slate-900 rounded-[1.5rem] p-6 text-white mb-8 shadow-xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-48 h-48 bg-primary blur-[80px] rounded-full opacity-40 pointer-events-none -mr-10 -mt-10"></div>
                   
-                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10 relative z-10">
+                  <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10 relative z-10">
                     <h3 className="text-base font-bold flex items-center gap-2">
                       <CreditCard className="w-4 h-4 text-primary" /> Fees Breakdown
                     </h3>
-                  </div>
-
-                  {tutor.classTypes && tutor.classTypes.length > 1 && (
-                    <div className="flex bg-white/10 p-1 rounded-xl mb-5 relative z-10 h-11 items-center">
-                      {tutor.classTypes.map((ctype: string) => (
-                        <button 
-                          key={ctype}
-                          type="button"
-                          onClick={() => { setSelectedClassType(ctype as "Individual" | "Group"); setActiveVideo(0); }}
-                          className={`flex-1 flex items-center justify-center text-xs font-bold rounded-lg h-full transition-all duration-300 ${selectedClassType === ctype ? 'bg-primary text-white shadow-md' : 'text-slate-300 hover:text-white'}`}
-                        >
-                          {ctype} Class
-                        </button>
-                      ))}
+                    <div className="flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full border border-white/10">
+                      <span className="text-[10px] font-bold text-slate-100 uppercase tracking-wider">{selectedClassType} Class</span>
                     </div>
-                  )}
+                  </div>
 
                   {/* Pricing Breakdown from Hardcoded JSON values */}
                   <div className="flex flex-col gap-4 text-sm font-medium text-slate-300 relative z-10">
@@ -518,18 +514,10 @@ export default function TutorProfile() {
 
                   <div className="flex flex-col gap-1.5 mt-1">
                     <label htmlFor="formClassType" className="text-xs font-medium text-slate-500 ml-1">Class Type</label>
-                    {tutor.classTypes && tutor.classTypes.length === 1 ? (
-                      <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{tutor.classTypes[0]} Class</div>
-                    ) : (
-                      <div className="relative">
-                        <select id="formClassType" required value={selectedClassType} onChange={(e) => { setSelectedClassType(e.target.value as "Individual" | "Group"); setActiveVideo(0); }} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                          {tutor.classTypes?.map((ctype: string) => <option key={ctype} value={ctype}>{ctype} Class</option>)}
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                          <ChevronDown className="h-4 w-4 text-slate-400" />
-                        </div>
-                      </div>
-                    )}
+                    <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed flex items-center justify-between">
+                      {selectedClassType} Class
+                      <ShieldCheck className="w-4 h-4 text-slate-400" />
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mt-1">

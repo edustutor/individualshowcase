@@ -6,9 +6,13 @@ import Link from "next/link";
 import { BookOpen, Star, Sparkles, ChevronRight } from "lucide-react";
 import type { Tutor, TeachingSubject } from "@/types/tutor";
 
-export default function TutorCard({ tutor }: { readonly tutor: Tutor }) {
+export default function TutorCard({ tutor, selectedClassType }: { readonly tutor: Tutor; readonly selectedClassType?: "Individual" | "Group" | null }) {
+  const profileLink = selectedClassType 
+    ? `/tutor/${tutor.id}?type=${selectedClassType}` 
+    : `/tutor/${tutor.id}`;
+
   return (
-    <Link href={`/tutor/${tutor.id}`} className="block h-full">
+    <Link href={profileLink} className="block h-full">
     <motion.div
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
