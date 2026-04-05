@@ -34,13 +34,23 @@ export interface Feedback {
   [key: string]: unknown;
 }
 
-export interface Pricing {
-  weeklyClasses: number;
+export interface PricingDetails {
+  weeklyClasses?: number;
   feePerMonth: number;
   currency: string;
   admissionFee: number;
-  pricePerClass: number;
+  pricePerClass?: number;
   totalFirstMonth: number;
+}
+
+export interface TutorPricing {
+  individual?: PricingDetails;
+  group?: PricingDetails;
+}
+
+export interface DemoVideos {
+  individual?: (DemoVideo | string)[];
+  group?: (DemoVideo | string)[];
 }
 
 export interface Tutor {
@@ -59,7 +69,8 @@ export interface Tutor {
   qualifications: string[];
   teachingSubjects: TeachingSubject[];
   availableTimes: AvailableTime[];
-  demoVideos?: DemoVideo[] | string[];
+  classTypes: ("Individual" | "Group")[];
+  demoVideos?: DemoVideos;
   feedback?: Feedback[];
-  pricing: Pricing;
+  pricing: TutorPricing;
 }

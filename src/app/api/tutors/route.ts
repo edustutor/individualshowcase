@@ -8,14 +8,15 @@ export async function GET(request: Request) {
   const subject = searchParams.get('subject');
   const medium = searchParams.get('medium');
   const syllabus = searchParams.get('syllabus');
+  const classType = searchParams.get('classType');
 
   let filteredTutors: unknown[] = tutors;
 
-  if (grade || subject || medium || syllabus) {
+  if (grade || subject || medium || syllabus || classType) {
     const allTutors = tutors as unknown as Tutor[];
     filteredTutors = allTutors.filter((tutor: Tutor) => {
-      // A tutor matches if ANY of their teachingSubjects matches all provided criteria
-      return tutor.teachingSubjects.some((ts: TeachingSubject) => {
+      // General subjects filtering
+      const matchesSubjectCriteria = tutor.teachingSubjects.some((ts: TeachingSubject) => {
         const matchesSubject = !subject || ts.subject.toLowerCase() === subject.toLowerCase();
         const matchesGrade = !grade || ts.grades.includes(grade);
         const matchesMedium = !medium || ts.mediums.includes(medium);
@@ -23,6 +24,10 @@ export async function GET(request: Request) {
         
         return matchesSubject && matchesGrade && matchesMedium && matchesSyllabus;
       });
+
+      const matchesClassType = !classType || tutor.classTypes?.includes(classType as "Individual" | "Group");
+
+      return matchesSubjectCriteria && matchesClassType;
     });
   }
 

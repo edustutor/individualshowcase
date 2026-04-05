@@ -61,7 +61,7 @@ export default function TutorCard({ tutor }: { readonly tutor: Tutor }) {
             <span className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-0.5">Pricing</span>
             <div className="flex items-baseline gap-1">
               <span className="text-xl font-black text-slate-900 tracking-tight">
-                {tutor.pricing.currency} {tutor.pricing.feePerMonth}
+                {tutor.pricing?.individual?.currency || tutor.pricing?.group?.currency || "LKR"} {tutor.pricing?.individual?.feePerMonth || tutor.pricing?.group?.feePerMonth || "N/A"}
               </span>
               <span className="text-sm text-slate-400 font-medium">/mo</span>
             </div>

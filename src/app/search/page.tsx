@@ -25,11 +25,12 @@ function SearchContent() {
     fetchTutors();
   }, [searchParams]);
 
+  const classType = searchParams.get("classType");
   const grade = searchParams.get("grade");
   const subject = searchParams.get("subject");
   const medium = searchParams.get("medium");
   const syllabus = searchParams.get("syllabus");
-  const hasFilters = grade || subject || medium || syllabus;
+  const hasFilters = classType || grade || subject || medium || syllabus;
 
       let content;
       if (loading) {
@@ -85,6 +86,11 @@ function SearchContent() {
           {hasFilters ? (
             <div className="flex flex-wrap items-center gap-2 mt-3">
               <span className="text-gray-600 text-lg">Showing results for</span>
+              {classType && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
+                  {classType} Classes
+                </span>
+              )}
               {syllabus && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-primary font-semibold text-sm border border-primary/15">
                   {syllabus}

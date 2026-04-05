@@ -23,6 +23,7 @@ export default function TutorProfile() {
     syllabus: "",
     classesPerWeek: "2"
   });
+  const [selectedClassType, setSelectedClassType] = useState<"Individual" | "Group">("Individual");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [agreeRules, setAgreeRules] = useState(false);
@@ -33,6 +34,9 @@ export default function TutorProfile() {
     const found = (tutorsData as unknown as Tutor[]).find(t => t.id === params.id);
     if (found) {
       setTutor(found);
+      if (found.classTypes && found.classTypes.length > 0) {
+        setSelectedClassType(found.classTypes[0]);
+      }
     }
     window.scrollTo(0, 0);
   }, [params.id]);
@@ -47,7 +51,7 @@ export default function TutorProfile() {
       const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...bookingForm, tutorId: tutor.id })
+        body: JSON.stringify({ ...bookingForm, classType: selectedClassType, tutorId: tutor.id })
       });
       const data = await res.json();
       if (data.success) {
@@ -60,8 +64,17 @@ export default function TutorProfile() {
     }
   };
 
-  const classesPerMonth = tutor.pricing.weeklyClasses * 4;
-  const { admissionFee, pricePerClass, totalFirstMonth, feePerMonth, currency } = tutor.pricing;
+  const currentPricing = tutor.pricing && selectedClassType === "Group" 
+    ? tutor.pricing.group || tutor.pricing.individual // fallback
+    : tutor.pricing?.individual || (tutor.pricing as unknown as typeof tutor.pricing.individual); // fallback for older format
+    
+  // Added safe fallback for currentPricing in case it's missing somehow
+  const classesPerMonth = (currentPricing?.weeklyClasses || 1) * 4;
+  const { admissionFee, pricePerClass, totalFirstMonth, feePerMonth, currency } = currentPricing || {};
+
+  const currentVideos = tutor.demoVideos 
+    ? (selectedClassType === "Group" && tutor.demoVideos.group ? tutor.demoVideos.group : tutor.demoVideos.individual || [])
+    : [];
 
   // Derive unique options from tutor's teaching subjects
   const allSubjects = [...new Set(tutor.teachingSubjects.map((ts: TeachingSubject) => ts.subject))];
@@ -261,14 +274,14 @@ export default function TutorProfile() {
 
           {/* Video Demos - Professional Player UI */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-200/60 w-full mb-8 overflow-hidden">
-            {tutor.demoVideos && tutor.demoVideos.length > 0 ? (
+            {currentVideos && currentVideos.length > 0 ? (
               <div className="flex flex-col lg:flex-row gap-8">
                 {/* Main Player Area */}
                 <div className="flex-1 w-full">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-lg font-bold flex items-center gap-2 text-slate-900">
                       <PlayCircle className="w-5 h-5 text-primary" /> 
-                      {tutor.demoVideos.length > 1 ? `Watching Preview ${activeVideo + 1}` : "Watch Demo Class"}
+                      {currentVideos.length > 1 ? `Watching Preview ${activeVideo + 1}` : "Watch Demo Class"}
                     </h3>
                     <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
@@ -278,8 +291,8 @@ export default function TutorProfile() {
                   
                   <div className="rounded-[1.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-200 aspect-video relative bg-slate-950 w-full group transition-all duration-500 ring-4 ring-white/50">
                     <iframe 
-                      key={typeof tutor.demoVideos[activeVideo] === 'string' ? (tutor.demoVideos[activeVideo] as string) : (tutor.demoVideos[activeVideo] as DemoVideo)?.url || ''}
-                      src={(tutor.demoVideos[activeVideo] as DemoVideo)?.url || (tutor.demoVideos[activeVideo] as string)} 
+                      key={typeof currentVideos[activeVideo] === 'string' ? (currentVideos[activeVideo] as string) : (currentVideos[activeVideo] as DemoVideo)?.url || ''}
+                      src={(currentVideos[activeVideo] as DemoVideo)?.url || (currentVideos[activeVideo] as string)} 
                       className="w-full h-full absolute inset-0 z-10" 
                       allowFullScreen 
                       title={`Featured Demo Video`}
@@ -291,15 +304,15 @@ export default function TutorProfile() {
                 </div>
 
                 {/* Thumbnail Strip / Sidebar */}
-                {tutor.demoVideos.length > 1 && (
+                {currentVideos.length > 1 && (
                   <div className="w-full lg:w-72 flex flex-col pt-0 lg:pt-1">
                     <div className="flex items-center justify-between mb-4 px-1">
                       <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Next Previews</h4>
-                      <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">{activeVideo + 1} / {tutor.demoVideos.length}</span>
+                      <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">{activeVideo + 1} / {currentVideos.length}</span>
                     </div>
                     
                     <div className="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[380px] pb-4 lg:pb-0 scroll-smooth no-scrollbar">
-                      {tutor.demoVideos.map((video: string | DemoVideo, index: number) => {
+                      {currentVideos.map((video: string | DemoVideo, index: number) => {
                         const videoUrl = typeof video === 'string' ? video : (video as DemoVideo).url;
                         return (
                         <button 
@@ -402,6 +415,21 @@ export default function TutorProfile() {
                       <CreditCard className="w-4 h-4 text-primary" /> Fees Breakdown
                     </h3>
                   </div>
+
+                  {tutor.classTypes && tutor.classTypes.length > 1 && (
+                    <div className="flex bg-white/10 p-1 rounded-xl mb-5 relative z-10 h-11 items-center">
+                      {tutor.classTypes.map((ctype: string) => (
+                        <button 
+                          key={ctype}
+                          type="button"
+                          onClick={() => { setSelectedClassType(ctype as "Individual" | "Group"); setActiveVideo(0); }}
+                          className={`flex-1 flex items-center justify-center text-xs font-bold rounded-lg h-full transition-all duration-300 ${selectedClassType === ctype ? 'bg-primary text-white shadow-md' : 'text-slate-300 hover:text-white'}`}
+                        >
+                          {ctype} Class
+                        </button>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Pricing Breakdown from Hardcoded JSON values */}
                   <div className="flex flex-col gap-4 text-sm font-medium text-slate-300 relative z-10">
