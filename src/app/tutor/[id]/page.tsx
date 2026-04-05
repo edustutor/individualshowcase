@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, Info, ShieldCheck, X, AlertTriangle, Star } from "lucide-react";
+import { ArrowLeft, CheckCircle, GraduationCap, PlayCircle, Calendar, CreditCard, ChevronRight, ChevronDown, Info, ShieldCheck, X, AlertTriangle, Star } from "lucide-react";
 import tutorsData from "@/data/tutors.json";
 import type { Tutor, TeachingSubject, AvailableTime, AssignedGroup, DemoVideo } from "@/types/tutor";
 
@@ -507,9 +507,14 @@ export default function TutorProfile() {
                     {tutor.classTypes && tutor.classTypes.length === 1 ? (
                       <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{tutor.classTypes[0]} Class</div>
                     ) : (
-                      <select id="formClassType" required value={selectedClassType} onChange={(e) => { setSelectedClassType(e.target.value as "Individual" | "Group"); setActiveVideo(0); }} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                        {tutor.classTypes?.map((ctype: string) => <option key={ctype} value={ctype}>{ctype} Class</option>)}
-                      </select>
+                      <div className="relative">
+                        <select id="formClassType" required value={selectedClassType} onChange={(e) => { setSelectedClassType(e.target.value as "Individual" | "Group"); setActiveVideo(0); }} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          {tutor.classTypes?.map((ctype: string) => <option key={ctype} value={ctype}>{ctype} Class</option>)}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                          <ChevronDown className="h-4 w-4 text-slate-400" />
+                        </div>
+                      </div>
                     )}
                   </div>
 
@@ -519,10 +524,15 @@ export default function TutorProfile() {
                       {allSubjects.length === 1 ? (
                         <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allSubjects[0] as string}</div>
                       ) : (
-                        <select id="subject" required value={bookingForm.subject} onChange={(e) => setBookingForm({...bookingForm, subject: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                          <option value="">Select</option>
-                          {allSubjects.map((s: string) => <option key={s} value={s}>{s}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select id="subject" required value={bookingForm.subject} onChange={(e) => setBookingForm({...bookingForm, subject: e.target.value})} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                            <option value="">Select</option>
+                            {allSubjects.map((s: string) => <option key={s} value={s}>{s}</option>)}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                            <ChevronDown className="h-4 w-4 text-slate-400" />
+                          </div>
+                        </div>
                       )}
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -530,10 +540,15 @@ export default function TutorProfile() {
                       {allGrades.length === 1 ? (
                         <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">Grade {allGrades[0] as string}</div>
                       ) : (
-                        <select id="grade" required value={bookingForm.grade} onChange={(e) => setBookingForm({...bookingForm, grade: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                          <option value="">Select</option>
-                          {allGrades.map((g: string) => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select id="grade" required value={bookingForm.grade} onChange={(e) => setBookingForm({...bookingForm, grade: e.target.value})} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                            <option value="">Select</option>
+                            {allGrades.map((g: string) => <option key={`grade-${g}`} value={g}>Grade {g}</option>)}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                            <ChevronDown className="h-4 w-4 text-slate-400" />
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -544,10 +559,15 @@ export default function TutorProfile() {
                       {allMediums.length === 1 ? (
                         <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allMediums[0] as string}</div>
                       ) : (
-                        <select id="medium" required value={bookingForm.medium} onChange={(e) => setBookingForm({...bookingForm, medium: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                          <option value="">Select</option>
-                          {allMediums.map((m: string) => <option key={m} value={m}>{m}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select id="medium" required value={bookingForm.medium} onChange={(e) => setBookingForm({...bookingForm, medium: e.target.value})} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                            <option value="">Select</option>
+                            {allMediums.map((m: string) => <option key={m} value={m}>{m}</option>)}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                            <ChevronDown className="h-4 w-4 text-slate-400" />
+                          </div>
+                        </div>
                       )}
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -555,10 +575,15 @@ export default function TutorProfile() {
                       {allSyllabuses.length === 1 ? (
                         <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{allSyllabuses[0] as string}</div>
                       ) : (
-                        <select id="syllabus" required value={bookingForm.syllabus} onChange={(e) => setBookingForm({...bookingForm, syllabus: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                          <option value="">Select</option>
-                          {allSyllabuses.map((s: string) => <option key={s} value={s}>{s}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select id="syllabus" required value={bookingForm.syllabus} onChange={(e) => setBookingForm({...bookingForm, syllabus: e.target.value})} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                            <option value="">Select</option>
+                            {allSyllabuses.map((s: string) => <option key={s} value={s}>{s}</option>)}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                            <ChevronDown className="h-4 w-4 text-slate-400" />
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -566,11 +591,16 @@ export default function TutorProfile() {
                   {selectedClassType === "Individual" && (
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="classesPerWeek" className="text-xs font-medium text-slate-500 ml-1">Classes per Week</label>
-                      <select id="classesPerWeek" required value={bookingForm.classesPerWeek} onChange={(e) => setBookingForm({...bookingForm, classesPerWeek: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                        {[2, 3, 4, 5, 6, 7].map((n) => (
-                          <option key={n} value={n}>{n} Classes</option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <select id="classesPerWeek" required value={bookingForm.classesPerWeek} onChange={(e) => setBookingForm({...bookingForm, classesPerWeek: e.target.value})} className="w-full px-4 py-3 pr-10 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                          {[2, 3, 4, 5, 6, 7].map((n) => (
+                            <option key={n} value={n}>{n} Classes</option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                          <ChevronDown className="h-4 w-4 text-slate-400" />
+                        </div>
+                      </div>
                     </div>
                   )}
 
