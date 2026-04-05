@@ -162,20 +162,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -306,22 +292,13 @@
             "times": [
               "04:00 PM"
             ]
+          },{
+            "day": "Sunday",
+            "times": [
+              "08:00 PM"
+            ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -431,20 +408,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -548,20 +511,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -673,20 +622,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -762,20 +697,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -844,20 +765,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -934,30 +841,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Fri",
-        "times": [
-          "02:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Tue",
-        "times": [
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Mon",
-        "times": [
-          "02:00 PM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
@@ -971,20 +854,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -1041,30 +910,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Thu",
-        "times": [
-          "08:00 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Sat",
-        "times": [
-          "08:00 AM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Sun",
-        "times": [
-          "08:00 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Maths - Batch A",
@@ -1078,20 +923,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -1146,23 +977,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Thu",
-        "times": [
-          "10:30 AM",
-          "08:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Fri",
-        "times": [
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Science - Batch A",
@@ -1176,20 +990,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -1286,20 +1086,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -1407,20 +1193,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -1518,20 +1290,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -1639,20 +1397,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -1738,20 +1482,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -1820,20 +1550,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -1918,20 +1634,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -1988,16 +1690,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Tue",
-        "times": [
-          "06:30 PM",
-          "08:00 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Science - Batch A",
@@ -2011,20 +1703,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -2102,15 +1780,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Thu",
-        "times": [
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Science - Batch A",
@@ -2124,20 +1793,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -2192,15 +1847,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Sun",
-        "times": [
-          "02:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
@@ -2214,20 +1860,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -2368,20 +2000,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -2481,20 +2099,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -2590,20 +2194,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -2710,20 +2300,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -2795,20 +2371,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -2892,20 +2454,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -2989,20 +2537,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -3058,15 +2592,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Sat",
-        "times": [
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
@@ -3080,20 +2605,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -3148,32 +2659,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Sat",
-        "times": [
-          "06:30 PM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Tue",
-        "times": [
-          "06:30 PM",
-          "08:00 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Wed",
-        "times": [
-          "02:00 PM",
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
@@ -3187,20 +2672,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -3257,16 +2728,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Tue",
-        "times": [
-          "04:00 PM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Tamil - Batch A",
@@ -3280,20 +2741,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -3393,20 +2840,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -3495,20 +2928,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -3617,20 +3036,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -3727,20 +3132,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -3809,20 +3200,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -3898,20 +3275,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -3994,20 +3357,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -4060,24 +3409,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Sat",
-        "times": [
-          "02:00 PM",
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Sun",
-        "times": [
-          "08:00 AM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Combined Maths - Batch A",
@@ -4091,20 +3422,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4159,24 +3476,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Fri",
-        "times": [
-          "02:00 PM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Thu",
-        "times": [
-          "08:00 AM",
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Combined Maths - Batch A",
@@ -4190,20 +3489,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4258,16 +3543,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Tue",
-        "times": [
-          "04:00 PM",
-          "06:30 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "ICT - Batch A",
@@ -4281,20 +3556,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4383,20 +3644,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4500,20 +3747,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4627,20 +3860,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -4769,20 +3988,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -4881,20 +4086,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -5024,20 +4215,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -5172,20 +4349,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]
@@ -5284,23 +4447,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Sun",
-        "times": [
-          "08:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Tue",
-        "times": [
-          "02:00 PM",
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "General - Batch A",
@@ -5314,20 +4460,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -5389,22 +4521,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Thu",
-        "times": [
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Fri",
-        "times": [
-          "02:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "Mathematics - Batch A",
@@ -5418,20 +4534,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -5491,22 +4593,6 @@
         ]
       }
     ],
-    "availableTimes": [
-      {
-        "day": "Tue",
-        "times": [
-          "04:00 PM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      },
-      {
-        "day": "Mon",
-        "times": [
-          "10:30 AM"
-        ],
-        "timezone": "Sri Lanka Time (IST)"
-      }
-    ],
     "assignedGroups": [
       {
         "name": "General - Batch A",
@@ -5520,20 +4606,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -5630,20 +4702,6 @@
             ]
           }
         ]
-      }
-    ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
       }
     ],
     "classTypes": [
@@ -5782,20 +4840,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -5912,20 +4956,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -6030,20 +5060,6 @@
         ]
       }
     ],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual",
       "Group"
@@ -6133,20 +5149,6 @@
       }
     ],
     "assignedGroups": [],
-    "feedback": [
-      {
-        "name": "Kasun T.",
-        "grade": "Grade 13",
-        "text": "Dr. Aruni is incredible. She explains quantum physics like it's a bedtime story. Highly recommended for AL students.",
-        "stars": 5
-      },
-      {
-        "name": "Sarah M.",
-        "grade": "Undergraduate",
-        "text": "The whiteboard sessions are very helpful. I finally understand integration after two years of struggling.",
-        "stars": 5
-      }
-    ],
     "classTypes": [
       "Individual"
     ]

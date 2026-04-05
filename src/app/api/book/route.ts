@@ -3,7 +3,22 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { tutorId, studentName, studentEmail, studentPhone, grade, subject, medium, syllabus } = body;
+    const {
+      tutorId,
+      studentEmail,
+      studentPhone,
+      grade,
+      subject,
+      medium,
+      syllabus,
+      classType,
+      firstName,
+      lastName,
+    } = body;
+    const studentName = (
+      body.studentName ||
+      [firstName, lastName].filter(Boolean).join(' ')
+    ).trim();
 
     if (!tutorId || !studentName || !studentEmail) {
       return NextResponse.json(
@@ -15,8 +30,9 @@ export async function POST(request: Request) {
     // Pretend to store in CRM
     console.log('--- NEW BOOKING RECEIVED IN CRM ---');
     console.log(`Tutor ID: ${tutorId}`);
-    console.log(`Student: ${studentName} (${studentEmail}, ${studentPhone || 'No Phone'})`);
-    console.log(`Requirements: Grade ${grade}, Subject ${subject}, ${medium} Medium, ${syllabus} Syllabus`);
+    console.log(`Student Record: Captured`);
+    console.log(`Contact Provided: ${studentPhone ? 'Phone + Email' : 'Email Only'}`);
+    console.log(`Requirements: ${classType || 'Unknown'} class, Grade ${grade}, Subject ${subject}, ${medium} Medium, ${syllabus} Syllabus`);
     console.log('-----------------------------------');
 
     return NextResponse.json({

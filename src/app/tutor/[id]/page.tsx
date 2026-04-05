@@ -56,10 +56,11 @@ export default function TutorProfile() {
     setIsSubmitting(true);
     
     try {
+      const studentName = `${bookingForm.firstName} ${bookingForm.lastName}`.trim();
       const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...bookingForm, classType: selectedClassType, tutorId: tutor.id })
+        body: JSON.stringify({ ...bookingForm, studentName, classType: selectedClassType, tutorId: tutor.id })
       });
       const data = await res.json();
       if (data.success) {
