@@ -69,8 +69,20 @@ export default function TutorProfile() {
     : tutor.pricing?.individual || (tutor.pricing as unknown as typeof tutor.pricing.individual); // fallback for older format
     
   // Added safe fallback for currentPricing in case it's missing somehow
-  const classesPerMonth = (currentPricing?.weeklyClasses || 1) * 4;
-  const { admissionFee, pricePerClass, totalFirstMonth, feePerMonth, currency } = currentPricing || {};
+  const selectedWeeklyClasses = parseInt(bookingForm.classesPerWeek) || currentPricing?.weeklyClasses || 2;
+  const classesPerMonth = selectedWeeklyClasses * 4;
+  
+  const admissionFee = currentPricing?.admissionFee || 0;
+  const pricePerClass = currentPricing?.pricePerClass || 0;
+  const currency = currentPricing?.currency || "LKR";
+  
+  const feePerMonth = selectedClassType === "Individual" 
+    ? pricePerClass * classesPerMonth 
+    : currentPricing?.feePerMonth || 0;
+    
+  const totalFirstMonth = selectedClassType === "Individual"
+    ? admissionFee + feePerMonth
+    : currentPricing?.totalFirstMonth || 0;
 
   const currentVideos = tutor.demoVideos 
     ? (selectedClassType === "Group" && tutor.demoVideos.group ? tutor.demoVideos.group : tutor.demoVideos.individual || [])
@@ -438,14 +450,16 @@ export default function TutorProfile() {
                       <span className="text-white font-semibold">{currency} {admissionFee}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Monthly ({classesPerMonth} Classes)</span>
+                      <span>Monthly {selectedClassType === "Individual" ? `(${classesPerMonth} Classes)` : ""}</span>
                       <span className="text-white font-semibold">{currency} {feePerMonth}</span>
                     </div>
                     
-                    <div className="bg-white/5 rounded-lg p-3 border border-white/10 mt-2 flex justify-between items-center">
-                      <span className="text-slate-400 text-xs font-semibold flex items-center gap-1.5"><Info className="w-3.5 h-3.5"/> Per Class</span>
-                      <span className="text-white font-bold text-xs">{currency} {pricePerClass}</span>
-                    </div>
+                    {selectedClassType === "Individual" && (
+                      <div className="bg-white/5 rounded-lg p-3 border border-white/10 mt-2 flex justify-between items-center">
+                        <span className="text-slate-400 text-xs font-semibold flex items-center gap-1.5"><Info className="w-3.5 h-3.5"/> Per Class</span>
+                        <span className="text-white font-bold text-xs">{currency} {pricePerClass}</span>
+                      </div>
+                    )}
 
                     <div className="border-t border-white/20 mt-2 pt-4 flex justify-between items-end">
                       <div className="flex flex-col">
@@ -454,7 +468,12 @@ export default function TutorProfile() {
                       </div>
                       <span className="text-3xl font-black text-white">{currency} {totalFirstMonth}</span>
                     </div>
-                    <p className="text-[10px] text-slate-400 mt-3 leading-relaxed text-center">Class count can be adjusted according to your preference and schedule. We recommend at least 2 classes per week for best results.</p>
+                    
+                    {selectedClassType === "Individual" ? (
+                      <p className="text-[10px] text-slate-400 mt-3 leading-relaxed text-center">Class count can be adjusted according to your preference and schedule. We recommend at least 2 classes per week for best results.</p>
+                    ) : (
+                      <p className="text-[10px] text-slate-400 mt-3 leading-relaxed text-center">We recommend you to study for 1 term or 4 months, then check your real results.</p>
+                    )}
                   </div>
                 </div>
 
@@ -481,6 +500,17 @@ export default function TutorProfile() {
                     <label htmlFor="studentPhone" className="text-xs font-medium text-slate-500 ml-1">Phone Number <span className="text-slate-400">(with country code)</span></label>
                     <input id="studentPhone" required type="tel" onChange={(e) => setBookingForm({...bookingForm, studentPhone: e.target.value.replace(/\D/g, '')})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 placeholder-slate-400" placeholder="e.g. 94707072072" />
                     <span className="text-[10px] text-slate-400 ml-1">Digits only, starting with country code (e.g. 94 for Sri Lanka, 91 for India)</span>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5 mt-1">
+                    <label htmlFor="formClassType" className="text-xs font-medium text-slate-500 ml-1">Class Type</label>
+                    {tutor.classTypes && tutor.classTypes.length === 1 ? (
+                      <div className="px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 cursor-not-allowed">{tutor.classTypes[0]} Class</div>
+                    ) : (
+                      <select id="formClassType" required value={selectedClassType} onChange={(e) => { setSelectedClassType(e.target.value as "Individual" | "Group"); setActiveVideo(0); }} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                        {tutor.classTypes?.map((ctype: string) => <option key={ctype} value={ctype}>{ctype} Class</option>)}
+                      </select>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mt-1">
@@ -533,14 +563,16 @@ export default function TutorProfile() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="classesPerWeek" className="text-xs font-medium text-slate-500 ml-1">Classes per Week</label>
-                    <select id="classesPerWeek" required value={bookingForm.classesPerWeek} onChange={(e) => setBookingForm({...bookingForm, classesPerWeek: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
-                      {[2, 3, 4, 5, 6, 7].map((n) => (
-                        <option key={n} value={n}>{n} Classes</option>
-                      ))}
-                    </select>
-                  </div>
+                  {selectedClassType === "Individual" && (
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="classesPerWeek" className="text-xs font-medium text-slate-500 ml-1">Classes per Week</label>
+                      <select id="classesPerWeek" required value={bookingForm.classesPerWeek} onChange={(e) => setBookingForm({...bookingForm, classesPerWeek: e.target.value})} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm font-medium text-slate-900 appearance-none cursor-pointer">
+                        {[2, 3, 4, 5, 6, 7].map((n) => (
+                          <option key={n} value={n}>{n} Classes</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div className="flex items-start gap-2.5 mt-2 bg-amber-50/50 border border-amber-100 rounded-xl p-3.5">
                     <input id="agreeRules" type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 w-4 h-4 accent-primary cursor-pointer flex-shrink-0" />
