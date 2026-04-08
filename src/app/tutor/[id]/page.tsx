@@ -406,14 +406,34 @@ export default function TutorProfile() {
                   const grp = !isInd ? (c as GroupClass) : null;
                   return (
                     <div key={c.classCode} className="p-4" style={{ borderRadius: "14px", border: "1px solid #f1f5f9", background: "#fafbfc" }}>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center flex-wrap gap-1.5 mb-2">
                         <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ borderRadius: "5px", background: isInd ? "#dbeafe" : "#dcfce7", color: isInd ? "#1e40af" : "#166534" }}>
                           {isInd ? "1-on-1" : "Group"}
+                        </span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ borderRadius: "5px", background: "#fef3c7", color: "#92400e" }}>
+                          {c.medium} Medium
                         </span>
                         <span className="text-[11px] text-[#94a3b8] font-medium">{c.subject}</span>
                       </div>
                       <p className="text-[14px] font-bold text-[#1e293b] mb-1">{c.title}</p>
-                      <p className="text-[12px] text-[#94a3b8] mb-2">{c.grades.map(formatGradeLabel).join(", ")} · {c.medium}</p>
+                      <p className="text-[12px] text-[#94a3b8] mb-2">{c.grades.map(formatGradeLabel).join(", ")}</p>
+
+                      {/* Group class timetable */}
+                      {grp && (
+                        <div className="mb-2.5 space-y-1">
+                          {grp.fixedTimetable.map((sch, idx) => (
+                            <div key={`${sch.day}-${idx}`} className="flex items-center gap-1.5 text-[11px] text-[#64748b]">
+                              <Calendar className="h-3 w-3 text-blue-400 flex-shrink-0" />
+                              <span className="font-semibold">{formatDayLabel(sch.day)}</span>
+                              <span className="text-[#94a3b8]">{formatTimeRange(sch.startTime, sch.endTime)}</span>
+                            </div>
+                          ))}
+                          <div className="flex items-center gap-1.5 text-[11px] text-emerald-600 font-semibold mt-1">
+                            <Users className="h-3 w-3" /> {grp.seatsLeft} seats left
+                          </div>
+                        </div>
+                      )}
+
                       <p className="text-[15px] font-extrabold text-[#0f172a]">
                         {price ? `LKR ${price.amount.toLocaleString()}` : `LKR ${grp?.monthlyFee.amount.toLocaleString()}`}
                         <span className="text-[11px] font-medium text-[#94a3b8] ml-1">{isInd ? "/session" : "/month"}</span>

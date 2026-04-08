@@ -49,14 +49,16 @@
   100% { transform: translate(0px, 0px) scale(1); }
 }
 
-/* ── Reset: Firefox default margins — inside @layer base so utilities win ── */
-@layer base {
-  p, h1, h2, h3, h4, h5, h6,
-  ol, ul, dl, dd,
-  blockquote, figure, fieldset, pre {
-    margin: 0;
-    padding: 0;
-  }
+/* ── Firefox fix: UA stylesheet has un-layered default margins on p, h1-h6,
+   ol, ul, etc. that beat Tailwind v4's @layer base preflight reset.
+   These element selectors (specificity 0,0,1) are placed outside any @layer
+   so they beat Firefox UA defaults, but Tailwind utility classes (specificity
+   0,1,0) still win because class selectors beat element selectors. ── */
+p, h1, h2, h3, h4, h5, h6,
+ol, ul, dl, dd,
+blockquote, figure, fieldset, pre, hr {
+  margin: 0;
+  padding: 0;
 }
 
 /* ── Base Styles ── */
