@@ -4,15 +4,17 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Star, Sparkles, ChevronRight } from "lucide-react";
-import type { Tutor, TeachingSubject } from "@/types/tutor";
+import { getTutorCardPricing, getTutorFullName, getTutorSubjects } from "@/lib/tutors";
+import type { SearchClassType, Tutor } from "@/types/tutor";
 
-export default function TutorCard({ tutor, selectedClassType }: { readonly tutor: Tutor; readonly selectedClassType?: "Individual" | "Group" | null }) {
+export default function TutorCard({ tutor, selectedClassType }: { readonly tutor: Tutor; readonly selectedClassType?: SearchClassType | null }) {
   const profileLink = selectedClassType 
-    ? `/tutor/${tutor.id}?type=${selectedClassType}` 
-    : `/tutor/${tutor.id}`;
-  const currentPricing = selectedClassType === "Group"
-    ? tutor.pricing?.group || tutor.pricing?.individual
-    : tutor.pricing?.individual || tutor.pricing?.group;
+    ? `/tutor/${tutor.tutorId}?type=${selectedClassType}` 
+    : `/tutor/${tutor.tutorId}`;
+  const currentPricing = getTutorCardPricing(tutor, selectedClassType);
+  const tutorName = getTutorFullName(tutor);
+  const tutorSubjects = getTutorSubjects(tutor);
+  const description = tutor.profile.headline || tutor.profile.qualifications?.[0] || "EDUS Certified Tutor";
 
   return (
     <Link href={profileLink} className="block h-full">
@@ -28,18 +30,18 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
 
         <div className="w-28 h-28 rounded-full overflow-hidden border-[6px] border-blue-50/50 mb-5 relative shadow-inner group-hover:border-blue-100 transition-colors duration-500">
           <Image
-            src={tutor.profileImageUrl || `https://i.pravatar.cc/150?u=${tutor.firstName}`}
-            alt={`${tutor.firstName} ${tutor.lastName}`}
+            src={tutor.profile.avatarUrl || `https://i.pravatar.cc/150?u=${tutorName}`}
+            alt={tutorName}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-700"
           />
         </div>
         
         <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-primary transition-colors text-center">
-          {tutor.firstName} {tutor.lastName}
+          {tutorName}
         </h3>
         <p className="text-sm text-slate-500 mt-2 flex items-center justify-center gap-1.5 text-center px-4 font-medium leading-relaxed line-clamp-2">
-          <BookOpen className="w-4 h-4 flex-shrink-0 text-primary/70" /> {tutor.qualifications[0]}
+          <BookOpen className="w-4 h-4 flex-shrink-0 text-primary/70" /> {description}
         </p>
       </div>
 
@@ -50,14 +52,14 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
             <span className="text-xs uppercase tracking-widest text-slate-500 font-bold">Expertise</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {tutor.teachingSubjects.slice(0, 3).map((ts: TeachingSubject) => (
-              <span key={ts.subject} className="bg-white text-slate-700 border border-gray-200 shadow-sm text-xs px-2.5 py-1 rounded-lg font-medium">
-                {ts.subject}
+            {tutorSubjects.slice(0, 3).map((subject) => (
+              <span key={subject} className="bg-white text-slate-700 border border-gray-200 shadow-sm text-xs px-2.5 py-1 rounded-lg font-medium">
+                {subject}
               </span>
             ))}
-            {tutor.teachingSubjects.length > 3 && (
+            {tutorSubjects.length > 3 && (
               <span className="bg-blue-50 text-primary border border-blue-100/50 text-xs px-2.5 py-1 rounded-lg font-bold">
-                +{tutor.teachingSubjects.length - 3}
+                +{tutorSubjects.length - 3}
               </span>
             )}
           </div>
@@ -68,9 +70,9 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
             <span className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-0.5">Pricing</span>
             <div className="flex items-baseline gap-1">
               <span className="text-xl font-black text-slate-900 tracking-tight">
-                {currentPricing?.currency || "LKR"} {currentPricing?.feePerMonth || "N/A"}
+                {currentPricing?.currency || "LKR"} {currentPricing?.amount ?? "N/A"}
               </span>
-              <span className="text-sm text-slate-400 font-medium">/mo</span>
+              <span className="text-sm text-slate-400 font-medium">/{currentPricing?.billingLabel === "session" ? "session" : "mo"}</span>
             </div>
           </div>
           <div className="bg-slate-900 text-white w-12 h-12 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors shadow-md group-hover:shadow-[0_4px_14px_0_rgba(4,60,252,0.39)]">

@@ -4,13 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, ChevronDown } from "lucide-react";
-import tutorsData from "@/data/tutors.json";
-import type { Tutor, TeachingSubject } from "@/types/tutor";
+import { formatGradeLabel, getAllFlattenedClasses, tutors } from "@/lib/tutors";
 
 export default function FilterForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    classType: "",
     grade: "",
     subject: "",
     medium: "",
@@ -24,7 +22,6 @@ export default function FilterForm() {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (formData.classType) params.append("classType", formData.classType);
     if (formData.grade) params.append("grade", formData.grade);
     if (formData.subject) params.append("subject", formData.subject);
     if (formData.medium) params.append("medium", formData.medium);
@@ -33,11 +30,13 @@ export default function FilterForm() {
     router.push(`/search?${params.toString()}`);
   };
 
-  const tutors = tutorsData as unknown as Tutor[];
-  const allSubjects = Array.from(new Set(tutors.flatMap(t => t.teachingSubjects.map((ts: TeachingSubject) => ts.subject)))).sort((a, b) => a.localeCompare(b));
-  const allGrades = Array.from(new Set(tutors.flatMap(t => t.teachingSubjects.flatMap((ts: TeachingSubject) => ts.grades || [])))).sort((a, b) => a.localeCompare(b));
-  const allMediums = Array.from(new Set(tutors.flatMap(t => t.teachingSubjects.flatMap((ts: TeachingSubject) => ts.mediums || [])))).sort((a, b) => a.localeCompare(b));
-  const allSyllabuses = Array.from(new Set(tutors.flatMap(t => t.teachingSubjects.flatMap((ts: TeachingSubject) => ts.syllabuses || [])))).sort((a, b) => a.localeCompare(b));
+  const allClasses = tutors.flatMap((tutor) => getAllFlattenedClasses(tutor));
+  const allSubjects = Array.from(new Set(allClasses.map((classItem) => classItem.subject))).sort((a, b) => a.localeCompare(b));
+  const allGrades = Array.from(new Set(allClasses.flatMap((classItem) => classItem.grades))).sort((a, b) => (
+    formatGradeLabel(a).localeCompare(formatGradeLabel(b), undefined, { numeric: true })
+  ));
+  const allMediums = Array.from(new Set(allClasses.map((classItem) => classItem.medium))).sort((a, b) => a.localeCompare(b));
+  const allSyllabuses = Array.from(new Set(allClasses.map((classItem) => classItem.syllabus))).sort((a, b) => a.localeCompare(b));
 
   return (
     <motion.div 
@@ -47,28 +46,7 @@ export default function FilterForm() {
       className="bg-white/80 backdrop-blur-xl border border-gray-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-3xl p-6 md:p-10 w-full max-w-[70rem] mx-auto"
     >
       <form onSubmit={handleSearch} className="flex flex-col gap-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          
-          <div className="flex flex-col gap-2">
-            <label htmlFor="classType" className="text-sm font-semibold text-slate-700 ml-1">Class Type</label>
-            <div className="relative">
-              <select
-                id="classType"
-                name="classType"
-                value={formData.classType}
-                onChange={handleChange}
-                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
-              >
-                <option value="">Any Type</option>
-                <option value="Individual">Individual</option>
-                <option value="Group">Group</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <ChevronDown className="h-5 w-5 text-slate-400" />
-              </div>
-            </div>
-          </div>
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="grade" className="text-sm font-semibold text-slate-700 ml-1">Grade</label>
             <div className="relative">
@@ -81,7 +59,7 @@ export default function FilterForm() {
               >
                 <option value="">Any Grade</option>
                 {allGrades.map(g => (
-                  <option key={g} value={g}>{g.includes("Grade") ? g : `Grade ${g}`}</option>
+                  <option key={g} value={g}>{formatGradeLabel(g)}</option>
                 ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
@@ -168,4 +146,3 @@ export default function FilterForm() {
     </motion.div>
   );
 }
-

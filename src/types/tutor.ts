@@ -1,81 +1,110 @@
-export interface TeachingSubject {
+export type SearchClassType = "Individual" | "Group";
+export type TutorClassType = "INDIVIDUAL" | "GROUP";
+
+export interface TutorDemoVideo {
+  videoId: string;
+  title: string;
   subject: string;
-  syllabuses: string[];
+  videoUrl: string;
+  durationSeconds?: number;
+  isPrimary?: boolean;
+}
+
+export interface TutorProfile {
+  fullName: string;
+  headline: string;
+  avatarUrl: string;
+  demoVideos: TutorDemoVideo[];
+  about: string;
+  experienceYears?: number;
+  rating?: number;
+  reviewCount?: number;
+  languages?: string[];
   mediums: string[];
-  grades: string[];
+  subjects: string[];
+  syllabusSupported: string[];
+  teachingStyle?: string[];
+  qualifications?: string[];
 }
 
-export interface AssignedGroupSchedule {
-  day: string;
-  times: string[];
-}
-
-export interface AssignedGroup {
-  name?: string;
-  schedules?: AssignedGroupSchedule[];
-  seatsLeft?: number;
-  totalSeats?: number;
-  [key: string]: unknown;
-}
-
-export interface AvailableTime {
-  day: string;
-  times: string[];
-}
-
-export interface DemoVideo {
-  title?: string;
-  url?: string;
-  [key: string]: unknown;
-}
-
-export interface Feedback {
-  author?: string;
-  text?: string;
-  date?: string;
-  stars?: number;
-  name?: string;
-  grade?: string;
-  [key: string]: unknown;
-}
-
-export interface PricingDetails {
-  weeklyClasses?: number;
-  feePerMonth: number;
+export interface IndividualClassPricing {
+  durationMinutes: number;
+  amount: number;
   currency: string;
-  admissionFee: number;
-  pricePerClass?: number;
-  totalFirstMonth: number;
 }
 
-export interface TutorPricing {
-  individual?: PricingDetails;
-  group?: PricingDetails;
+export interface IndividualClassSlot {
+  slotId: string;
+  day: string;
+  startTime: string;
+  endTime: string;
+  durationOptions: number[];
+  isAvailable: boolean;
 }
 
-export interface DemoVideos {
-  individual?: (DemoVideo | string)[];
-  group?: (DemoVideo | string)[];
+export interface IndividualClass {
+  classCode: string;
+  classType: "INDIVIDUAL";
+  title: string;
+  subject: string;
+  grades: string[];
+  medium: string;
+  syllabus: string;
+  pricing: IndividualClassPricing[];
+  availableWeeklySlots: IndividualClassSlot[];
+}
+
+export interface GroupClassFee {
+  amount: number;
+  currency: string;
+}
+
+export interface GroupClassSchedule {
+  day: string;
+  startTime: string;
+  endTime: string;
+}
+
+export interface GroupClass {
+  classCode: string;
+  classType: "GROUP";
+  title: string;
+  subject: string;
+  grades: string[];
+  medium: string;
+  syllabus: string;
+  monthlyFee: GroupClassFee;
+  fixedTimetable: GroupClassSchedule[];
+  seatCapacity: number;
+  seatsLeft: number;
+  status: string;
 }
 
 export interface Tutor {
-  id: string;
-  firstName: string;
-  lastName: string;
+  tutorId: string;
+  slug?: string;
+  featured?: boolean;
   isVerified?: boolean;
-  rating?: number;
-  reviewCount?: number;
-  currency?: string;
-  sessionRate?: number;
-  teachingStyle?: string | string[];
-  assignedGroups?: (string | AssignedGroup)[];
-  profileImageUrl: string;
-  about: string;
-  qualifications: string[];
-  teachingSubjects: TeachingSubject[];
-  availableTimes: AvailableTime[];
-  classTypes: ("Individual" | "Group")[];
-  demoVideos?: DemoVideos;
-  feedback?: Feedback[];
-  pricing: TutorPricing;
+  profile: TutorProfile;
+  individualClasses: IndividualClass[];
+  groupClasses: GroupClass[];
+}
+
+export interface TutorDirectory {
+  tutors: Tutor[];
+}
+
+export interface FlattenedTutorClass {
+  tutorId: string;
+  tutorName: string;
+  classCode: string;
+  classType: SearchClassType;
+  title: string;
+  subject: string;
+  grades: string[];
+  medium: string;
+  syllabus: string;
+  amount: number;
+  currency: string;
+  billingLabel: "session" | "month";
 }
