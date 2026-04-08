@@ -55,7 +55,15 @@ export default function TutorProfile() {
     if (!tutor) return [];
     const individual: Array<IndividualClass | GroupClass> = tutor.individualClasses;
     const group: Array<IndividualClass | GroupClass> = tutor.groupClasses;
-    return [...individual, ...group];
+    const combined = [...individual, ...group];
+    // De-duplicate: keep first occurrence when title+subject+medium+grades match
+    const seen = new Set<string>();
+    return combined.filter(c => {
+      const key = `${c.title}|${c.subject}|${c.medium}|${c.grades.join(",")}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   }, [tutor]);
 
   const uniqueSubjects = useMemo(() => Array.from(new Set(allClasses.map(c => c.subject))).sort(), [allClasses]);
@@ -75,6 +83,8 @@ export default function TutorProfile() {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [avatarError, setAvatarError] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   const bookableClasses = allClasses;
 
@@ -220,9 +230,9 @@ export default function TutorProfile() {
     .map(c => (c as GroupClass).monthlyFee.amount)
     .reduce((min, a) => a < min ? a : min, Infinity);
 
-  const avatarSrc = avatarError
-    ? `https://i.pravatar.cc/300?u=${tutor.profile.fullName}`
-    : (tutor.profile.avatarUrl || `https://i.pravatar.cc/300?u=${tutor.profile.fullName}`);
+  const fallbackAvatar = `https://i.pravatar.cc/300?u=${encodeURIComponent(tutor.profile.fullName)}`;
+  // Use original URL on server + initial render, switch to fallback only after client-side error
+  const avatarSrc = (mounted && avatarError) ? fallbackAvatar : (tutor.profile.avatarUrl || fallbackAvatar);
 
   const initials = tutor.profile.fullName.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
 
