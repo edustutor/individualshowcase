@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'pub-25daa8127a824bc58c903315ba000dc1.r2.dev',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.edus.lk',
+      },
     ],
   },
 };

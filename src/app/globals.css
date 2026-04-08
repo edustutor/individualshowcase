@@ -85,3 +85,9 @@ body {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
+
+@layer utilities {
+  .text-blue-700 {
+    color: var(--color-blue-700, #1d4ed8);
+  }
+}

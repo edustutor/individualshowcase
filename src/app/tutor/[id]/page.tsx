@@ -1,183 +1,232 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
+  ArrowRight,
   BookOpen,
   Calendar,
   CheckCircle,
+  CheckSquare,
   ChevronDown,
-  ChevronRight,
   Clock3,
-  CreditCard,
   GraduationCap,
-  Languages,
   PlayCircle,
   ShieldCheck,
+  Square,
   Star,
+  User,
   Users,
+  Zap,
+  Mail,
+  Phone,
+  Send,
 } from "lucide-react";
 import {
   findTutorById,
   formatDayLabel,
   formatGradeLabel,
   formatTimeRange,
-  getBookableClassesByType,
   getPrimaryDemoVideo,
-  getTutorClassTypes,
 } from "@/lib/tutors";
 import type {
   GroupClass,
   IndividualClass,
-  SearchClassType,
 } from "@/types/tutor";
 
-type BookingFormState = {
-  studentName: string;
-  studentEmail: string;
-  studentPhone: string;
-};
+type BookingFormState = { studentName: string; studentEmail: string; studentPhone: string };
 
-function isSearchClassType(value: string | null): value is SearchClassType {
-  return value === "Individual" || value === "Group";
-}
-
-function getInitialClassType(
-  requestedType: SearchClassType | null,
-  availableClassTypes: SearchClassType[]
-): SearchClassType {
-  if (requestedType && availableClassTypes.includes(requestedType)) {
-    return requestedType;
-  }
-  return availableClassTypes[0] || "Individual";
-}
-
-function getClassBadgeLabel(classType: SearchClassType) {
-  return classType === "Individual" ? "1-to-1" : "Batch";
-}
-
-/* ─── Wise-style ring shadow constant ─── */
-const RING = "rgba(14,15,12,0.12) 0px 0px 0px 1px";
+/* ─── Booking Steps ─── */
+const STEPS = ["Choose Classes", "Pick Schedule", "Your Details", "Confirm"] as const;
+type Step = 0 | 1 | 2 | 3;
 
 export default function TutorProfile() {
   const params = useParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const rawId = params.id;
   const tutorId = Array.isArray(rawId) ? rawId[0] : rawId;
-  const requestedType = searchParams.get("type");
-  const requestedClassType = isSearchClassType(requestedType) ? requestedType : null;
+  const tutor = useMemo(() => (tutorId ? findTutorById(tutorId) || null : null), [tutorId]);
 
-  const tutor = useMemo(() => (
-    tutorId ? findTutorById(tutorId) || null : null
-  ), [tutorId]);
+  // Combine ALL classes from tutor into one flat list
+  const allClasses = useMemo(() => {
+    if (!tutor) return [];
+    const individual: Array<IndividualClass | GroupClass> = tutor.individualClasses;
+    const group: Array<IndividualClass | GroupClass> = tutor.groupClasses;
+    return [...individual, ...group];
+  }, [tutor]);
 
-  const availableClassTypes = useMemo(() => (
-    tutor ? getTutorClassTypes(tutor) : []
-  ), [tutor]);
+  // Extract unique values across all classes for filtering
+  const uniqueSubjects = useMemo(() => Array.from(new Set(allClasses.map(c => c.subject))).sort(), [allClasses]);
+  const uniqueGrades = useMemo(() => Array.from(new Set(allClasses.flatMap(c => c.grades))).sort((a, b) => formatGradeLabel(a).localeCompare(formatGradeLabel(b), undefined, { numeric: true })), [allClasses]);
+  const uniqueMediums = useMemo(() => Array.from(new Set(allClasses.map(c => c.medium))).sort(), [allClasses]);
+  const uniqueSyllabuses = useMemo(() => Array.from(new Set(allClasses.map(c => c.syllabus))).sort(), [allClasses]);
 
-  const [selectedClassType, setSelectedClassType] = useState<SearchClassType>("Individual");
-  const [selectedClassCode, setSelectedClassCode] = useState("");
-  const [selectedDurationMinutes, setSelectedDurationMinutes] = useState("");
-  const [selectedSlotId, setSelectedSlotId] = useState("");
-  const [bookingForm, setBookingForm] = useState<BookingFormState>({
-    studentName: "",
-    studentEmail: "",
-    studentPhone: "",
-  });
+  const [currentStep, setCurrentStep] = useState<Step>(0);
+  // Multi-select: store Set of class codes
+  const [selectedClassCodes, setSelectedClassCodes] = useState<Set<string>>(new Set());
+  // Per-class selections
+  const [gradeByClass, setGradeByClass] = useState<Record<string, string>>({});
+  const [durationByClass, setDurationByClass] = useState<Record<string, string>>({});
+  const [slotsByClass, setSlotsByClass] = useState<Record<string, Set<string>>>({});
+  const [bookingForm, setBookingForm] = useState<BookingFormState>({ studentName: "", studentEmail: "", studentPhone: "" });
   const [agreeRules, setAgreeRules] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
 
+  // All bookable classes (individual + group combined)
+  const bookableClasses = allClasses;
+
+  // Auto-set defaults for grade (single grade) and duration when a class is selected
   useEffect(() => {
-    if (!tutor) return;
-    setSelectedClassType(getInitialClassType(requestedClassType, availableClassTypes));
-  }, [tutor, requestedClassType, availableClassTypes]);
+    const newGrades = { ...gradeByClass };
+    const newDurations = { ...durationByClass };
+    let changed = false;
 
-  const bookableClasses = useMemo(() => (
-    tutor ? getBookableClassesByType(tutor, selectedClassType) : []
-  ), [tutor, selectedClassType]);
+    for (const code of selectedClassCodes) {
+      const cls = allClasses.find(c => c.classCode === code);
+      if (!cls) continue;
 
-  useEffect(() => {
-    if (bookableClasses.length === 0) {
-      setSelectedClassCode("");
-      return;
-    }
-    if (!bookableClasses.some((c) => c.classCode === selectedClassCode)) {
-      setSelectedClassCode(bookableClasses[0].classCode);
-    }
-  }, [bookableClasses, selectedClassCode]);
-
-  const selectedClass = useMemo(() => (
-    bookableClasses.find((c) => c.classCode === selectedClassCode) || bookableClasses[0] || null
-  ), [bookableClasses, selectedClassCode]);
-
-  const selectedIndividualClass = selectedClass?.classType === "INDIVIDUAL" ? selectedClass : null;
-  const selectedGroupClass = selectedClass?.classType === "GROUP" ? selectedClass : null;
-
-  useEffect(() => {
-    if (!selectedClass) {
-      setSelectedDurationMinutes("");
-      setSelectedSlotId("");
-      return;
-    }
-    if (selectedClass.classType === "INDIVIDUAL") {
-      const durations = selectedClass.pricing.map((p) => p.durationMinutes);
-      if (!durations.includes(Number(selectedDurationMinutes))) {
-        setSelectedDurationMinutes(String(durations[0] || ""));
+      // Auto-set grade if class has only 1 grade
+      if (!newGrades[code] && cls.grades.length === 1) {
+        newGrades[code] = cls.grades[0];
+        changed = true;
       }
-      const available = selectedClass.availableWeeklySlots.filter((s) => s.isAvailable);
-      if (!available.some((s) => s.slotId === selectedSlotId)) {
-        setSelectedSlotId(available[0]?.slotId || "");
+
+      if (cls.classType !== "INDIVIDUAL") continue;
+      const indCls = cls as IndividualClass;
+
+      if (!newDurations[code] && indCls.pricing.length > 0) {
+        newDurations[code] = String(indCls.pricing[0].durationMinutes);
+        changed = true;
       }
-      return;
     }
-    if (selectedDurationMinutes) setSelectedDurationMinutes("");
-    if (selectedSlotId) setSelectedSlotId("");
-  }, [selectedClass, selectedDurationMinutes, selectedSlotId]);
 
-  useEffect(() => {
-    setActiveVideoIndex(0);
-  }, [tutorId]);
+    if (changed) {
+      setGradeByClass(newGrades);
+      setDurationByClass(newDurations);
+    }
+  }, [selectedClassCodes, allClasses, gradeByClass, durationByClass]);
 
-  const selectedPrice = selectedIndividualClass
-    ? selectedIndividualClass.pricing.find((p) => p.durationMinutes === Number(selectedDurationMinutes)) || selectedIndividualClass.pricing[0] || null
-    : null;
-  const selectedSlot = selectedIndividualClass
-    ? selectedIndividualClass.availableWeeklySlots.find((s) => s.slotId === selectedSlotId) || selectedIndividualClass.availableWeeklySlots[0] || null
-    : null;
+  // Toggle a slot for an individual class (multi-select)
+  function toggleSlot(classCode: string, slotId: string) {
+    setErrors(prev => { const n = { ...prev }; delete n[`slot-${classCode}`]; return n; });
+    setSlotsByClass(prev => {
+      const current = prev[classCode] || new Set<string>();
+      const next = new Set(current);
+      if (next.has(slotId)) next.delete(slotId);
+      else next.add(slotId);
+      return { ...prev, [classCode]: next };
+    });
+  }
+
+  useEffect(() => { setActiveVideoIndex(0); }, [tutorId]);
+
   const videos = tutor?.profile.demoVideos || [];
   const currentVideo = tutor ? videos[activeVideoIndex] || getPrimaryDemoVideo(tutor.profile) : null;
 
+  const selectedClasses = useMemo(() => (
+    bookableClasses.filter(c => selectedClassCodes.has(c.classCode))
+  ), [bookableClasses, selectedClassCodes]);
+
+  // Toggle class selection
+  function toggleClass(code: string) {
+    setErrors(prev => { const n = { ...prev }; delete n.step0; return n; });
+    setSelectedClassCodes(prev => {
+      const next = new Set(prev);
+      if (next.has(code)) next.delete(code);
+      else next.add(code);
+      return next;
+    });
+  }
+
+  // Pricing helpers
+  function getClassPrice(cls: IndividualClass | GroupClass) {
+    if (cls.classType === "INDIVIDUAL") {
+      const indCls = cls as IndividualClass;
+      const dur = durationByClass[cls.classCode];
+      const p = indCls.pricing.find(pr => String(pr.durationMinutes) === dur) || indCls.pricing[0];
+      const slotCount = slotsByClass[cls.classCode]?.size || 1;
+      return p ? { amount: p.amount, currency: p.currency, label: "per session", slotCount, total: p.amount * slotCount } : null;
+    }
+    const grp = cls as GroupClass;
+    return { amount: grp.monthlyFee.amount, currency: grp.monthlyFee.currency, label: "per month", slotCount: 1, total: grp.monthlyFee.amount };
+  }
+
+  // Admission fee logic
+  const hasIndividual = selectedClasses.some(c => c.classType === "INDIVIDUAL");
+  const hasGroup = selectedClasses.some(c => c.classType === "GROUP");
+  const admissionFee = hasIndividual && hasGroup ? 3500 : hasIndividual ? 2500 : hasGroup ? 1000 : 0;
+
+  // Validation errors — keyed by field id (e.g. "step0", "grade-IND001", "slot-IND001", "studentName")
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  function validateStep0(): boolean {
+    if (selectedClassCodes.size === 0) {
+      setErrors({ step0: "Please select at least one class" });
+      scrollToError("step0-error");
+      return false;
+    }
+    setErrors({});
+    return true;
+  }
+
+  function validateStep1(): boolean {
+    const newErrors: Record<string, string> = {};
+    for (const cls of selectedClasses) {
+      if (cls.grades.length > 1 && !gradeByClass[cls.classCode]) {
+        newErrors[`grade-${cls.classCode}`] = "Select your grade";
+      }
+      if (cls.classType === "INDIVIDUAL") {
+        if (!durationByClass[cls.classCode]) {
+          newErrors[`duration-${cls.classCode}`] = "Select a duration";
+        }
+        if (!(slotsByClass[cls.classCode]?.size > 0)) {
+          newErrors[`slot-${cls.classCode}`] = "Select at least one time slot";
+        }
+      }
+    }
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      const firstKey = Object.keys(newErrors)[0];
+      scrollToError(`${firstKey}-error`);
+      return false;
+    }
+    return true;
+  }
+
+  function validateStep2(): boolean {
+    const newErrors: Record<string, string> = {};
+    if (!bookingForm.studentName.trim()) newErrors.studentName = "Enter your name";
+    if (!bookingForm.studentEmail.trim()) newErrors.studentEmail = "Enter your email";
+    if (!bookingForm.studentPhone.trim()) newErrors.studentPhone = "Enter your phone number";
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      const firstKey = Object.keys(newErrors)[0];
+      scrollToError(`${firstKey}-error`);
+      return false;
+    }
+    return true;
+  }
+
+  function scrollToError(id: string) {
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  }
+
   if (!tutor) {
     return (
-      <main className="min-h-screen bg-white px-4 py-16 sm:px-6">
-        <div
-          className="mx-auto flex max-w-3xl flex-col items-center bg-white p-10 text-center"
-          style={{ borderRadius: "30px", boxShadow: RING }}
-        >
-          <h1 style={{ fontSize: "2rem", fontWeight: 900, color: "#0e0f0c", fontFeatureSettings: '"calt"' }}>
-            Tutor not found
-          </h1>
-          <p className="mt-3 max-w-lg text-sm text-[#6b7280]" style={{ fontWeight: 500, fontFeatureSettings: '"calt"' }}>
-            This tutor profile could not be loaded.
-          </p>
-          <button
-            onClick={() => router.push("/")}
-            className="mt-8 inline-flex items-center gap-2 bg-cta text-cta-text font-bold text-sm cursor-pointer"
-            style={{
-              padding: "12px 24px",
-              borderRadius: "9999px",
-              fontFeatureSettings: '"calt"',
-              transition: "transform 200ms ease",
-            }}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
+      <main className="min-h-screen bg-white flex items-center justify-center px-4">
+        <div className="text-center">
+          <h1 className="text-blue-700" style={{ fontSize: "3rem", fontWeight: 900, lineHeight: 0.9 }}>Tutor not found</h1>
+          <p className="mt-4 text-[#6b7280]" style={{ fontSize: "1.125rem", fontWeight: 500 }}>This profile could not be loaded.</p>
+          <button onClick={() => router.push("/")} className="mt-8 inline-flex items-center gap-2 bg-blue-600 text-white font-bold text-sm cursor-pointer" style={{ padding: "14px 28px", borderRadius: "9999px", transition: "transform 200ms" }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+            <ArrowLeft className="h-4 w-4" /> Back to Home
           </button>
         </div>
       </main>
@@ -186,820 +235,667 @@ export default function TutorProfile() {
 
   async function handleBookingSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!tutor || !selectedClass) return;
-
+    if (!tutor || selectedClasses.length === 0) return;
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/book", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          tutorId: tutor.tutorId,
-          tutorSlug: tutor.slug,
-          studentName: bookingForm.studentName.trim(),
-          studentEmail: bookingForm.studentEmail.trim(),
-          studentPhone: bookingForm.studentPhone.trim(),
-          classType: selectedClassType,
-          classCode: selectedClass.classCode,
-          classTitle: selectedClass.title,
-          subject: selectedClass.subject,
-          grade: selectedClass.grades.join(", "),
-          medium: selectedClass.medium,
-          syllabus: selectedClass.syllabus,
-          durationMinutes: selectedPrice?.durationMinutes || null,
-          slotId: selectedSlot?.slotId || null,
-        }),
-      });
-      const data = await response.json();
-      if (data.success) setBookingSuccess(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+      // Submit each selected class as a booking
+      for (const cls of selectedClasses) {
+        const indCls = cls.classType === "INDIVIDUAL" ? cls as IndividualClass : null;
+        const grpCls = cls.classType === "GROUP" ? cls as GroupClass : null;
+        const dur = indCls ? durationByClass[cls.classCode] : null;
+        const price = indCls?.pricing.find(p => String(p.durationMinutes) === dur) || indCls?.pricing[0];
+        const selectedSlotIds = indCls ? Array.from(slotsByClass[cls.classCode] || []) : [];
+        const selectedSlots = indCls?.availableWeeklySlots.filter(s => selectedSlotIds.includes(s.slotId)) || [];
+
+        await fetch("/api/book", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tutorId: tutor.tutorId, tutorSlug: tutor.slug,
+            studentName: bookingForm.studentName.trim(), studentEmail: bookingForm.studentEmail.trim(), studentPhone: bookingForm.studentPhone.trim(),
+            classType: cls.classType === "INDIVIDUAL" ? "Individual" : "Group",
+            classCode: cls.classCode, classTitle: cls.title,
+            subject: cls.subject, grade: gradeByClass[cls.classCode] || cls.grades[0], medium: cls.medium, syllabus: cls.syllabus,
+            durationMinutes: price?.durationMinutes || null,
+            slotIds: selectedSlotIds.length > 0 ? selectedSlotIds : null,
+            admissionFee,
+          }),
+        });
+      }
+      setBookingSuccess(true);
+    } catch (error) { console.error(error); } finally { setIsSubmitting(false); }
   }
 
-  const pricingLabel = selectedIndividualClass ? "Per Session" : "Monthly Fee";
-  const pricingAmount = selectedIndividualClass
-    ? selectedPrice?.amount || 0
-    : selectedGroupClass?.monthlyFee.amount || 0;
-  const pricingCurrency = selectedIndividualClass
-    ? selectedPrice?.currency || "LKR"
-    : selectedGroupClass?.monthlyFee.currency || "LKR";
-
   return (
-    <main className="min-h-screen bg-white pb-24" style={{ fontFeatureSettings: '"calt"' }}>
-      {/* Back button */}
-      <div className="mx-auto flex max-w-7xl justify-end px-4 pt-6 sm:px-6">
-        <button
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 bg-white text-sm font-bold text-[#0e0f0c] px-5 py-2.5 cursor-pointer"
-          style={{
-            borderRadius: "9999px",
-            boxShadow: RING,
-            transition: "transform 200ms ease",
-            fontFeatureSettings: '"calt"',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Search
-        </button>
-      </div>
+    <main className="min-h-screen bg-[#f8fafc] pb-24" style={{ fontFeatureSettings: '"calt"' }}>
 
-      <div className="mx-auto mt-6 flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row">
-        {/* ─── Left Column ─── */}
-        <div className="flex w-full flex-col gap-8 lg:w-[65%]">
+      {/* ═══════ HERO ═══════ */}
+      <div style={{ background: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%)" }}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-6 pb-28">
+          <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-sm font-bold text-white/80 cursor-pointer mb-8 hover:text-white transition-colors">
+            <ArrowLeft className="h-4 w-4" /> Back
+          </button>
 
-          {/* Profile Header */}
-          <motion.section
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="relative overflow-hidden bg-white p-8 sm:p-10"
-            style={{ borderRadius: "30px", boxShadow: RING }}
-          >
-            <div className="absolute left-0 top-0 h-1 w-full bg-cta" />
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 overflow-hidden" style={{ borderRadius: "20px", border: "3px solid rgba(255,255,255,0.2)" }}>
+              <Image src={tutor.profile.avatarUrl || `https://i.pravatar.cc/150?u=${tutor.profile.fullName}`} alt={tutor.profile.fullName} fill className="object-cover" />
+            </div>
 
-            <div className="flex flex-col gap-8 text-center sm:flex-row sm:items-start sm:text-left">
-              <div
-                className="relative h-40 w-40 flex-shrink-0 self-center overflow-hidden sm:h-48 sm:w-48 sm:self-start"
-                style={{ borderRadius: "24px", boxShadow: RING }}
-              >
-                <Image
-                  src={tutor.profile.avatarUrl || `https://i.pravatar.cc/150?u=${tutor.profile.fullName}`}
-                  alt={tutor.profile.fullName}
-                  fill
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-
-              <div className="flex w-full flex-col gap-5">
-                <div className="flex flex-col gap-2">
-                  <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-start">
-                    <h1
-                      className="text-[#0e0f0c]"
-                      style={{
-                        fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-                        fontWeight: 900,
-                        lineHeight: 0.95,
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {tutor.profile.fullName}
-                    </h1>
-                    {tutor.isVerified && (
-                      <span
-                        className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1"
-                        style={{ borderRadius: "9999px", background: "#2563eb" }}
-                      >
-                        VERIFIED
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-lg font-bold text-cta">
-                    {tutor.profile.headline || "EDUS Certified Tutor"}
-                  </p>
-                </div>
-
-                {/* Meta badges */}
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
-                  <MetaBadge>
-                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    <span className="font-bold text-[#0e0f0c]">{tutor.profile.rating || "5.0"}</span>
-                    <span className="text-[#6b7280]">({tutor.profile.reviewCount || "0"})</span>
-                  </MetaBadge>
-                  {tutor.profile.qualifications?.[0] && (
-                    <MetaBadge>
-                      <GraduationCap className="h-4 w-4 text-[#6b7280]" />
-                      <span className="font-semibold text-[#0e0f0c]">{tutor.profile.qualifications[0]}</span>
-                    </MetaBadge>
-                  )}
-                  <MetaBadge>
-                    <ShieldCheck className="h-4 w-4 text-cta" />
-                    <span className="font-semibold text-[#0e0f0c]">{availableClassTypes.join(" + ")} Classes</span>
-                  </MetaBadge>
-                </div>
-
-                {tutor.profile.about && (
-                  <p
-                    className="text-[#6b7280] pt-4"
-                    style={{
-                      borderTop: "1px solid rgba(14,15,12,0.08)",
-                      fontSize: "0.9375rem",
-                      fontWeight: 500,
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {tutor.profile.about}
-                  </p>
+            <div className="text-center sm:text-left flex-1">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 mb-2">
+                <h1 className="text-white" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 900, lineHeight: 1 }}>
+                  {tutor.profile.fullName}
+                </h1>
+                {tutor.isVerified && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1" style={{ borderRadius: "9999px", background: "rgba(255,255,255,0.2)" }}>
+                    <ShieldCheck className="h-3 w-3" /> Verified
+                  </span>
                 )}
               </div>
-            </div>
-          </motion.section>
+              <p className="text-white/70 text-base font-semibold mb-4">{tutor.profile.headline || "EDUS Certified Tutor"}</p>
 
-          {/* Overview */}
-          <motion.section
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.05 }}
-            className="bg-white p-8"
-            style={{ borderRadius: "30px", boxShadow: RING }}
-          >
-            <SectionTitle icon={<BookOpen className="h-5 w-5 text-cta" />} title="Tutor Overview" />
-            <div className="grid gap-5 md:grid-cols-2">
-              <InfoList label="Subjects" values={tutor.profile.subjects} />
-              <InfoList label="Languages" values={tutor.profile.languages || []} icon={<Languages className="h-4 w-4 text-[#6b7280]" />} />
-              <InfoList label="Mediums" values={tutor.profile.mediums} />
-              <InfoList label="Syllabus" values={tutor.profile.syllabusSupported} />
-            </div>
-
-            {tutor.profile.qualifications?.length ? (
-              <div className="mt-8">
-                <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Qualifications</h4>
-                <ul className="flex flex-col gap-3">
-                  {tutor.profile.qualifications.map((q) => (
-                    <li
-                      key={q}
-                      className="flex items-start gap-3 p-4 text-sm font-medium text-[#0e0f0c]"
-                      style={{ borderRadius: "16px", background: "#f8fafc", boxShadow: RING }}
-                    >
-                      <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-success" />
-                      <span>{q}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-white/90 text-sm">
+                <div className="flex items-center gap-1.5">
+                  <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  <span className="font-bold">{tutor.profile.rating || "5.0"}</span>
+                  <span className="text-white/50">({tutor.profile.reviewCount || 0})</span>
+                </div>
+                {tutor.profile.qualifications?.[0] && (
+                  <div className="flex items-center gap-1.5">
+                    <GraduationCap className="h-4 w-4 text-white/50" />
+                    <span className="font-semibold">{tutor.profile.qualifications[0]}</span>
+                  </div>
+                )}
+                <div className="flex items-center gap-1.5">
+                  <BookOpen className="h-4 w-4 text-white/50" />
+                  <span className="font-semibold">{tutor.profile.subjects.join(", ")}</span>
+                </div>
               </div>
-            ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
 
-            {tutor.profile.teachingStyle?.length ? (
-              <div className="mt-8">
-                <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Teaching Style</h4>
-                <div className="flex flex-wrap gap-2">
-                  {tutor.profile.teachingStyle.map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs font-semibold text-[#0e0f0c] px-3 py-1.5 bg-white"
-                      style={{ borderRadius: "9999px", boxShadow: RING }}
-                    >
-                      {s}
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 -mt-16 relative z-10 space-y-6">
+
+        {/* ═══════ 1. ABOUT ═══════ */}
+        {(tutor.profile.about || (tutor.profile.qualifications?.length ?? 0) > 0 || (tutor.profile.teachingStyle?.length ?? 0) > 0) && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
+            className="bg-white p-6 sm:p-8" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+
+            <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-5" style={{ fontSize: "1.125rem" }}>
+              <BookOpen className="h-5 w-5" /> About {tutor.profile.fullName}
+            </h3>
+
+            {tutor.profile.about && (
+              <p className="text-[#374151] text-[15px] leading-relaxed mb-6" style={{ fontWeight: 500 }}>{tutor.profile.about}</p>
+            )}
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ChipGroup label="Subjects" items={uniqueSubjects} color="#2563eb" />
+              <ChipGroup label="Mediums" items={uniqueMediums} color="#2563eb" />
+              <ChipGroup label="Syllabus" items={uniqueSyllabuses} color="#2563eb" />
+            </div>
+
+            {uniqueGrades.length > 0 && (
+              <div className="mt-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 mb-2">Grades</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {uniqueGrades.map(g => (
+                    <span key={g} className="text-xs font-semibold text-[#1e3a8a] px-2.5 py-1 bg-blue-50" style={{ borderRadius: "8px" }}>
+                      {formatGradeLabel(g)}
                     </span>
                   ))}
                 </div>
               </div>
-            ) : null}
-          </motion.section>
+            )}
 
-          {/* Individual Classes */}
-          {tutor.individualClasses.length > 0 && (
-            <motion.section
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="bg-white p-8"
-              style={{ borderRadius: "30px", boxShadow: RING }}
-            >
-              <SectionTitle icon={<Calendar className="h-5 w-5 text-cta" />} title="Individual Classes" />
-              <div className="grid gap-5">
-                {tutor.individualClasses.map((c) => (
-                  <IndividualClassCard
-                    key={c.classCode}
-                    classItem={c}
-                    isSelected={selectedClassType === "Individual" && selectedClassCode === c.classCode}
-                    onSelect={() => { setSelectedClassType("Individual"); setSelectedClassCode(c.classCode); }}
-                  />
-                ))}
-              </div>
-            </motion.section>
-          )}
-
-          {/* Group Classes */}
-          {tutor.groupClasses.length > 0 && (
-            <motion.section
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.15 }}
-              className="bg-white p-8"
-              style={{ borderRadius: "30px", boxShadow: RING }}
-            >
-              <SectionTitle icon={<Users className="h-5 w-5 text-cta" />} title="Group Classes" />
-              <div className="grid gap-5">
-                {tutor.groupClasses.map((c) => (
-                  <GroupClassCard
-                    key={c.classCode}
-                    classItem={c}
-                    isSelected={selectedClassType === "Group" && selectedClassCode === c.classCode}
-                    onSelect={() => { setSelectedClassType("Group"); setSelectedClassCode(c.classCode); }}
-                  />
-                ))}
-              </div>
-            </motion.section>
-          )}
-
-          {/* Demo Videos */}
-          <motion.section
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="overflow-hidden bg-white p-8"
-            style={{ borderRadius: "30px", boxShadow: RING }}
-          >
-            <SectionTitle icon={<PlayCircle className="h-5 w-5 text-cta" />} title="Demo Videos" />
-            {currentVideo ? (
-              <div className="flex flex-col gap-6 lg:flex-row">
-                <div className="flex-1">
-                  <div className="mb-4 flex flex-col gap-1">
-                    <h4 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0e0f0c" }}>{currentVideo.title}</h4>
-                    <p className="text-sm text-[#6b7280] font-medium">{currentVideo.subject}</p>
-                  </div>
-                  <div
-                    className="relative aspect-video overflow-hidden bg-[#0e0f0c]"
-                    style={{ borderRadius: "20px", boxShadow: RING }}
-                  >
-                    <iframe
-                      key={currentVideo.videoId}
-                      src={currentVideo.videoUrl}
-                      className="absolute inset-0 h-full w-full"
-                      allowFullScreen
-                      title={currentVideo.title}
-                    />
-                  </div>
-                </div>
-
-                {videos.length > 1 ? (
-                  <div className="w-full lg:w-80">
-                    <div className="mb-4 flex items-center justify-between">
-                      <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Preview Queue</h4>
-                      <span
-                        className="text-[10px] font-bold text-[#6b7280] px-2 py-0.5"
-                        style={{ borderRadius: "6px", background: "#f8fafc", boxShadow: RING }}
-                      >
-                        {activeVideoIndex + 1} / {videos.length}
-                      </span>
+            {(tutor.profile.qualifications?.length ?? 0) > 0 && (
+              <div className="mt-6 pt-5" style={{ borderTop: "1px solid #e5e7eb" }}>
+                <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 mb-3">Qualifications</p>
+                <div className="space-y-2">
+                  {tutor.profile.qualifications!.map((q) => (
+                    <div key={q} className="flex items-start gap-2.5 text-sm text-[#1f2937] font-medium">
+                      <CheckCircle className="h-4 w-4 mt-0.5 text-emerald-600 flex-shrink-0" />
+                      {q}
                     </div>
-                    <div className="flex gap-3 overflow-x-auto pb-2 lg:max-h-[380px] lg:flex-col lg:overflow-y-auto">
-                      {videos.map((video, index) => (
-                        <button
-                          key={video.videoId}
-                          onClick={() => setActiveVideoIndex(index)}
-                          className="flex min-w-[240px] items-center gap-3 p-3 text-left cursor-pointer lg:min-w-0"
-                          style={{
-                            borderRadius: "16px",
-                            boxShadow: activeVideoIndex === index
-                              ? "rgba(59,130,246,0.3) 0px 0px 0px 2px"
-                              : RING,
-                            background: activeVideoIndex === index ? "rgba(59, 130, 246, 0.05)" : "white",
-                            transition: "all 200ms ease",
-                          }}
-                        >
-                          <div
-                            className="relative flex h-14 w-20 flex-shrink-0 items-center justify-center overflow-hidden bg-[#0e0f0c]"
-                            style={{ borderRadius: "12px" }}
-                          >
-                            <PlayCircle className="h-6 w-6 text-white/80" />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {(tutor.profile.teachingStyle?.length ?? 0) > 0 && (
+              <div className="mt-5 pt-5" style={{ borderTop: "1px solid #e5e7eb" }}>
+                <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 mb-3">Teaching Style</p>
+                <div className="flex flex-wrap gap-2">
+                  {tutor.profile.teachingStyle!.map((s) => (
+                    <span key={s} className="flex items-center gap-1.5 text-xs font-semibold text-[#1f2937] px-3 py-2 bg-amber-50 border border-amber-200" style={{ borderRadius: "10px" }}>
+                      <Zap className="h-3 w-3 text-amber-500" /> {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {/* ═══════ 2. DEMO VIDEOS (open by default) ═══════ */}
+        {videos.length > 0 && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="bg-white overflow-hidden" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+            <div className="p-6 sm:p-8">
+              <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-5" style={{ fontSize: "1.125rem" }}>
+                <PlayCircle className="h-5 w-5" /> Demo Videos
+                <span className="text-xs font-bold text-[#94a3b8] ml-1">({videos.length})</span>
+              </h3>
+
+              {currentVideo && (
+                <div className="flex flex-col gap-5 lg:flex-row">
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-[#1f2937] mb-2">{currentVideo.title} <span className="text-[#94a3b8] font-medium">&middot; {currentVideo.subject}</span></p>
+                    <div className="relative aspect-video overflow-hidden bg-[#0e0f0c]" style={{ borderRadius: "16px" }}>
+                      <iframe key={currentVideo.videoId} src={currentVideo.videoUrl} className="absolute inset-0 h-full w-full" allowFullScreen title={currentVideo.title} />
+                    </div>
+                  </div>
+                  {videos.length > 1 && (
+                    <div className="w-full lg:w-64 flex gap-2 overflow-x-auto lg:flex-col lg:overflow-y-auto lg:max-h-[300px]">
+                      {videos.map((v, i) => (
+                        <button key={v.videoId} onClick={() => setActiveVideoIndex(i)}
+                          className="flex items-center gap-2.5 p-2.5 min-w-[180px] lg:min-w-0 cursor-pointer text-left flex-shrink-0" style={{
+                            borderRadius: "12px",
+                            background: activeVideoIndex === i ? "rgba(37,99,235,0.06)" : "#f8fafc",
+                            border: activeVideoIndex === i ? "2px solid #2563eb" : "2px solid transparent",
+                            transition: "all 200ms",
+                          }}>
+                          <div className="w-12 h-8 flex items-center justify-center bg-[#0e0f0c] flex-shrink-0" style={{ borderRadius: "6px" }}>
+                            <PlayCircle className="h-4 w-4 text-white/70" />
                           </div>
                           <div className="min-w-0">
-                            <p
-                              className="truncate text-[11px] font-bold leading-tight"
-                              style={{ color: activeVideoIndex === index ? "#2563eb" : "#0e0f0c" }}
-                            >
-                              {video.title}
-                            </p>
-                            <p className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-[#6b7280]">
-                              {video.subject}
-                            </p>
+                            <p className="text-[11px] font-bold truncate" style={{ color: activeVideoIndex === i ? "#2563eb" : "#1f2937" }}>{v.title}</p>
+                            <p className="text-[10px] text-[#94a3b8] font-medium">{v.subject}</p>
                           </div>
                         </button>
                       ))}
                     </div>
-                  </div>
-                ) : null}
-              </div>
-            ) : (
-              <div
-                className="flex flex-col items-center justify-center p-14 text-[#6b7280]"
-                style={{ borderRadius: "20px", background: "#f8fafc", boxShadow: RING }}
-              >
-                <div
-                  className="mb-4 flex h-16 w-16 items-center justify-center bg-white"
-                  style={{ borderRadius: "9999px", boxShadow: RING }}
-                >
-                  <PlayCircle className="h-8 w-8 text-cta opacity-30" />
+                  )}
                 </div>
-                <span className="text-sm font-semibold text-[#6b7280]">No demo videos uploaded yet</span>
-                <p className="mt-1 text-xs text-[#6b7280]">Tutor hasn&apos;t provided session previews</p>
+              )}
+            </div>
+          </motion.div>
+        )}
+
+        {/* ═══════ 3. BOOKING WIZARD ═══════ */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
+          id="booking"
+          className="bg-white overflow-hidden" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+
+          {bookingSuccess ? (
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-12 flex flex-col items-center text-center">
+              <div className="w-20 h-20 flex items-center justify-center mb-6" style={{ borderRadius: "9999px", background: "rgba(5,150,105,0.1)" }}>
+                <CheckCircle className="h-10 w-10 text-emerald-600" />
               </div>
-            )}
-          </motion.section>
-
-          {/* Class Rules */}
-          <motion.section
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.25 }}
-            className="bg-white p-8"
-            style={{ borderRadius: "30px", boxShadow: RING }}
-          >
-            <SectionTitle icon={<ShieldCheck className="h-5 w-5 text-cta" />} title="Class Rules" />
-            <ol className="flex flex-col gap-3">
-              {[
-                "Your internet connection and device need to be ready for online learning.",
-                "Attendance is monitored. Missing more than 3 consecutive classes can result in removal.",
-                "Students are expected to respond to the tutor and participate during live sessions.",
-                "Subject-related doubts should be raised during class so the tutor can address them quickly.",
-                "Assignments and academic follow-ups should be completed on time.",
-              ].map((rule, index) => (
-                <li
-                  key={rule}
-                  className="flex items-start gap-4 p-4 text-sm text-[#0e0f0c]"
-                  style={{ borderRadius: "16px", background: "#f8fafc", boxShadow: RING }}
-                >
-                  <span
-                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center text-xs font-black text-white"
-                    style={{ borderRadius: "9999px", background: "#3b82f6" }}
-                  >
-                    {index + 1}
-                  </span>
-                  <span className="font-medium leading-relaxed">{rule}</span>
-                </li>
-              ))}
-            </ol>
-          </motion.section>
-        </div>
-
-        {/* ─── Right Column (Booking) ─── */}
-        <div className="relative w-full lg:w-[35%]">
-          <motion.aside
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="sticky top-[100px] bg-white p-8"
-            style={{ borderRadius: "30px", boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px, rgba(59,130,246,0.08) 0px 20px 60px" }}
-          >
-            {bookingSuccess ? (
-              <div className="flex flex-col items-center justify-center py-10 text-center">
-                <div
-                  className="mb-6 flex h-20 w-20 items-center justify-center"
-                  style={{ borderRadius: "9999px", background: "rgba(5, 150, 105, 0.1)" }}
-                >
-                  <CheckCircle className="h-10 w-10 text-success" />
-                </div>
-                <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#0e0f0c" }}>Request Submitted</h3>
-                <p className="mb-8 max-w-xs text-sm text-[#6b7280] mt-2" style={{ fontWeight: 500, lineHeight: 1.6 }}>
-                  Thank you, {bookingForm.studentName || "student"}. Your class request is in progress and the EDUS team will contact you shortly.
-                </p>
-                <button
-                  onClick={() => router.push("/")}
-                  className="w-full py-4 text-sm font-bold text-[#0e0f0c] bg-[#f8fafc] cursor-pointer"
-                  style={{
-                    borderRadius: "16px",
-                    boxShadow: RING,
-                    transition: "transform 200ms ease",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                >
-                  Return to Home
+              <h2 className="text-blue-700" style={{ fontSize: "2rem", fontWeight: 900, lineHeight: 1 }}>You&apos;re all set!</h2>
+              <p className="mt-3 text-[#6b7280] max-w-md" style={{ fontSize: "1rem", fontWeight: 500, lineHeight: 1.6 }}>
+                Thank you, <strong className="text-[#1f2937]">{bookingForm.studentName}</strong>. Your booking for <strong className="text-[#1f2937]">{selectedClasses.length} class{selectedClasses.length > 1 ? "es" : ""}</strong> with <strong className="text-[#1f2937]">{tutor.profile.fullName}</strong> has been submitted.
+              </p>
+              <div className="flex gap-3 mt-8">
+                <button onClick={() => router.push("/")} className="px-6 py-3 text-sm font-bold text-[#374151] bg-[#f1f5f9] cursor-pointer" style={{ borderRadius: "9999px", transition: "transform 200ms" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+                  Back to Home
+                </button>
+                <button onClick={() => { setBookingSuccess(false); setCurrentStep(0); setSelectedClassCodes(new Set()); setBookingForm({ studentName: "", studentEmail: "", studentPhone: "" }); setAgreeRules(false); }}
+                  className="px-6 py-3 text-sm font-bold text-white bg-blue-600 cursor-pointer" style={{ borderRadius: "9999px", transition: "transform 200ms" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+                  Book Another
                 </button>
               </div>
-            ) : (
-              <>
-                {/* Booking Summary Card */}
-                <div
-                  className="relative mb-8 overflow-hidden p-6 text-white"
-                  style={{ borderRadius: "20px", background: "#0e0f0c" }}
-                >
-                  <div
-                    className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full opacity-40 blur-[80px]"
-                    style={{ background: "#3b82f6" }}
-                  />
-
-                  <div className="relative z-10 mb-6 flex items-center justify-between pb-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                    <h3 className="flex items-center gap-2 text-base font-bold">
-                      <CreditCard className="h-4 w-4 text-cta" />
-                      Booking Summary
-                    </h3>
-                    <div
-                      className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
-                      style={{ borderRadius: "9999px", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.1)" }}
-                    >
-                      {selectedClassType} Class
+            </motion.div>
+          ) : (
+            <>
+              {/* Step indicator */}
+              <div className="px-6 sm:px-10 pt-8 pb-2">
+                <h3 className="font-bold text-blue-700 mb-4" style={{ fontSize: "1.125rem" }}>Book a Class</h3>
+                <div className="flex items-center justify-between mb-2">
+                  {STEPS.map((label, idx) => (
+                    <div key={label} className="flex items-center flex-1 last:flex-none">
+                      <button onClick={() => { if (idx <= currentStep) setCurrentStep(idx as Step); }} className="flex items-center gap-2 cursor-pointer" style={{ opacity: idx <= currentStep ? 1 : 0.35 }}>
+                        <div className="w-8 h-8 flex items-center justify-center text-xs font-black" style={{
+                          borderRadius: "9999px",
+                          background: idx <= currentStep ? "#2563eb" : "#e2e8f0",
+                          color: idx <= currentStep ? "#fff" : "#94a3b8",
+                          transition: "all 300ms ease",
+                        }}>
+                          {idx < currentStep ? <CheckCircle className="h-4 w-4" /> : idx + 1}
+                        </div>
+                        <span className="text-xs font-bold hidden sm:block" style={{ color: idx <= currentStep ? "#1e3a8a" : "#94a3b8" }}>{label}</span>
+                      </button>
+                      {idx < STEPS.length - 1 && (
+                        <div className="flex-1 h-[2px] mx-3" style={{ background: idx < currentStep ? "#2563eb" : "#e2e8f0", transition: "background 300ms ease" }} />
+                      )}
                     </div>
-                  </div>
-
-                  <div className="relative z-10 space-y-4 text-sm font-medium" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Selected class</span>
-                      <span className="text-right font-semibold text-white">{selectedClass?.title || "Choose a class"}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>{pricingLabel}</span>
-                      <span className="font-semibold text-white">{pricingCurrency} {pricingAmount}</span>
-                    </div>
-                    {selectedIndividualClass && selectedPrice ? (
-                      <div
-                        className="flex items-center justify-between gap-4 p-3"
-                        style={{ borderRadius: "12px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-                      >
-                        <span className="flex items-center gap-1.5 text-xs font-semibold"><Clock3 className="h-3.5 w-3.5" /> Duration</span>
-                        <span className="text-xs font-bold text-white">{selectedPrice.durationMinutes} Minutes</span>
-                      </div>
-                    ) : null}
-                    {selectedGroupClass ? (
-                      <div
-                        className="flex items-center justify-between gap-4 p-3"
-                        style={{ borderRadius: "12px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-                      >
-                        <span className="flex items-center gap-1.5 text-xs font-semibold"><Users className="h-3.5 w-3.5" /> Seats Left</span>
-                        <span className="text-xs font-bold text-white">{selectedGroupClass.seatsLeft} / {selectedGroupClass.seatCapacity}</span>
-                      </div>
-                    ) : null}
-                    <div className="pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
-                      <p className="text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(255,255,255,0.4)" }}>Class Coverage</p>
-                      <p className="mt-2 text-sm font-semibold text-white">
-                        {selectedClass?.subject || "Select a class"} &bull; {selectedClass?.medium || "Medium"} &bull; {selectedClass?.syllabus || "Syllabus"}
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
+              </div>
 
-                {/* Booking Form */}
-                <form onSubmit={handleBookingSubmit} className="flex flex-col gap-5">
-                  <h4 className="mb-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[#0e0f0c]">
-                    Student Registration Details
-                  </h4>
+              <div className="px-6 sm:px-10 pb-8">
+                <AnimatePresence mode="wait">
+                  {/* ─── STEP 0: Choose Classes (multi-select) ─── */}
+                  {currentStep === 0 && (
+                    <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+                      <p className="text-[#6b7280] text-sm font-medium mb-4">Select one or more classes to enroll in.</p>
 
-                  <Field label="Student Name" htmlFor="studentName" input={
-                    <FormInput id="studentName" required type="text" value={bookingForm.studentName}
-                      onChange={(e) => setBookingForm({ ...bookingForm, studentName: e.target.value })}
-                      placeholder="John Doe" />
-                  } />
+                      {/* Class list with checkboxes — shows ALL classes (individual + group) */}
+                      <div className="grid gap-3">
+                        {bookableClasses.map((c) => {
+                          const isIndividual = c.classType === "INDIVIDUAL";
+                          const price = isIndividual
+                            ? (c as IndividualClass).pricing.reduce((low, cur) => cur.amount < low.amount ? cur : low, (c as IndividualClass).pricing[0])
+                            : null;
+                          const groupClass = !isIndividual ? (c as GroupClass) : null;
+                          const isChecked = selectedClassCodes.has(c.classCode);
 
-                  <Field label="Email Address" htmlFor="studentEmail" input={
-                    <FormInput id="studentEmail" required type="email" value={bookingForm.studentEmail}
-                      onChange={(e) => setBookingForm({ ...bookingForm, studentEmail: e.target.value })}
-                      placeholder="john@example.com" />
-                  } />
+                          return (
+                            <button key={c.classCode} type="button" onClick={() => toggleClass(c.classCode)}
+                              className="w-full text-left cursor-pointer p-5" style={{
+                                borderRadius: "16px",
+                                border: isChecked ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                background: isChecked ? "rgba(37,99,235,0.04)" : "#fff",
+                                transition: "all 200ms ease",
+                              }}>
+                              <div className="flex items-start gap-3">
+                                {/* Checkbox */}
+                                <div className="mt-0.5 flex-shrink-0">
+                                  {isChecked
+                                    ? <CheckSquare className="h-5 w-5 text-blue-600" />
+                                    : <Square className="h-5 w-5 text-[#d1d5db]" />
+                                  }
+                                </div>
 
-                  <Field label="Phone Number" htmlFor="studentPhone" hint="Digits only, starting with country code." input={
-                    <FormInput id="studentPhone" required type="tel" value={bookingForm.studentPhone}
-                      onChange={(e) => setBookingForm({ ...bookingForm, studentPhone: e.target.value.replace(/\D/g, "") })}
-                      placeholder="94707072072" />
-                  } />
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-0.5" style={{
+                                      borderRadius: "6px",
+                                      background: isIndividual ? "#dbeafe" : "#d1fae5",
+                                      color: isIndividual ? "#1e40af" : "#065f46",
+                                    }}>
+                                      {isIndividual ? "Individual" : "Group"}
+                                    </span>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94a3b8]">{c.subject}</span>
+                                  </div>
+                                  <h4 className="text-[#1f2937] font-bold text-[15px]">{c.title}</h4>
+                                  <p className="text-[#6b7280] text-xs font-medium mt-0.5">
+                                    {c.grades.map(formatGradeLabel).join(", ")} &middot; {c.medium} &middot; {c.syllabus}
+                                  </p>
+                                </div>
 
-                  <Field label="Class Type" htmlFor="classType" input={
-                    <Select id="classType" value={selectedClassType}
-                      onChange={(e) => setSelectedClassType(e.target.value as SearchClassType)}
-                      options={availableClassTypes.map((ct) => ({ value: ct, label: `${ct} (${getClassBadgeLabel(ct)})` }))} />
-                  } />
+                                <div className="text-right flex-shrink-0">
+                                  <p className="text-blue-700" style={{ fontSize: "1.125rem", fontWeight: 900 }}>
+                                    {price ? `${price.currency} ${price.amount}` : `${groupClass?.monthlyFee.currency} ${groupClass?.monthlyFee.amount}`}
+                                  </p>
+                                  <p className="text-[11px] text-[#6b7280] font-medium">
+                                    {isIndividual ? "per session" : "per month"}
+                                    {groupClass && ` \u00B7 ${groupClass.seatsLeft} seats`}
+                                  </p>
+                                </div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
 
-                  <Field label={selectedClassType === "Individual" ? "Individual Class" : "Group Class"} htmlFor="classCode" input={
-                    <Select id="classCode" value={selectedClassCode}
-                      onChange={(e) => setSelectedClassCode(e.target.value)}
-                      options={bookableClasses.map((c) => ({ value: c.classCode, label: `${c.title} \u2022 ${c.subject}` }))} />
-                  } />
+                      {selectedClassCodes.size > 0 && (
+                        <p className="mt-3 text-xs text-blue-700 font-semibold">{selectedClassCodes.size} class{selectedClassCodes.size > 1 ? "es" : ""} selected</p>
+                      )}
 
-                  {selectedIndividualClass && selectedIndividualClass.pricing.length > 0 ? (
-                    <Field label="Session Duration" htmlFor="duration" input={
-                      <Select id="duration" value={selectedDurationMinutes}
-                        onChange={(e) => setSelectedDurationMinutes(e.target.value)}
-                        options={selectedIndividualClass.pricing.map((p) => ({ value: String(p.durationMinutes), label: `${p.durationMinutes} Minutes \u2022 ${p.currency} ${p.amount}` }))} />
-                    } />
-                  ) : null}
+                      {errors.step0 && <p id="step0-error" className="text-red-500 text-xs font-semibold mt-3">{errors.step0}</p>}
+                      <StepNav onNext={() => { if (validateStep0()) setCurrentStep(1); }} />
+                    </motion.div>
+                  )}
 
-                  {selectedIndividualClass && selectedIndividualClass.availableWeeklySlots.length > 0 ? (
-                    <Field label="Preferred Weekly Slot" htmlFor="slotId" input={
-                      <Select id="slotId" value={selectedSlotId}
-                        onChange={(e) => setSelectedSlotId(e.target.value)}
-                        options={selectedIndividualClass.availableWeeklySlots.filter((s) => s.isAvailable).map((s) => ({
-                          value: s.slotId,
-                          label: `${formatDayLabel(s.day)} \u2022 ${formatTimeRange(s.startTime, s.endTime)}`,
-                        }))} />
-                    } />
-                  ) : null}
+                  {/* ─── STEP 1: Schedule (per selected class) ─── */}
+                  {currentStep === 1 && (
+                    <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+                      <p className="text-[#6b7280] text-sm font-medium mb-5">Configure schedule for each selected class.</p>
 
-                  {selectedClass ? (
-                    <div
-                      className="grid grid-cols-2 gap-4 p-4"
-                      style={{ borderRadius: "16px", background: "#f8fafc", boxShadow: RING }}
-                    >
-                      <SummaryItem label="Subject" value={selectedClass.subject} />
-                      <SummaryItem label="Grades" value={selectedClass.grades.map(formatGradeLabel).join(", ")} />
-                      <SummaryItem label="Medium" value={selectedClass.medium} />
-                      <SummaryItem label="Syllabus" value={selectedClass.syllabus} />
-                    </div>
-                  ) : null}
+                      <div className="space-y-6">
+                        {selectedClasses.map((cls) => {
+                          const indCls = cls.classType === "INDIVIDUAL" ? cls as IndividualClass : null;
+                          const grpCls = cls.classType === "GROUP" ? cls as GroupClass : null;
 
-                  {/* Agreement */}
-                  <div
-                    className="mt-2 flex items-start gap-2.5 p-3.5"
-                    style={{ borderRadius: "12px", background: "rgba(59, 130, 246, 0.05)", boxShadow: RING }}
-                  >
-                    <input
-                      id="agreeRules" type="checkbox" checked={agreeRules}
-                      onChange={(e) => setAgreeRules(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer accent-cta"
-                    />
-                    <label htmlFor="agreeRules" className="text-xs leading-relaxed text-[#6b7280]" style={{ fontWeight: 500 }}>
-                      I agree to the class rules and understand that EDUS may contact me to confirm the booking.
-                    </label>
-                  </div>
+                          return (
+                            <div key={cls.classCode} className="p-5" style={{ borderRadius: "16px", border: "1px solid #e5e7eb", background: "#fafbfc" }}>
+                              <div className="flex items-center gap-2 mb-4">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-0.5" style={{
+                                  borderRadius: "6px",
+                                  background: indCls ? "#dbeafe" : "#d1fae5",
+                                  color: indCls ? "#1e40af" : "#065f46",
+                                }}>
+                                  {indCls ? "Individual" : "Group"}
+                                </span>
+                                <h4 className="text-sm font-bold text-[#1f2937]">{cls.title}</h4>
+                                <span className="text-xs text-[#6b7280]">&middot; {cls.subject}</span>
+                              </div>
 
-                  {/* Submit */}
-                  <button
-                    disabled={isSubmitting || !agreeRules || !selectedClass}
-                    type="submit"
-                    className="mt-4 flex w-full items-center justify-center gap-2 bg-cta text-cta-text font-bold text-sm cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{
-                      padding: "16px",
-                      borderRadius: "16px",
-                      transition: "transform 200ms ease",
-                      fontFeatureSettings: '"calt"',
-                    }}
-                    onMouseEnter={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.transform = "scale(1.03)"; }}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                    onMouseDown={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.transform = "scale(0.97)"; }}
-                    onMouseUp={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.transform = "scale(1.03)"; }}
-                  >
-                    {isSubmitting ? "Processing..." : "Enroll Now"}
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </form>
-              </>
-            )}
-          </motion.aside>
-        </div>
+                              {/* Grade selector */}
+                              <div className="mb-4">
+                                <label className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 block mb-2">Your Grade</label>
+                                <div className="flex flex-wrap gap-2">
+                                  {cls.grades
+                                    .slice()
+                                    .sort((a, b) => formatGradeLabel(a).localeCompare(formatGradeLabel(b), undefined, { numeric: true }))
+                                    .map((g) => {
+                                    const isSelected = (gradeByClass[cls.classCode] || (cls.grades.length === 1 ? cls.grades[0] : "")) === g;
+                                    return (
+                                      <button key={g} type="button"
+                                        onClick={() => { setGradeByClass(prev => ({ ...prev, [cls.classCode]: g })); setErrors(prev => { const n = { ...prev }; delete n[`grade-${cls.classCode}`]; return n; }); }}
+                                        className="py-2.5 px-4 text-center cursor-pointer text-sm" style={{
+                                          borderRadius: "10px",
+                                          border: isSelected ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                          background: isSelected ? "#eff6ff" : "#fff",
+                                          color: isSelected ? "#1e3a8a" : "#374151",
+                                          fontWeight: 700, transition: "all 200ms ease",
+                                        }}>
+                                        <GraduationCap className="h-3.5 w-3.5 inline mr-1 text-blue-600" />{formatGradeLabel(g)}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                                {errors[`grade-${cls.classCode}`] && (
+                                  <p id={`grade-${cls.classCode}-error`} className="text-red-500 text-xs font-semibold mt-1.5">{errors[`grade-${cls.classCode}`]}</p>
+                                )}
+                              </div>
+
+                              {indCls && (
+                                <>
+                                  {/* Duration */}
+                                  <div className="mb-4">
+                                    <label className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 block mb-2">Duration</label>
+                                    <div className="flex flex-wrap gap-2">
+                                      {indCls.pricing.map((p) => (
+                                        <button key={p.durationMinutes} type="button"
+                                          onClick={() => { setDurationByClass(prev => ({ ...prev, [cls.classCode]: String(p.durationMinutes) })); setErrors(prev => { const n = { ...prev }; delete n[`duration-${cls.classCode}`]; return n; }); }}
+                                          className="py-2.5 px-4 text-center cursor-pointer text-sm" style={{
+                                            borderRadius: "10px",
+                                            border: durationByClass[cls.classCode] === String(p.durationMinutes) ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                            background: durationByClass[cls.classCode] === String(p.durationMinutes) ? "#eff6ff" : "#fff",
+                                            color: durationByClass[cls.classCode] === String(p.durationMinutes) ? "#1e3a8a" : "#374151",
+                                            fontWeight: 700, transition: "all 200ms ease",
+                                          }}>
+                                          <Clock3 className="h-3.5 w-3.5 inline mr-1 text-blue-600" />{p.durationMinutes}m &middot; {p.currency} {p.amount}
+                                        </button>
+                                      ))}
+                                    </div>
+                                    {errors[`duration-${cls.classCode}`] && (
+                                      <p id={`duration-${cls.classCode}-error`} className="text-red-500 text-xs font-semibold mt-1.5">{errors[`duration-${cls.classCode}`]}</p>
+                                    )}
+                                  </div>
+
+                                  {/* Time slots (multi-select) */}
+                                  <div>
+                                    <label className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 block mb-1">Time Slots</label>
+                                    <p className="text-[11px] text-[#94a3b8] font-medium mb-2">Select one or more slots</p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                      {indCls.availableWeeklySlots.filter(s => s.isAvailable).map((slot) => {
+                                        const isSelected = slotsByClass[cls.classCode]?.has(slot.slotId) ?? false;
+                                        return (
+                                          <button key={slot.slotId} type="button"
+                                            onClick={() => toggleSlot(cls.classCode, slot.slotId)}
+                                            className="flex items-center gap-3 p-3 text-left cursor-pointer" style={{
+                                              borderRadius: "10px",
+                                              border: isSelected ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                              background: isSelected ? "#eff6ff" : "#fff",
+                                              transition: "all 200ms ease",
+                                            }}>
+                                            <div className="flex-shrink-0">
+                                              {isSelected
+                                                ? <CheckSquare className="h-4 w-4 text-blue-600" />
+                                                : <Square className="h-4 w-4 text-[#d1d5db]" />
+                                              }
+                                            </div>
+                                            <div>
+                                              <p className="font-bold text-xs text-[#1f2937]">{formatDayLabel(slot.day)}</p>
+                                              <p className="text-[11px] text-[#6b7280] font-medium">{formatTimeRange(slot.startTime, slot.endTime)}</p>
+                                            </div>
+                                          </button>
+                                        );
+                                      })}
+                                    </div>
+                                    {(slotsByClass[cls.classCode]?.size ?? 0) > 0 && (
+                                      <p className="mt-2 text-xs text-blue-700 font-semibold">{slotsByClass[cls.classCode].size} slot{slotsByClass[cls.classCode].size > 1 ? "s" : ""} selected</p>
+                                    )}
+                                    {errors[`slot-${cls.classCode}`] && (
+                                      <p id={`slot-${cls.classCode}-error`} className="text-red-500 text-xs font-semibold mt-1.5">{errors[`slot-${cls.classCode}`]}</p>
+                                    )}
+                                  </div>
+                                </>
+                              )}
+
+                              {grpCls && (
+                                <>
+                                  <div className="grid gap-2">
+                                    {grpCls.fixedTimetable.map((sch, idx) => (
+                                      <div key={`${sch.day}-${idx}`} className="flex items-center gap-3 p-3 bg-white" style={{ borderRadius: "10px", border: "1px solid #e5e7eb" }}>
+                                        <Calendar className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                                        <div>
+                                          <p className="font-bold text-xs text-[#1f2937]">{formatDayLabel(sch.day)}</p>
+                                          <p className="text-[11px] text-[#6b7280] font-medium">{formatTimeRange(sch.startTime, sch.endTime)}</p>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div className="mt-3 flex items-center justify-between text-sm p-3 bg-blue-50" style={{ borderRadius: "10px" }}>
+                                    <span className="flex items-center gap-1.5 font-semibold text-blue-700"><Users className="h-4 w-4" /> {grpCls.seatsLeft} seats left</span>
+                                    <span className="font-black text-blue-700">{grpCls.monthlyFee.currency} {grpCls.monthlyFee.amount}/mo</span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <StepNav onNext={() => { if (validateStep1()) setCurrentStep(2); }} onBack={() => setCurrentStep(0)} />
+                    </motion.div>
+                  )}
+
+                  {/* ─── STEP 2: Student Details ─── */}
+                  {currentStep === 2 && (
+                    <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+                      <p className="text-[#6b7280] text-sm font-medium mb-6">Enter student contact details.</p>
+                      <div className="space-y-4">
+                        <InputField icon={<User className="h-4 w-4" />} label="Student Name" id="studentName" type="text" required
+                          value={bookingForm.studentName} onChange={(e) => { setBookingForm({ ...bookingForm, studentName: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentName; return n; }); }} placeholder="e.g. Kasun Perera" error={errors.studentName} />
+                        <InputField icon={<Mail className="h-4 w-4" />} label="Email Address" id="studentEmail" type="email" required
+                          value={bookingForm.studentEmail} onChange={(e) => { setBookingForm({ ...bookingForm, studentEmail: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentEmail; return n; }); }} placeholder="kasun@email.com" error={errors.studentEmail} />
+                        <InputField icon={<Phone className="h-4 w-4" />} label="Phone Number" id="studentPhone" type="tel" required
+                          value={bookingForm.studentPhone} onChange={(e) => { setBookingForm({ ...bookingForm, studentPhone: e.target.value.replace(/\D/g, "") }); setErrors(prev => { const n = { ...prev }; delete n.studentPhone; return n; }); }} placeholder="94707072072" error={errors.studentPhone}
+                          hint="Digits only, starting with country code" />
+                      </div>
+                      <StepNav onNext={() => { if (validateStep2()) setCurrentStep(3); }} onBack={() => setCurrentStep(1)} />
+                    </motion.div>
+                  )}
+
+                  {/* ─── STEP 3: Confirm ─── */}
+                  {currentStep === 3 && (
+                    <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+                      <form onSubmit={handleBookingSubmit}>
+                        {/* Summary */}
+                        <div className="p-5 mb-5" style={{ borderRadius: "16px", background: "#0f172a", color: "#fff" }}>
+                          <div className="flex items-center justify-between mb-4 pb-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                            <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/50">Booking Summary</span>
+                            <span className="text-xs font-bold px-2.5 py-1 text-white/80" style={{ borderRadius: "9999px", background: "rgba(255,255,255,0.1)" }}>{selectedClasses.length} class{selectedClasses.length > 1 ? "es" : ""}</span>
+                          </div>
+
+                          <div className="space-y-3 text-sm">
+                            <SummaryRow label="Student" value={bookingForm.studentName} />
+                            <SummaryRow label="Email" value={bookingForm.studentEmail} />
+                            <SummaryRow label="Phone" value={bookingForm.studentPhone} />
+                            <div className="my-2" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
+
+                            {selectedClasses.map((cls) => {
+                              const p = getClassPrice(cls);
+                              const indCls = cls.classType === "INDIVIDUAL" ? cls as IndividualClass : null;
+                              const classSlotIds = indCls ? Array.from(slotsByClass[cls.classCode] || []) : [];
+                              const classSlots = indCls?.availableWeeklySlots.filter(s => classSlotIds.includes(s.slotId)) || [];
+                              return (
+                                <div key={cls.classCode} className="p-3" style={{ borderRadius: "10px", background: "rgba(255,255,255,0.05)" }}>
+                                  <div className="flex items-center justify-between mb-1">
+                                    <span className="font-semibold text-white text-sm">{cls.title}</span>
+                                    <div className="text-right flex-shrink-0">
+                                      {indCls && p && p.slotCount > 1 ? (
+                                        <>
+                                          <span className="font-black text-white">{p.currency} {p.total.toLocaleString()}</span>
+                                          <p className="text-white/40 text-[10px]">{p.slotCount} slots &times; {p.currency} {p.amount}/session</p>
+                                        </>
+                                      ) : (
+                                        <span className="font-black text-white">{p?.currency} {p?.amount}<span className="text-white/40 text-xs font-medium"> /{p?.label === "per session" ? "session" : "mo"}</span></span>
+                                      )}
+                                    </div>
+                                  </div>
+                                  <p className="text-white/40 text-xs">{cls.subject} &middot; {cls.medium} &middot; {cls.syllabus}</p>
+                                  <p className="text-white/60 text-xs font-semibold mt-0.5"><GraduationCap className="h-3 w-3 inline mr-1" />{formatGradeLabel(gradeByClass[cls.classCode] || cls.grades[0])}</p>
+                                  {indCls && classSlots.length > 0 && (
+                                    <div className="mt-1 space-y-0.5">
+                                      <p className="text-white/50 text-[10px] font-bold uppercase tracking-wider">{durationByClass[cls.classCode]}min &middot; {classSlots.length} slot{classSlots.length > 1 ? "s" : ""}</p>
+                                      {classSlots.map(slot => (
+                                        <p key={slot.slotId} className="text-white/40 text-xs">{formatDayLabel(slot.day)} {formatTimeRange(slot.startTime, slot.endTime)}</p>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+
+                            {/* Admission Fee */}
+                            <div className="my-2" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
+                            <div className="p-3" style={{ borderRadius: "10px", background: "rgba(255,255,255,0.05)" }}>
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <span className="font-semibold text-white text-sm">Admission Fee</span>
+                                  <span className="text-white/40 text-xs ml-2">(one-time)</span>
+                                  <p className="text-white/40 text-xs mt-0.5">
+                                    {hasIndividual && hasGroup ? "Individual + Group" : hasIndividual ? "Individual classes" : "Group classes"}
+                                  </p>
+                                </div>
+                                <span className="font-black text-white">LKR {admissionFee.toLocaleString()}</span>
+                              </div>
+                            </div>
+
+                            {/* Total Due Now */}
+                            <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
+                              <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/60">Total Due Now</span>
+                              <span style={{ fontSize: "1.25rem", fontWeight: 900 }} className="text-white">
+                                LKR {(admissionFee + selectedClasses.reduce((sum, cls) => sum + (getClassPrice(cls)?.total ?? 0), 0)).toLocaleString()}
+                              </span>
+                            </div>
+                            <p className="text-white/30 text-[10px] mt-1 text-right">Admission fee + first session/month for each class</p>
+                          </div>
+                        </div>
+
+                        {/* Class rules */}
+                        <div className="mb-4 p-4" style={{ borderRadius: "14px", background: "#fffbeb", border: "1px solid #fef08a" }}>
+                          <p className="text-xs font-bold text-amber-700 uppercase tracking-[0.1em] mb-2">Class Rules</p>
+                          <ol className="space-y-1 text-xs text-amber-900" style={{ fontWeight: 500, lineHeight: 1.5 }}>
+                            {["Device & internet must be ready.", "Missing 3+ classes may lead to removal.", "Active participation required.", "Raise doubts during class.", "Complete assignments on time."].map((r, i) => (
+                              <li key={r} className="flex items-start gap-2"><span className="font-black text-amber-700">{i + 1}.</span>{r}</li>
+                            ))}
+                          </ol>
+                        </div>
+
+                        <label className="flex items-start gap-3 p-4 cursor-pointer mb-5" style={{ borderRadius: "14px", background: "#eff6ff", border: "1px solid #bfdbfe" }}>
+                          <input type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 h-4 w-4 accent-blue-600 cursor-pointer" />
+                          <span className="text-xs text-blue-900 font-medium leading-relaxed">I agree to the class rules and understand that EDUS may contact me to confirm.</span>
+                        </label>
+
+                        <div className="flex gap-3">
+                          <button type="button" onClick={() => setCurrentStep(2)} className="px-5 py-3.5 text-sm font-bold text-[#6b7280] bg-[#f1f5f9] cursor-pointer flex-shrink-0"
+                            style={{ borderRadius: "14px", transition: "transform 200ms" }}
+                            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+                            <ArrowLeft className="h-4 w-4 inline mr-1" /> Back
+                          </button>
+                          <button type="submit" disabled={isSubmitting || !agreeRules || selectedClasses.length === 0}
+                            className="flex-1 flex items-center justify-center gap-2 py-3.5 text-sm font-bold text-white bg-blue-600 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            style={{ borderRadius: "14px", transition: "transform 200ms" }}
+                            onMouseEnter={(e) => { if (!e.currentTarget.disabled) e.currentTarget.style.transform = "scale(1.03)"; }}
+                            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+                            {isSubmitting ? "Processing..." : <><Send className="h-4 w-4" /> Confirm & Enroll</>}
+                          </button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </>
+          )}
+        </motion.div>
       </div>
     </main>
   );
 }
 
-/* ─── Sub-components ─── */
+/* ═══════ Sub-components ═══════ */
 
-function MetaBadge({ children }: { readonly children: ReactNode }) {
+function StepNav({ onNext, onBack }: { readonly onNext: () => void; readonly onBack?: () => void }) {
   return (
-    <div
-      className="flex items-center gap-1.5 text-sm px-3 py-1.5"
-      style={{ borderRadius: "9999px", boxShadow: RING, fontFeatureSettings: '"calt"' }}
-    >
-      {children}
+    <div className="flex gap-3 mt-8">
+      {onBack && (
+        <button type="button" onClick={onBack} className="px-5 py-3 text-sm font-bold text-[#6b7280] bg-[#f1f5f9] cursor-pointer"
+          style={{ borderRadius: "14px", transition: "transform 200ms" }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+          <ArrowLeft className="h-4 w-4 inline mr-1" /> Back
+        </button>
+      )}
+      <button type="button" onClick={onNext}
+        className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-blue-600 cursor-pointer"
+        style={{ borderRadius: "14px", transition: "transform 200ms" }}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
+        Continue <ArrowRight className="h-4 w-4" />
+      </button>
     </div>
   );
 }
 
-function SectionTitle({ icon, title }: { readonly icon: ReactNode; readonly title: string }) {
-  return (
-    <h3
-      className="mb-5 flex items-center gap-2 text-[#0e0f0c]"
-      style={{ fontSize: "1.125rem", fontWeight: 800, fontFeatureSettings: '"calt"' }}
-    >
-      {icon}
-      {title}
-    </h3>
-  );
-}
-
-function InfoList({ label, values, icon }: { readonly label: string; readonly values: string[]; readonly icon?: ReactNode }) {
-  return (
-    <div className="p-5" style={{ borderRadius: "20px", background: "#f8fafc", boxShadow: RING }}>
-      <div className="mb-3 flex items-center gap-2">
-        {icon}
-        <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">{label}</h4>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {values.length > 0 ? values.map((v) => (
-          <span key={v} className="text-xs font-semibold text-[#0e0f0c] px-3 py-1.5 bg-white" style={{ borderRadius: "9999px", boxShadow: RING }}>
-            {v}
-          </span>
-        )) : (
-          <span className="text-sm text-[#6b7280]">Not listed</span>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function IndividualClassCard({ classItem, isSelected, onSelect }: { readonly classItem: IndividualClass; readonly isSelected: boolean; readonly onSelect: () => void }) {
-  const startingPrice = classItem.pricing.reduce((low, cur) => cur.amount < low.amount ? cur : low, classItem.pricing[0]);
-
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      className="w-full p-6 text-left cursor-pointer"
-      style={{
-        borderRadius: "20px",
-        boxShadow: isSelected ? "rgba(59,130,246,0.3) 0px 0px 0px 2px" : RING,
-        background: isSelected ? "rgba(59, 130, 246, 0.03)" : "#f8fafc",
-        transition: "all 200ms ease",
-      }}
-    >
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div className="space-y-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-cta px-3 py-1" style={{ borderRadius: "9999px", background: "rgba(59, 130, 246, 0.08)" }}>
-              Individual
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280] px-3 py-1 bg-white" style={{ borderRadius: "9999px", boxShadow: RING }}>
-              {classItem.subject}
-            </span>
-          </div>
-          <div>
-            <h4 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0e0f0c" }}>{classItem.title}</h4>
-            <p className="mt-1 text-sm text-[#6b7280] font-medium">{classItem.medium} &bull; {classItem.syllabus}</p>
-          </div>
-        </div>
-        <div className="px-4 py-3 text-right bg-white" style={{ borderRadius: "16px", boxShadow: RING }}>
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">From</p>
-          <p style={{ fontSize: "1.25rem", fontWeight: 900, color: "#0e0f0c", marginTop: "4px" }}>{startingPrice.currency} {startingPrice.amount}</p>
-          <p className="text-xs font-medium text-[#6b7280]">per session</p>
-        </div>
-      </div>
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <CardMeta label="Grades" value={classItem.grades.map(formatGradeLabel).join(", ")} />
-        <CardMeta label="Durations" value={classItem.pricing.map((p) => `${p.durationMinutes}m`).join(", ")} />
-      </div>
-      {classItem.availableWeeklySlots.length > 0 ? (
-        <div className="mt-5">
-          <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Weekly Slots</p>
-          <div className="flex flex-wrap gap-2">
-            {classItem.availableWeeklySlots.filter((s) => s.isAvailable).map((s) => (
-              <span key={s.slotId} className="text-[11px] font-semibold text-[#0e0f0c] px-3 py-1.5 bg-white" style={{ borderRadius: "12px", boxShadow: RING }}>
-                {formatDayLabel(s.day)} &bull; {formatTimeRange(s.startTime, s.endTime)}
-              </span>
-            ))}
-          </div>
-        </div>
-      ) : null}
-    </button>
-  );
-}
-
-function GroupClassCard({ classItem, isSelected, onSelect }: { readonly classItem: GroupClass; readonly isSelected: boolean; readonly onSelect: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      className="w-full p-6 text-left cursor-pointer"
-      style={{
-        borderRadius: "20px",
-        boxShadow: isSelected ? "rgba(59,130,246,0.3) 0px 0px 0px 2px" : RING,
-        background: isSelected ? "rgba(59, 130, 246, 0.03)" : "#f8fafc",
-        transition: "all 200ms ease",
-      }}
-    >
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div className="space-y-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-success px-3 py-1" style={{ borderRadius: "9999px", background: "rgba(5, 150, 105, 0.08)" }}>
-              Group
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280] px-3 py-1 bg-white" style={{ borderRadius: "9999px", boxShadow: RING }}>
-              {classItem.subject}
-            </span>
-          </div>
-          <div>
-            <h4 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0e0f0c" }}>{classItem.title}</h4>
-            <p className="mt-1 text-sm text-[#6b7280] font-medium">{classItem.medium} &bull; {classItem.syllabus} &bull; {classItem.status}</p>
-          </div>
-        </div>
-        <div className="px-4 py-3 text-right bg-white" style={{ borderRadius: "16px", boxShadow: RING }}>
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Monthly Fee</p>
-          <p style={{ fontSize: "1.25rem", fontWeight: 900, color: "#0e0f0c", marginTop: "4px" }}>{classItem.monthlyFee.currency} {classItem.monthlyFee.amount}</p>
-          <p className="text-xs font-medium text-[#6b7280]">{classItem.seatsLeft} seats left</p>
-        </div>
-      </div>
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <CardMeta label="Grades" value={classItem.grades.map(formatGradeLabel).join(", ")} />
-        <CardMeta label="Capacity" value={`${classItem.seatsLeft} left of ${classItem.seatCapacity}`} />
-      </div>
-      {classItem.fixedTimetable.length > 0 ? (
-        <div className="mt-5">
-          <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">Fixed Timetable</p>
-          <div className="grid gap-3 md:grid-cols-2">
-            {classItem.fixedTimetable.map((sch, idx) => (
-              <div key={`${classItem.classCode}-${sch.day}-${sch.startTime}-${idx}`} className="p-4 bg-white" style={{ borderRadius: "16px", boxShadow: RING }}>
-                <p className="text-sm font-bold text-[#0e0f0c]">{formatDayLabel(sch.day)}</p>
-                <p className="mt-1 text-xs font-medium text-[#6b7280]">{formatTimeRange(sch.startTime, sch.endTime)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : null}
-    </button>
-  );
-}
-
-function CardMeta({ label, value }: { readonly label: string; readonly value: string }) {
-  return (
-    <div className="p-4 bg-white" style={{ borderRadius: "16px", boxShadow: RING }}>
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">{label}</p>
-      <p className="mt-2 text-sm font-semibold text-[#0e0f0c]">{value}</p>
-    </div>
-  );
-}
-
-function Field({ label, htmlFor, input, hint }: { readonly label: string; readonly htmlFor: string; readonly input: ReactNode; readonly hint?: string }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="ml-1 text-xs font-semibold text-[#6b7280]" style={{ fontFeatureSettings: '"calt"' }}>
-        {label}
-      </label>
-      {input}
-      {hint ? <span className="ml-1 text-[10px] text-[#6b7280]">{hint}</span> : null}
-    </div>
-  );
-}
-
-function FormInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <input
-      {...props}
-      className="w-full px-4 py-3 text-sm font-semibold text-[#0e0f0c] bg-[#f8fafc] placeholder-[#9ca3af] focus:outline-none"
-      style={{
-        borderRadius: "12px",
-        boxShadow: RING,
-        transition: "box-shadow 200ms ease",
-        fontFeatureSettings: '"calt"',
-      }}
-      onFocus={(e) => { e.currentTarget.style.boxShadow = "rgba(59,130,246,0.4) 0px 0px 0px 2px"; props.onFocus?.(e); }}
-      onBlur={(e) => { e.currentTarget.style.boxShadow = RING; props.onBlur?.(e); }}
-    />
-  );
-}
-
-function Select({ id, value, onChange, options }: { readonly id: string; readonly value: string; readonly onChange: (e: ChangeEvent<HTMLSelectElement>) => void; readonly options: Array<{ value: string; label: string }> }) {
-  return (
-    <div className="relative">
-      <select
-        id={id}
-        value={value}
-        onChange={onChange}
-        className="w-full appearance-none px-4 py-3 pr-10 text-sm font-semibold text-[#0e0f0c] bg-[#f8fafc] cursor-pointer focus:outline-none"
-        style={{
-          borderRadius: "12px",
-          boxShadow: RING,
-          fontFeatureSettings: '"calt"',
-        }}
-        onFocus={(e) => { e.currentTarget.style.boxShadow = "rgba(59,130,246,0.4) 0px 0px 0px 2px"; }}
-        onBlur={(e) => { e.currentTarget.style.boxShadow = RING; }}
-      >
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>{o.label}</option>
-        ))}
-      </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-        <ChevronDown className="h-4 w-4 text-[#6b7280]" />
-      </div>
-    </div>
-  );
-}
-
-function SummaryItem({ label, value }: { readonly label: string; readonly value: string }) {
+function InputField({ icon, label, hint, error, ...props }: { readonly icon: ReactNode; readonly label: string; readonly hint?: string; readonly error?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div>
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280]">{label}</p>
-      <p className="mt-2 text-sm font-semibold text-[#0e0f0c]">{value}</p>
+      <label htmlFor={props.id} className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 block mb-2">{label}</label>
+      <div className="relative">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94a3b8]">{icon}</div>
+        <input {...props}
+          className="w-full pl-11 pr-4 py-3.5 text-sm font-semibold text-[#1f2937] bg-[#f8fafc] placeholder-[#94a3b8] focus:outline-none"
+          style={{ borderRadius: "14px", border: error ? "2px solid #ef4444" : "2px solid #e5e7eb", transition: "border-color 200ms" }}
+          onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; }}
+          onBlur={(e) => { e.currentTarget.style.borderColor = error ? "#ef4444" : "#e5e7eb"; }}
+        />
+      </div>
+      {error && <p id={`${props.id}-error`} className="text-red-500 text-xs font-semibold mt-1.5">{error}</p>}
+      {hint && !error && <p className="text-[10px] text-[#94a3b8] mt-1 ml-1">{hint}</p>}
+    </div>
+  );
+}
+
+function SummaryRow({ label, value }: { readonly label: string; readonly value: string }) {
+  return (
+    <div className="flex items-center justify-between gap-4">
+      <span className="text-white/40 font-medium">{label}</span>
+      <span className="text-white font-semibold text-right truncate">{value}</span>
+    </div>
+  );
+}
+
+function ChipGroup({ label, items, color }: { readonly label: string; readonly items: string[]; readonly color: string }) {
+  return (
+    <div>
+      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color }}>{label}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <span key={item} className="text-xs font-semibold text-[#1e3a8a] px-2.5 py-1 bg-blue-50" style={{ borderRadius: "8px" }}>
+            {item}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
