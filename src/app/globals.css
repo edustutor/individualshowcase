@@ -49,6 +49,16 @@
   100% { transform: translate(0px, 0px) scale(1); }
 }
 
+/* ── Reset: Firefox default margins — inside @layer base so utilities win ── */
+@layer base {
+  p, h1, h2, h3, h4, h5, h6,
+  ol, ul, dl, dd,
+  blockquote, figure, fieldset, pre {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 /* ── Base Styles ── */
 body {
   background: var(--background);
