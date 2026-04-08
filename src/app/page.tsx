@@ -4,9 +4,9 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white relative overflow-hidden" style={{ fontFeatureSettings: '"calt"' }}>
       {/* Main Content */}
-      <main className="flex-grow flex flex-col items-center justify-center p-6 sm:p-12 z-10 w-full max-w-7xl mx-auto">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 py-6 sm:p-12 z-10 w-full max-w-7xl mx-auto">
 
-        <div className="flex flex-col items-center text-center max-w-4xl mb-16 mt-12 md:mt-20">
+        <div className="flex flex-col items-center text-center max-w-4xl mb-10 sm:mb-16 mt-8 md:mt-20">
           {/* Badge — pill style */}
           <div
             className="inline-flex items-center px-4 py-2 mb-8 text-sm font-semibold text-cta-text"
@@ -25,9 +25,9 @@ export default function Home() {
           <h1
             className="text-[#0e0f0c] mb-6"
             style={{
-              fontSize: "clamp(3rem, 8vw, 5.5rem)",
+              fontSize: "clamp(2.25rem, 8vw, 5.5rem)",
               fontWeight: 900,
-              lineHeight: 0.9,
+              lineHeight: 0.95,
               letterSpacing: "-0.02em",
               fontFeatureSettings: '"calt"',
             }}
@@ -53,12 +53,12 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full mb-16 px-2 sm:px-0">
+        <div className="w-full mb-10 sm:mb-16 px-0 sm:px-0">
           <FilterForm />
         </div>
 
         {/* Trust indicators */}
-        <div className="flex flex-wrap justify-center gap-8 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-12">
           {[
             { label: "Verified Tutors", icon: "shield" },
             { label: "All Syllabuses", icon: "book" },

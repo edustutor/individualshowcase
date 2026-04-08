@@ -33,19 +33,19 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-white" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontFeatureSettings: '"calt"' }}>
         <header className="w-full z-50 sticky top-0">
           <div className="bg-white" style={{ boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
-            <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3 cursor-pointer group">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[60px] sm:h-[72px] flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-3 cursor-pointer group flex-shrink-0">
                 <Image
                   src="/EDUSLogo .jpg"
                   alt="EDUS Logo"
                   width={130}
                   height={42}
-                  className="object-contain h-10 w-auto transition-transform duration-200 group-hover:scale-105 group-active:scale-95"
+                  className="object-contain h-8 sm:h-10 w-auto transition-transform duration-200 group-hover:scale-105 group-active:scale-95"
                   priority
                 />
               </Link>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <a
                   href="tel:+94707072072"
                   className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-[#0e0f0c] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
@@ -59,7 +59,7 @@ export default function RootLayout({
 
                 <Link
                   href="/"
-                  className="bg-cta text-cta-text px-5 py-2.5 font-bold text-[15px] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                  className="bg-cta text-cta-text px-4 py-2 sm:px-5 sm:py-2.5 font-bold text-sm sm:text-[15px] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                   style={{ borderRadius: "9999px", fontFeatureSettings: '"calt"' }}
                 >
                   Find a Tutor

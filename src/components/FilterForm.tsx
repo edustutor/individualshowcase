@@ -226,7 +226,7 @@ export default function FilterForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white p-6 md:p-10 w-full max-w-[70rem] mx-auto"
+      className="bg-white p-4 sm:p-6 md:p-10 w-full max-w-[70rem] mx-auto"
       style={{
         borderRadius: "30px",
         boxShadow:
@@ -345,9 +345,9 @@ export default function FilterForm() {
         <div className="flex justify-center mt-2">
           <button
             type="submit"
-            className="flex items-center gap-2.5 bg-cta text-cta-text font-bold text-lg cursor-pointer"
+            className="flex items-center gap-2.5 bg-cta text-cta-text font-bold text-base sm:text-lg cursor-pointer w-full sm:w-auto justify-center"
             style={{
-              padding: "14px 32px",
+              padding: "14px 24px",
               borderRadius: "9999px",
               fontFeatureSettings: '"calt"',
               transition: "transform 200ms ease",

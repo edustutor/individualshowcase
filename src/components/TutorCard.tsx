@@ -36,7 +36,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
         {/* Top accent */}
         <div className="h-1 w-full bg-cta" />
 
-        <div className="p-7 flex flex-col items-center relative z-10">
+        <div className="p-5 sm:p-7 flex flex-col items-center relative z-10">
           {/* Rating badge */}
           <div
             className="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold"
@@ -53,7 +53,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
 
           {/* Avatar */}
           <div
-            className="w-24 h-24 overflow-hidden mb-5 relative"
+            className="w-20 h-20 sm:w-24 sm:h-24 overflow-hidden mb-5 relative"
             style={{
               borderRadius: "9999px",
               boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 3px",
@@ -95,7 +95,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
           </p>
         </div>
 
-        <div className="px-7 pb-7 flex-grow flex flex-col justify-end gap-4">
+        <div className="px-5 pb-5 sm:px-7 sm:pb-7 flex-grow flex flex-col justify-end gap-4">
           {/* Subjects */}
           <div
             className="p-4"

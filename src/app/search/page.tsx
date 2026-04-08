@@ -121,7 +121,7 @@ function SearchContent() {
           <h1
             className="text-[#0e0f0c]"
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
               fontWeight: 900,
               lineHeight: 0.9,
               letterSpacing: "-0.02em",
@@ -193,7 +193,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen bg-white relative pt-8 pb-12 px-6 sm:px-12 lg:px-24">
+    <main className="min-h-screen bg-white relative pt-6 sm:pt-8 pb-12 px-4 sm:px-12 lg:px-24">
       <Suspense fallback={<div className="flex justify-center py-40"><Loader2 className="w-12 h-12 animate-spin text-cta" /></div>}>
         <SearchContent />
       </Suspense>

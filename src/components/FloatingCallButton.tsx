@@ -7,7 +7,7 @@ export default function FloatingCallButton() {
     <a
       href="tel:+94707072072"
       aria-label="Call EDUS now"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-cta text-cta-text pl-5 pr-6 py-3.5 cursor-pointer group md:bottom-8 md:right-8"
+      className="fixed bottom-4 right-4 z-50 flex items-center gap-2 sm:gap-2.5 bg-cta text-cta-text pl-4 pr-4 sm:pl-5 sm:pr-6 py-3 sm:py-3.5 cursor-pointer group md:bottom-8 md:right-8"
       style={{
         borderRadius: "9999px",
         transition: "transform 200ms ease",

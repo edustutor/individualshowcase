@@ -267,21 +267,21 @@ export default function TutorProfile() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] pb-24" style={{ fontFeatureSettings: '"calt"' }}>
+    <main className="min-h-screen bg-[#f8fafc] pb-16 sm:pb-24" style={{ fontFeatureSettings: '"calt"' }}>
 
       {/* ═══════ HERO ═══════ */}
       <div style={{ background: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%)" }}>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-6 pb-28">
-          <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-sm font-bold text-white/80 cursor-pointer mb-8 hover:text-white transition-colors">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-4 sm:pt-6 pb-20 sm:pb-28">
+          <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-sm font-bold text-white/80 cursor-pointer mb-5 sm:mb-8 hover:text-white transition-colors">
             <ArrowLeft className="h-4 w-4" /> Back
           </button>
 
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 overflow-hidden" style={{ borderRadius: "20px", border: "3px solid rgba(255,255,255,0.2)" }}>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
+            <div className="relative w-24 h-24 sm:w-36 sm:h-36 flex-shrink-0 overflow-hidden" style={{ borderRadius: "20px", border: "3px solid rgba(255,255,255,0.2)" }}>
               <Image src={tutor.profile.avatarUrl || `https://i.pravatar.cc/150?u=${tutor.profile.fullName}`} alt={tutor.profile.fullName} fill className="object-cover" />
             </div>
 
-            <div className="text-center sm:text-left flex-1">
+            <div className="text-center sm:text-left flex-1 min-w-0">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 mb-2">
                 <h1 className="text-white" style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", fontWeight: 900, lineHeight: 1 }}>
                   {tutor.profile.fullName}
@@ -294,7 +294,7 @@ export default function TutorProfile() {
               </div>
               <p className="text-white/70 text-base font-semibold mb-4">{tutor.profile.headline || "EDUS Certified Tutor"}</p>
 
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-white/90 text-sm">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2 text-white/90 text-xs sm:text-sm">
                 <div className="flex items-center gap-1.5">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   <span className="font-bold">{tutor.profile.rating || "5.0"}</span>
@@ -316,14 +316,14 @@ export default function TutorProfile() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 -mt-16 relative z-10 space-y-6">
+      <div className="mx-auto max-w-4xl px-3 sm:px-6 -mt-12 sm:-mt-16 relative z-10 space-y-4 sm:space-y-6">
 
         {/* ═══════ 1. ABOUT ═══════ */}
         {(tutor.profile.about || (tutor.profile.qualifications?.length ?? 0) > 0 || (tutor.profile.teachingStyle?.length ?? 0) > 0) && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-            className="bg-white p-6 sm:p-8" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+            className="bg-white p-4 sm:p-6 md:p-8" style={{ borderRadius: "20px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
 
-            <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-5" style={{ fontSize: "1.125rem" }}>
+            <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-4 sm:mb-5 text-base sm:text-lg">
               <BookOpen className="h-5 w-5" /> About {tutor.profile.fullName}
             </h3>
 
@@ -382,9 +382,9 @@ export default function TutorProfile() {
         {/* ═══════ 2. DEMO VIDEOS (open by default) ═══════ */}
         {videos.length > 0 && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="bg-white overflow-hidden" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
-            <div className="p-6 sm:p-8">
-              <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-5" style={{ fontSize: "1.125rem" }}>
+            className="bg-white overflow-hidden" style={{ borderRadius: "20px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+            <div className="p-4 sm:p-6 md:p-8">
+              <h3 className="flex items-center gap-2 font-bold text-blue-700 mb-4 sm:mb-5 text-base sm:text-lg">
                 <PlayCircle className="h-5 w-5" /> Demo Videos
                 <span className="text-xs font-bold text-[#94a3b8] ml-1">({videos.length})</span>
               </h3>
@@ -427,18 +427,18 @@ export default function TutorProfile() {
         {/* ═══════ 3. BOOKING WIZARD ═══════ */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
           id="booking"
-          className="bg-white overflow-hidden" style={{ borderRadius: "24px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+          className="bg-white overflow-hidden" style={{ borderRadius: "20px", boxShadow: "0 20px 60px rgba(14,15,12,0.08), rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
 
           {bookingSuccess ? (
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-12 flex flex-col items-center text-center">
-              <div className="w-20 h-20 flex items-center justify-center mb-6" style={{ borderRadius: "9999px", background: "rgba(5,150,105,0.1)" }}>
-                <CheckCircle className="h-10 w-10 text-emerald-600" />
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-6 sm:p-12 flex flex-col items-center text-center">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mb-5 sm:mb-6" style={{ borderRadius: "9999px", background: "rgba(5,150,105,0.1)" }}>
+                <CheckCircle className="h-8 w-8 sm:h-10 sm:w-10 text-emerald-600" />
               </div>
-              <h2 className="text-blue-700" style={{ fontSize: "2rem", fontWeight: 900, lineHeight: 1 }}>You&apos;re all set!</h2>
-              <p className="mt-3 text-[#6b7280] max-w-md" style={{ fontSize: "1rem", fontWeight: 500, lineHeight: 1.6 }}>
+              <h2 className="text-blue-700" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)", fontWeight: 900, lineHeight: 1 }}>You&apos;re all set!</h2>
+              <p className="mt-3 text-[#6b7280] max-w-md text-sm sm:text-base" style={{ fontWeight: 500, lineHeight: 1.6 }}>
                 Thank you, <strong className="text-[#1f2937]">{bookingForm.studentName}</strong>. Your booking for <strong className="text-[#1f2937]">{selectedClasses.length} class{selectedClasses.length > 1 ? "es" : ""}</strong> with <strong className="text-[#1f2937]">{tutor.profile.fullName}</strong> has been submitted.
               </p>
-              <div className="flex gap-3 mt-8">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 sm:mt-8 w-full sm:w-auto">
                 <button onClick={() => router.push("/")} className="px-6 py-3 text-sm font-bold text-[#374151] bg-[#f1f5f9] cursor-pointer" style={{ borderRadius: "9999px", transition: "transform 200ms" }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
                   Back to Home
@@ -453,8 +453,8 @@ export default function TutorProfile() {
           ) : (
             <>
               {/* Step indicator */}
-              <div className="px-6 sm:px-10 pt-8 pb-2">
-                <h3 className="font-bold text-blue-700 mb-4" style={{ fontSize: "1.125rem" }}>Book a Class</h3>
+              <div className="px-4 sm:px-10 pt-6 sm:pt-8 pb-2">
+                <h3 className="font-bold text-blue-700 mb-3 sm:mb-4 text-base sm:text-lg">Book a Class</h3>
                 <div className="flex items-center justify-between mb-2">
                   {STEPS.map((label, idx) => (
                     <div key={label} className="flex items-center flex-1 last:flex-none">
@@ -477,7 +477,7 @@ export default function TutorProfile() {
                 </div>
               </div>
 
-              <div className="px-6 sm:px-10 pb-8">
+              <div className="px-4 sm:px-10 pb-6 sm:pb-8">
                 <AnimatePresence mode="wait">
                   {/* ─── STEP 0: Choose Classes (multi-select) ─── */}
                   {currentStep === 0 && (
@@ -496,7 +496,7 @@ export default function TutorProfile() {
 
                           return (
                             <button key={c.classCode} type="button" onClick={() => toggleClass(c.classCode)}
-                              className="w-full text-left cursor-pointer p-5" style={{
+                              className="w-full text-left cursor-pointer p-3.5 sm:p-5" style={{
                                 borderRadius: "16px",
                                 border: isChecked ? "2px solid #2563eb" : "2px solid #e5e7eb",
                                 background: isChecked ? "rgba(37,99,235,0.04)" : "#fff",
@@ -563,7 +563,7 @@ export default function TutorProfile() {
                           const grpCls = cls.classType === "GROUP" ? cls as GroupClass : null;
 
                           return (
-                            <div key={cls.classCode} className="p-5" style={{ borderRadius: "16px", border: "1px solid #e5e7eb", background: "#fafbfc" }}>
+                            <div key={cls.classCode} className="p-3.5 sm:p-5" style={{ borderRadius: "16px", border: "1px solid #e5e7eb", background: "#fafbfc" }}>
                               <div className="flex items-center gap-2 mb-4">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-0.5" style={{
                                   borderRadius: "6px",
@@ -720,7 +720,7 @@ export default function TutorProfile() {
                     <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
                       <form onSubmit={handleBookingSubmit}>
                         {/* Summary */}
-                        <div className="p-5 mb-5" style={{ borderRadius: "16px", background: "#0f172a", color: "#fff" }}>
+                        <div className="p-4 sm:p-5 mb-4 sm:mb-5" style={{ borderRadius: "16px", background: "#0f172a", color: "#fff" }}>
                           <div className="flex items-center justify-between mb-4 pb-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
                             <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/50">Booking Summary</span>
                             <span className="text-xs font-bold px-2.5 py-1 text-white/80" style={{ borderRadius: "9999px", background: "rgba(255,255,255,0.1)" }}>{selectedClasses.length} class{selectedClasses.length > 1 ? "es" : ""}</span>
@@ -815,7 +815,7 @@ export default function TutorProfile() {
                         </div>
 
                         <label className="flex items-start gap-3 p-4 cursor-pointer mb-5" style={{ borderRadius: "14px", background: "#eff6ff", border: "1px solid #bfdbfe" }}>
-                          <input type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 h-4 w-4 accent-blue-600 cursor-pointer" />
+                          <input type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 h-5 w-5 accent-blue-600 cursor-pointer flex-shrink-0" />
                           <span className="text-xs text-blue-900 font-medium leading-relaxed">I have read and agree to the Academic & Online Learning Standards above, and I understand that an EDUS coordinator will contact me to confirm enrolment.</span>
                         </label>
 
@@ -850,16 +850,16 @@ export default function TutorProfile() {
 
 function StepNav({ onNext, onBack }: { readonly onNext: () => void; readonly onBack?: () => void }) {
   return (
-    <div className="flex gap-3 mt-8">
+    <div className="flex gap-2 sm:gap-3 mt-6 sm:mt-8">
       {onBack && (
-        <button type="button" onClick={onBack} className="px-5 py-3 text-sm font-bold text-[#6b7280] bg-[#f1f5f9] cursor-pointer"
+        <button type="button" onClick={onBack} className="px-4 sm:px-5 py-3 sm:py-3.5 text-sm font-bold text-[#6b7280] bg-[#f1f5f9] cursor-pointer"
           style={{ borderRadius: "14px", transition: "transform 200ms" }}
           onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
           <ArrowLeft className="h-4 w-4 inline mr-1" /> Back
         </button>
       )}
       <button type="button" onClick={onNext}
-        className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-blue-600 cursor-pointer"
+        className="flex-1 flex items-center justify-center gap-2 py-3 sm:py-3.5 text-sm font-bold text-white bg-blue-600 cursor-pointer"
         style={{ borderRadius: "14px", transition: "transform 200ms" }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
         onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
@@ -874,9 +874,9 @@ function InputField({ icon, label, hint, error, ...props }: { readonly icon: Rea
     <div>
       <label htmlFor={props.id} className="text-[11px] font-bold uppercase tracking-[0.15em] text-blue-700 block mb-2">{label}</label>
       <div className="relative">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94a3b8]">{icon}</div>
+        <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-[#94a3b8]">{icon}</div>
         <input {...props}
-          className="w-full pl-11 pr-4 py-3.5 text-sm font-semibold text-[#1f2937] bg-[#f8fafc] placeholder-[#94a3b8] focus:outline-none"
+          className="w-full pl-9 sm:pl-11 pr-3 sm:pr-4 py-3 sm:py-3.5 text-sm font-semibold text-[#1f2937] bg-[#f8fafc] placeholder-[#94a3b8] focus:outline-none"
           style={{ borderRadius: "14px", border: error ? "2px solid #ef4444" : "2px solid #e5e7eb", transition: "border-color 200ms" }}
           onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; }}
           onBlur={(e) => { e.currentTarget.style.borderColor = error ? "#ef4444" : "#e5e7eb"; }}
