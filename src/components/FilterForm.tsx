@@ -39,106 +39,74 @@ export default function FilterForm() {
   const allSyllabuses = Array.from(new Set(allClasses.map((classItem) => classItem.syllabus))).sort((a, b) => a.localeCompare(b));
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white/80 backdrop-blur-xl border border-gray-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-3xl p-6 md:p-10 w-full max-w-[70rem] mx-auto"
+      transition={{ duration: 0.5 }}
+      className="bg-white p-6 md:p-10 w-full max-w-[70rem] mx-auto"
+      style={{
+        borderRadius: "30px",
+        boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+      }}
     >
       <form onSubmit={handleSearch} className="flex flex-col gap-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="grade" className="text-sm font-semibold text-slate-700 ml-1">Grade</label>
-            <div className="relative">
-              <select
-                id="grade"
-                name="grade"
-                value={formData.grade}
-                onChange={handleChange}
-                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { id: "grade", label: "Grade", placeholder: "Any Grade", options: allGrades.map(g => ({ value: g, label: formatGradeLabel(g) })) },
+            { id: "subject", label: "Subject", placeholder: "Any Subject", options: allSubjects.map(s => ({ value: s, label: s })) },
+            { id: "medium", label: "Medium", placeholder: "Any Medium", options: allMediums.map(m => ({ value: m, label: m })) },
+            { id: "syllabus", label: "Syllabus", placeholder: "Any Syllabus", options: allSyllabuses.map(s => ({ value: s, label: s })) },
+          ].map((field) => (
+            <div key={field.id} className="flex flex-col gap-2">
+              <label
+                htmlFor={field.id}
+                className="text-xs font-bold uppercase tracking-[0.15em] text-[#6b7280] ml-1"
+                style={{ fontFeatureSettings: '"calt"' }}
               >
-                <option value="">Any Grade</option>
-                {allGrades.map(g => (
-                  <option key={g} value={g}>{formatGradeLabel(g)}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <ChevronDown className="h-5 w-5 text-slate-400" />
+                {field.label}
+              </label>
+              <div className="relative">
+                <select
+                  id={field.id}
+                  name={field.id}
+                  value={formData[field.id as keyof typeof formData]}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3.5 pr-10 bg-[#f8fafc] text-[#0e0f0c] font-semibold text-[15px] cursor-pointer appearance-none transition-all focus:outline-none"
+                  style={{
+                    borderRadius: "16px",
+                    boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                    fontFeatureSettings: '"calt"',
+                  }}
+                >
+                  <option value="">{field.placeholder}</option>
+                  {field.options.map(o => (
+                    <option key={o.value} value={o.value}>{o.label}</option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                  <ChevronDown className="h-5 w-5 text-[#6b7280]" />
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="subject" className="text-sm font-semibold text-slate-700 ml-1">Subject</label>
-            <div className="relative">
-              <select
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
-              >
-                <option value="">Any Subject</option>
-                {allSubjects.map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <ChevronDown className="h-5 w-5 text-slate-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="medium" className="text-sm font-semibold text-slate-700 ml-1">Medium</label>
-            <div className="relative">
-              <select
-                id="medium"
-                name="medium"
-                value={formData.medium}
-                onChange={handleChange}
-                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
-              >
-                <option value="">Any Medium</option>
-                {allMediums.map(m => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <ChevronDown className="h-5 w-5 text-slate-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="syllabus" className="text-sm font-semibold text-slate-700 ml-1">Syllabus</label>
-            <div className="relative">
-              <select
-                id="syllabus"
-                name="syllabus"
-                value={formData.syllabus}
-                onChange={handleChange}
-                className="w-full px-4 py-3.5 pr-10 rounded-2xl bg-slate-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all hover:bg-white text-slate-800 cursor-pointer shadow-sm appearance-none"
-              >
-                <option value="">Any Syllabus</option>
-                {allSyllabuses.map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <ChevronDown className="h-5 w-5 text-slate-400" />
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
 
         <div className="flex justify-center mt-2">
           <button
             type="submit"
-            className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-10 py-4 xl:py-4.5 rounded-full font-bold text-lg shadow-[0_4px_14px_0_rgba(4,60,252,0.39)] hover:shadow-[0_6px_20px_rgba(4,60,252,0.23)] hover:-translate-y-0.5 transition-all duration-300"
+            className="flex items-center gap-2.5 bg-cta text-cta-text font-bold text-lg cursor-pointer"
+            style={{
+              padding: "14px 32px",
+              borderRadius: "9999px",
+              fontFeatureSettings: '"calt"',
+              transition: "transform 200ms ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
+            onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
           >
-            <Search className="w-5 h-5 pr-0.5" />
+            <Search className="w-5 h-5" />
             Find Tutors
           </button>
         </div>
