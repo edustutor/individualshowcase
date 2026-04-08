@@ -793,18 +793,30 @@ export default function TutorProfile() {
                         </div>
 
                         {/* Class rules */}
-                        <div className="mb-4 p-4" style={{ borderRadius: "14px", background: "#fffbeb", border: "1px solid #fef08a" }}>
-                          <p className="text-xs font-bold text-amber-700 uppercase tracking-[0.1em] mb-2">Class Rules</p>
-                          <ol className="space-y-1 text-xs text-amber-900" style={{ fontWeight: 500, lineHeight: 1.5 }}>
-                            {["Device & internet must be ready.", "Missing 3+ classes may lead to removal.", "Active participation required.", "Raise doubts during class.", "Complete assignments on time."].map((r, i) => (
-                              <li key={r} className="flex items-start gap-2"><span className="font-black text-amber-700">{i + 1}.</span>{r}</li>
+                        <div className="mb-4 p-5" style={{ borderRadius: "14px", background: "#fffbeb", border: "1px solid #fef08a" }}>
+                          <p className="text-xs font-bold text-amber-700 uppercase tracking-[0.1em] mb-3">Academic & Online Learning Standards</p>
+                          <p className="text-xs text-amber-900 mb-4" style={{ fontWeight: 500, lineHeight: 1.6 }}>
+                            Please read carefully and accept to continue to join our classes. We need this acceptance to maintain our Academic and Online Learning Standards. Your understanding in this is highly appreciated.
+                          </p>
+                          <ol className="space-y-2.5 text-xs text-amber-900" style={{ fontWeight: 500, lineHeight: 1.6 }}>
+                            {[
+                              "Your Internet Connection and device has to be fit for Online learning.",
+                              "Your attendance to class will be strictly monitored. Failure to attend more than 3 consecutive classes will be resulting in dropout from classes.",
+                              "Student must answer and respond to questions from tutor while learning. You\u2019ll be removed from class if not responding.",
+                              "You have to ask and discuss all your subject related doubts during the class.",
+                              "Students are requested to complete all required academic works by the tutor on time without fail.",
+                            ].map((r, i) => (
+                              <li key={i} className="flex items-start gap-2.5"><span className="font-black text-amber-700 flex-shrink-0">{i + 1}.</span>{r}</li>
                             ))}
                           </ol>
+                          <p className="text-xs text-amber-800 mt-4 pt-3" style={{ fontWeight: 600, lineHeight: 1.6, borderTop: "1px solid #fde68a" }}>
+                            Our coordinator will help you all the ways possible for you to peacefully study to achieve excellence in your learning at EDUS.
+                          </p>
                         </div>
 
                         <label className="flex items-start gap-3 p-4 cursor-pointer mb-5" style={{ borderRadius: "14px", background: "#eff6ff", border: "1px solid #bfdbfe" }}>
                           <input type="checkbox" checked={agreeRules} onChange={(e) => setAgreeRules(e.target.checked)} className="mt-0.5 h-4 w-4 accent-blue-600 cursor-pointer" />
-                          <span className="text-xs text-blue-900 font-medium leading-relaxed">I agree to the class rules and understand that EDUS may contact me to confirm.</span>
+                          <span className="text-xs text-blue-900 font-medium leading-relaxed">I have read and agree to the Academic & Online Learning Standards above, and I understand that an EDUS coordinator will contact me to confirm enrolment.</span>
                         </label>
 
                         <div className="flex gap-3">
