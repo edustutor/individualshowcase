@@ -63,6 +63,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
               src={tutor.profile.avatarUrl || `https://i.pravatar.cc/150?u=${tutorName}`}
               alt={tutorName}
               fill
+              sizes="(max-width: 640px) 80px, 96px"
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>

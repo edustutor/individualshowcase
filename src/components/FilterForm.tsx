@@ -19,8 +19,8 @@ function getAllClassRecords(): ClassRecord[] {
   const records: ClassRecord[] = [];
   for (const t of tutors) {
     const all: Array<IndividualClass | GroupClass> = [
-      ...t.individualClasses,
-      ...t.groupClasses,
+      ...(t.individualClasses || []),
+      ...(t.groupClasses || []),
     ];
     for (const cls of all) {
       records.push({
@@ -126,7 +126,6 @@ export default function FilterForm() {
         return true;
       });
     }).length;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -12,7 +12,97 @@ import type {
 
 const tutorDirectory = tutorDirectoryData as TutorDirectory;
 
-export const tutors: Tutor[] = tutorDirectory.tutors;
+const FALLBACK_AVATAR_BASE_URL = "https://i.pravatar.cc";
+const BROKEN_CDN_HOSTS = new Set(["cdn.edus.lk"]);
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function normalizeGrades(grades: string[] | string | undefined): string[] {
+  if (Array.isArray(grades)) {
+    return grades;
+  }
+  return grades ? [grades] : [];
+}
+
+function normalizeIndividualClass(classItem: IndividualClass): IndividualClass {
+  const runtimeClass = classItem as IndividualClass & { grades?: string[] | string };
+
+  return {
+    ...classItem,
+    grades: normalizeGrades(runtimeClass.grades),
+  };
+}
+
+function normalizeGroupClass(classItem: GroupClass): GroupClass {
+  const runtimeClass = classItem as GroupClass & { grades?: string[] | string };
+
+  return {
+    ...classItem,
+    grades: normalizeGrades(runtimeClass.grades),
+  };
+}
+
+function isBrokenRemoteUrl(url: string | undefined): boolean {
+  if (!url) {
+    return false;
+  }
+
+  try {
+    return BROKEN_CDN_HOSTS.has(new URL(url).hostname);
+  } catch {
+    return true;
+  }
+}
+
+function getFallbackAvatarUrl(tutor: Pick<Tutor, "tutorId" | "profile">): string {
+  const fallbackId = tutor.tutorId || tutor.profile.fullName || "edus-tutor";
+  return `${FALLBACK_AVATAR_BASE_URL}/300?u=${encodeURIComponent(fallbackId)}`;
+}
+
+function isIndividualClass(classItem: unknown): classItem is IndividualClass {
+  return (
+    isRecord(classItem) &&
+    classItem.classType === "INDIVIDUAL" &&
+    typeof classItem.classCode === "string" &&
+    typeof classItem.subject === "string" &&
+    Array.isArray(classItem.pricing)
+  );
+}
+
+function isGroupClass(classItem: unknown): classItem is GroupClass {
+  return (
+    isRecord(classItem) &&
+    classItem.classType === "GROUP" &&
+    typeof classItem.classCode === "string" &&
+    typeof classItem.subject === "string" &&
+    isRecord(classItem.monthlyFee) &&
+    typeof classItem.monthlyFee.amount === "number"
+  );
+}
+
+function normalizeTutor(tutor: Tutor): Tutor {
+  const avatarUrl = isBrokenRemoteUrl(tutor.profile.avatarUrl)
+    ? getFallbackAvatarUrl(tutor)
+    : tutor.profile.avatarUrl;
+
+  return {
+    ...tutor,
+    profile: {
+      ...tutor.profile,
+      avatarUrl,
+    },
+    individualClasses: (tutor.individualClasses || [])
+      .filter(isIndividualClass)
+      .map(normalizeIndividualClass),
+    groupClasses: (tutor.groupClasses || [])
+      .filter(isGroupClass)
+      .map(normalizeGroupClass),
+  };
+}
+
+export const tutors: Tutor[] = (tutorDirectory.tutors || []).map(normalizeTutor);
 
 export const DAY_LABELS: Record<string, string> = {
   MON: "Monday",
