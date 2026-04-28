@@ -260,6 +260,7 @@ export default function TutorProfile() {
                   src={avatarSrc}
                   alt={tutor.profile.fullName}
                   fill
+                  sizes="(max-width: 640px) 100px, 120px"
                   className="object-cover"
                   onError={() => setAvatarError(true)}
                 />
