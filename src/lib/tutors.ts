@@ -6,11 +6,10 @@ import type {
   SearchClassType,
   Tutor,
   TutorClassType,
-  TutorDirectory,
   TutorProfile,
 } from "@/types/tutor";
 
-const tutorDirectory = tutorDirectoryData as TutorDirectory;
+const tutorDirectory = tutorDirectoryData as { tutors?: unknown[] };
 
 const FALLBACK_AVATAR_BASE_URL = "https://i.pravatar.cc";
 const BROKEN_CDN_HOSTS = new Set(["cdn.edus.lk"]);
@@ -26,6 +25,13 @@ function normalizeGrades(grades: string[] | string | undefined): string[] {
   return grades ? [grades] : [];
 }
 
+function normalizeStringList(value: string[] | string | undefined): string[] {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  return value ? [value] : [];
+}
+
 function normalizeIndividualClass(classItem: IndividualClass): IndividualClass {
   const runtimeClass = classItem as IndividualClass & { grades?: string[] | string };
 
@@ -35,12 +41,24 @@ function normalizeIndividualClass(classItem: IndividualClass): IndividualClass {
   };
 }
 
-function normalizeGroupClass(classItem: GroupClass): GroupClass {
-  const runtimeClass = classItem as GroupClass & { grades?: string[] | string };
+function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
+  const runtimeClass = classItem as Partial<GroupClass> & { grades?: string[] | string };
+  const profileSubjects = normalizeStringList(
+    (tutor.profile as TutorProfile & { subjects?: string[] | string }).subjects
+  );
+  const profileMediums = normalizeStringList(
+    (tutor.profile as TutorProfile & { mediums?: string[] | string }).mediums
+  );
+  const subject = runtimeClass.subject || profileSubjects[0] || "General";
+  const medium = runtimeClass.medium || profileMediums[0] || "Tamil";
 
   return {
     ...classItem,
+    title: runtimeClass.title || `${subject} (${medium} Medium)`,
+    subject,
     grades: normalizeGrades(runtimeClass.grades),
+    medium,
+    syllabus: runtimeClass.syllabus || "National",
   };
 }
 
@@ -61,6 +79,38 @@ function getFallbackAvatarUrl(tutor: Pick<Tutor, "tutorId" | "profile">): string
   return `${FALLBACK_AVATAR_BASE_URL}/300?u=${encodeURIComponent(fallbackId)}`;
 }
 
+function isTutorRecord(value: unknown): value is Tutor {
+  return (
+    isRecord(value) &&
+    typeof value.tutorId === "string" &&
+    isRecord(value.profile)
+  );
+}
+
+function collectTutorRecords(value: unknown): Tutor[] {
+  const records: Tutor[] = [];
+
+  function visit(node: unknown) {
+    if (Array.isArray(node)) {
+      node.forEach(visit);
+      return;
+    }
+
+    if (!isRecord(node)) {
+      return;
+    }
+
+    if (isTutorRecord(node)) {
+      records.push(node);
+    }
+
+    Object.values(node).forEach(visit);
+  }
+
+  visit(value);
+  return records;
+}
+
 function isIndividualClass(classItem: unknown): classItem is IndividualClass {
   return (
     isRecord(classItem) &&
@@ -76,33 +126,64 @@ function isGroupClass(classItem: unknown): classItem is GroupClass {
     isRecord(classItem) &&
     classItem.classType === "GROUP" &&
     typeof classItem.classCode === "string" &&
-    typeof classItem.subject === "string" &&
     isRecord(classItem.monthlyFee) &&
     typeof classItem.monthlyFee.amount === "number"
   );
 }
 
 function normalizeTutor(tutor: Tutor): Tutor {
-  const avatarUrl = isBrokenRemoteUrl(tutor.profile.avatarUrl)
+  const runtimeTutor = tutor as Tutor & {
+    individualClasses?: unknown[];
+    groupClasses?: unknown[];
+    syllabusSupported?: string[] | string;
+    teachingStyle?: string[] | string;
+  };
+  const runtimeProfile = tutor.profile as TutorProfile & {
+    languages?: string[] | string;
+    mediums?: string[] | string;
+    subjects?: string[] | string;
+    syllabusSupported?: string[] | string;
+    teachingStyle?: string[] | string;
+  };
+  const avatarUrl = isBrokenRemoteUrl(runtimeProfile.avatarUrl)
     ? getFallbackAvatarUrl(tutor)
-    : tutor.profile.avatarUrl;
+    : runtimeProfile.avatarUrl;
 
   return {
     ...tutor,
     profile: {
       ...tutor.profile,
       avatarUrl,
+      demoVideos: Array.isArray(runtimeProfile.demoVideos)
+        ? runtimeProfile.demoVideos
+        : [],
+      languages: normalizeStringList(runtimeProfile.languages),
+      mediums: normalizeStringList(runtimeProfile.mediums),
+      subjects: normalizeStringList(runtimeProfile.subjects),
+      syllabusSupported: normalizeStringList(
+        runtimeProfile.syllabusSupported ?? runtimeTutor.syllabusSupported
+      ),
+      teachingStyle: normalizeStringList(
+        runtimeProfile.teachingStyle ?? runtimeTutor.teachingStyle
+      ),
     },
-    individualClasses: (tutor.individualClasses || [])
+    individualClasses: (runtimeTutor.individualClasses || [])
       .filter(isIndividualClass)
       .map(normalizeIndividualClass),
-    groupClasses: (tutor.groupClasses || [])
+    groupClasses: (runtimeTutor.groupClasses || [])
       .filter(isGroupClass)
-      .map(normalizeGroupClass),
+      .map((classItem) => normalizeGroupClass(classItem, tutor)),
   };
 }
 
-export const tutors: Tutor[] = (tutorDirectory.tutors || []).map(normalizeTutor);
+export const tutors: Tutor[] = Array.from(
+  new Map(
+    collectTutorRecords(tutorDirectory.tutors).map((tutor) => [
+      tutor.tutorId,
+      normalizeTutor(tutor),
+    ])
+  ).values()
+);
 
 export const DAY_LABELS: Record<string, string> = {
   MON: "Monday",
@@ -218,6 +299,13 @@ export function tutorMatchesFilters(
     classType?: string | null;
   }
 ): boolean {
+  const hasAnyFilter = Boolean(
+    filters.grade || filters.subject || filters.medium || filters.syllabus || filters.classType
+  );
+  if (!hasAnyFilter) {
+    return true;
+  }
+
   const normalizedClassType = filters.classType === "Group" || filters.classType === "Individual"
     ? filters.classType
     : null;
