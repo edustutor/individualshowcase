@@ -13,6 +13,39 @@ const tutorDirectory = tutorDirectoryData as { tutors?: unknown[] };
 
 const FALLBACK_AVATAR_BASE_URL = "https://i.pravatar.cc";
 const BROKEN_CDN_HOSTS = new Set(["cdn.edus.lk"]);
+const GOOGLE_DRIVE_HOSTS = new Set(["drive.google.com", "drive.usercontent.google.com"]);
+
+function extractGoogleDriveFileId(url: URL): string | null {
+  const fileMatch = /\/file\/d\/([a-zA-Z0-9_-]+)/.exec(url.pathname);
+  if (fileMatch) return fileMatch[1];
+  const idParam = url.searchParams.get("id");
+  if (idParam && /^[a-zA-Z0-9_-]+$/.test(idParam)) return idParam;
+  return null;
+}
+
+function normalizeAvatarUrl(url: string | undefined): string | undefined {
+  if (!url) return url;
+  try {
+    const parsed = new URL(url);
+    if (!GOOGLE_DRIVE_HOSTS.has(parsed.hostname)) return url;
+    const fileId = extractGoogleDriveFileId(parsed);
+    return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : url;
+  } catch {
+    return url;
+  }
+}
+
+function normalizeVideoUrl(url: string | undefined): string | undefined {
+  if (!url) return url;
+  try {
+    const parsed = new URL(url);
+    if (!GOOGLE_DRIVE_HOSTS.has(parsed.hostname)) return url;
+    const fileId = extractGoogleDriveFileId(parsed);
+    return fileId ? `https://drive.google.com/file/d/${fileId}/preview` : url;
+  } catch {
+    return url;
+  }
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -147,7 +180,7 @@ function normalizeTutor(tutor: Tutor): Tutor {
   };
   const avatarUrl = isBrokenRemoteUrl(runtimeProfile.avatarUrl)
     ? getFallbackAvatarUrl(tutor)
-    : runtimeProfile.avatarUrl;
+    : normalizeAvatarUrl(runtimeProfile.avatarUrl);
 
   return {
     ...tutor,
@@ -156,6 +189,8 @@ function normalizeTutor(tutor: Tutor): Tutor {
       avatarUrl,
       demoVideos: Array.isArray(runtimeProfile.demoVideos)
         ? runtimeProfile.demoVideos
+            .filter((video) => !isBrokenRemoteUrl(video.videoUrl))
+            .map((video) => ({ ...video, videoUrl: normalizeVideoUrl(video.videoUrl) ?? video.videoUrl }))
         : [],
       languages: normalizeStringList(runtimeProfile.languages),
       mediums: normalizeStringList(runtimeProfile.mediums),
