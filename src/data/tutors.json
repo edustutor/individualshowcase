@@ -3536,11 +3536,7 @@
             "6"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3570,11 +3566,7 @@
             "7"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3604,11 +3596,7 @@
             "8"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"

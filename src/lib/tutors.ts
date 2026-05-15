@@ -23,7 +23,7 @@ function extractGoogleDriveFileId(url: URL): string | null {
   return null;
 }
 
-function normalizeAvatarUrl(url: string | undefined): string | undefined {
+function normalizeAvatarUrl(url: string): string {
   if (!url) return url;
   try {
     const parsed = new URL(url);
@@ -35,7 +35,7 @@ function normalizeAvatarUrl(url: string | undefined): string | undefined {
   }
 }
 
-function normalizeVideoUrl(url: string | undefined): string | undefined {
+function normalizeVideoUrl(url: string): string {
   if (!url) return url;
   try {
     const parsed = new URL(url);
@@ -74,8 +74,16 @@ function normalizeIndividualClass(classItem: IndividualClass): IndividualClass {
   };
 }
 
+function normalizeSyllabus(syllabus: string[] | string | undefined): string {
+  if (Array.isArray(syllabus)) {
+    const first = syllabus.map((s) => s.trim()).find(Boolean);
+    return first || "National";
+  }
+  return syllabus?.trim() || "National";
+}
+
 function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
-  const runtimeClass = classItem as Partial<GroupClass> & { grades?: string[] | string };
+  const runtimeClass = classItem as Partial<GroupClass> & { grades?: string[] | string; syllabus?: string[] | string };
   const profileSubjects = normalizeStringList(
     (tutor.profile as TutorProfile & { subjects?: string[] | string }).subjects
   );
@@ -91,7 +99,7 @@ function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
     subject,
     grades: normalizeGrades(runtimeClass.grades),
     medium,
-    syllabus: runtimeClass.syllabus || "National",
+    syllabus: normalizeSyllabus(runtimeClass.syllabus),
   };
 }
 
@@ -190,7 +198,7 @@ function normalizeTutor(tutor: Tutor): Tutor {
       demoVideos: Array.isArray(runtimeProfile.demoVideos)
         ? runtimeProfile.demoVideos
             .filter((video) => !isBrokenRemoteUrl(video.videoUrl))
-            .map((video) => ({ ...video, videoUrl: normalizeVideoUrl(video.videoUrl) ?? video.videoUrl }))
+            .map((video) => ({ ...video, videoUrl: normalizeVideoUrl(video.videoUrl) }))
         : [],
       languages: normalizeStringList(runtimeProfile.languages),
       mediums: normalizeStringList(runtimeProfile.mediums),
