@@ -7,7 +7,7 @@
       "profile": {
         "fullName": "Mrs.Rajamanohary Jeyakanthan",
         "headline": "Senior Primary Tutor",
-        "avatarUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/avatar.webp",
+        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0000_Layer.jpg.jpeg",
         "demoVideos": [
           {
             "videoId": "EDV001",
@@ -342,7 +342,7 @@
       "profile": {
         "fullName": "Mr. Ananthavel Mathiruban",
         "headline": "Primary Tutor",
-        "avatarUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/avatar.webp",
+        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0000_Layer.jpg.jpeg",
         "demoVideos": [
           {
             "videoId": "EDV001",
@@ -3536,7 +3536,11 @@
             "6"
           ],
           "medium": "English",
-          "syllabus": "National",
+          "syllabus": [
+            "National",
+            "Cambridge",
+            " Edexcel"
+          ],
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3566,7 +3570,11 @@
             "7"
           ],
           "medium": "English",
-          "syllabus": "National",
+          "syllabus": [
+            "National",
+            "Cambridge",
+            " Edexcel"
+          ],
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3596,7 +3604,11 @@
             "8"
           ],
           "medium": "English",
-          "syllabus": "National",
+          "syllabus": [
+            "National",
+            "Cambridge",
+            " Edexcel"
+          ],
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3626,7 +3638,7 @@
       "profile": {
         "fullName": "Mr. Vallipuram Ainkaran",
         "headline": "Senior Secondary Tutor",
-        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0014_Layer%2055.webp",
+        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0000_Layer.jpg.jpeg",
         "demoVideos": [
           {
             "videoId": "EDV001",
@@ -4024,7 +4036,7 @@
       "profile": {
         "fullName": "Mr. Jenil Jeyanthan",
         "headline": "Senior Secondary Tutor",
-        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0031_Layer%2037.webp",
+        "avatarUrl": "https://pub-25daa8127a824bc58c903315ba000dc1.r2.dev/Tutor%20Profile/Tutor_Profile__0000_Layer.jpg.jpeg",
         "demoVideos": [
           {
             "videoId": "EDV001",
