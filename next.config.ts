@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
+    // Vercel free tier counts every /_next/image transformation against a monthly quota.
+    // Serve originals directly to avoid burning that quota in production.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
