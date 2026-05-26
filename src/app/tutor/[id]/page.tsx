@@ -36,8 +36,10 @@ import {
   getPrimaryDemoVideo,
 } from "@/lib/tutors";
 import type { GroupClass, IndividualClass } from "@/types/tutor";
+import { listCountries, normalizePhone, type CountryOption } from "@/lib/phone";
+import type { CountryCode } from "libphonenumber-js";
 
-type BookingFormState = { studentName: string; studentEmail: string; studentPhone: string };
+type BookingFormState = { studentName: string; studentEmail: string; studentPhone: string; country: CountryCode };
 const STEPS = ["Choose Classes", "Pick Schedule", "Your Details", "Confirm"] as const;
 type Step = 0 | 1 | 2 | 3;
 
@@ -76,7 +78,7 @@ export default function TutorProfile() {
   const [gradeByClass, setGradeByClass] = useState<Record<string, string>>({});
   const [durationByClass, setDurationByClass] = useState<Record<string, string>>({});
   const [slotsByClass, setSlotsByClass] = useState<Record<string, Set<string>>>({});
-  const [bookingForm, setBookingForm] = useState<BookingFormState>({ studentName: "", studentEmail: "", studentPhone: "" });
+  const [bookingForm, setBookingForm] = useState<BookingFormState>({ studentName: "", studentEmail: "", studentPhone: "", country: "LK" });
   const [agreeRules, setAgreeRules] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
@@ -85,6 +87,9 @@ export default function TutorProfile() {
   const [avatarError, setAvatarError] = useState(false);
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
+
+  // ~240 countries; the list is static so build it once per component lifetime.
+  const countryOptions = useMemo<CountryOption[]>(() => listCountries(), []);
 
   const bookableClasses = allClasses;
 
@@ -169,7 +174,11 @@ export default function TutorProfile() {
     // can reach the student via phone, email is just a nice-to-have.
     const newErrors: Record<string, string> = {};
     if (!bookingForm.studentName.trim()) newErrors.studentName = "Enter your name";
-    if (!bookingForm.studentPhone.trim()) newErrors.studentPhone = "Enter your phone number";
+    if (!bookingForm.studentPhone.trim()) {
+      newErrors.studentPhone = "Enter your phone number";
+    } else if (!normalizePhone(bookingForm.studentPhone, bookingForm.country)) {
+      newErrors.studentPhone = "Enter a valid phone number for the selected country";
+    }
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) { scrollToError(`${Object.keys(newErrors)[0]}-error`); return false; }
     return true;
@@ -193,33 +202,115 @@ export default function TutorProfile() {
     );
   }
 
+  // Build the multi-line description that gets pushed into the CRM's
+  // `description` field. Every step's selections land here — the coordinator
+  // sees the full booking context in one place, so this MUST stay complete.
+  function buildBookingDescription(): string {
+    if (!tutor) return "";
+    const lines: string[] = [];
+    lines.push(`Tutor: ${tutor.profile.fullName} (${tutor.tutorId})`);
+    lines.push(`Submitted: ${new Date().toISOString()}`);
+    if (bookingForm.studentEmail.trim()) {
+      lines.push(`Student email: ${bookingForm.studentEmail.trim()}`);
+    }
+    lines.push("");
+    lines.push(`SELECTED CLASSES (${selectedClasses.length})`);
+    lines.push("─".repeat(40));
+
+    let runningTotal = 0;
+    selectedClasses.forEach((cls, idx) => {
+      const indCls = cls.classType === "INDIVIDUAL" ? (cls as IndividualClass) : null;
+      const grpCls = cls.classType === "GROUP" ? (cls as GroupClass) : null;
+      const grade = gradeByClass[cls.classCode] || cls.grades[0];
+      const price = getClassPrice(cls);
+
+      lines.push("");
+      lines.push(`${idx + 1}. ${cls.title}`);
+      lines.push(`   Code: ${cls.classCode}`);
+      lines.push(`   Type: ${cls.classType === "INDIVIDUAL" ? "Individual" : "Group"}`);
+      lines.push(`   Subject: ${cls.subject}`);
+      lines.push(`   Grade: ${formatGradeLabel(grade)}`);
+      lines.push(`   Medium: ${cls.medium}`);
+      lines.push(`   Syllabus: ${cls.syllabus}`);
+
+      if (indCls) {
+        const dur = durationByClass[cls.classCode];
+        if (dur) lines.push(`   Duration: ${dur} minutes`);
+        const slotIds = Array.from(slotsByClass[cls.classCode] || []);
+        if (slotIds.length > 0) {
+          lines.push(`   Selected slots (${slotIds.length}):`);
+          for (const slotId of slotIds) {
+            const slot = indCls.availableWeeklySlots.find((s) => s.slotId === slotId);
+            if (slot) {
+              lines.push(`     - ${formatDayLabel(slot.day)} ${formatTimeRange(slot.startTime, slot.endTime)}`);
+            }
+          }
+        }
+      }
+      if (grpCls) {
+        lines.push(`   Schedule:`);
+        for (const sch of grpCls.fixedTimetable) {
+          lines.push(`     - ${formatDayLabel(sch.day)} ${formatTimeRange(sch.startTime, sch.endTime)}`);
+        }
+      }
+      if (price) {
+        const line = `${price.currency} ${price.amount.toLocaleString()} ${price.label}`;
+        const total = price.slotCount > 1
+          ? ` × ${price.slotCount} = ${price.currency} ${price.total.toLocaleString()}`
+          : "";
+        lines.push(`   Price: ${line}${total}`);
+        runningTotal += price.total;
+      }
+    });
+
+    lines.push("");
+    lines.push("─".repeat(40));
+    lines.push(`Admission fee: LKR ${admissionFee.toLocaleString()}`);
+    lines.push(`Classes total: LKR ${runningTotal.toLocaleString()}`);
+    lines.push(`Grand total:   LKR ${(admissionFee + runningTotal).toLocaleString()}`);
+    lines.push("");
+    lines.push(`Terms agreed: ${agreeRules ? "Yes" : "No"}`);
+
+    return lines.join("\n");
+  }
+
   async function handleBookingSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!tutor || selectedClasses.length === 0) return;
+
+    const phone = normalizePhone(bookingForm.studentPhone, bookingForm.country);
+    if (!phone) {
+      setErrors({ studentPhone: "Enter a valid phone number for the selected country" });
+      setCurrentStep(2);
+      scrollToError("studentPhone-error");
+      return;
+    }
+
     setIsSubmitting(true);
+    setErrors((prev) => { const n = { ...prev }; delete n.submit; return n; });
+
     try {
-      for (const cls of selectedClasses) {
-        const indCls = cls.classType === "INDIVIDUAL" ? cls as IndividualClass : null;
-        const dur = indCls ? durationByClass[cls.classCode] : null;
-        const price = indCls?.pricing.find(p => String(p.durationMinutes) === dur) || indCls?.pricing[0];
-        const selectedSlotIds = indCls ? Array.from(slotsByClass[cls.classCode] || []) : [];
-        await fetch("/api/book", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            tutorId: tutor.tutorId, tutorSlug: tutor.slug,
-            studentName: bookingForm.studentName.trim(), studentEmail: bookingForm.studentEmail.trim(), studentPhone: bookingForm.studentPhone.trim(),
-            classType: cls.classType === "INDIVIDUAL" ? "Individual" : "Group",
-            classCode: cls.classCode, classTitle: cls.title,
-            subject: cls.subject, grade: gradeByClass[cls.classCode] || cls.grades[0], medium: cls.medium, syllabus: cls.syllabus,
-            durationMinutes: price?.durationMinutes || null,
-            slotIds: selectedSlotIds.length > 0 ? selectedSlotIds : null,
-            admissionFee,
-          }),
-        });
+      const res = await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          studentName: bookingForm.studentName.trim(),
+          studentEmail: bookingForm.studentEmail.trim() || undefined,
+          studentPhone: phone,
+          description: buildBookingDescription(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) {
+        throw new Error(data?.message || `Booking request failed (${res.status})`);
       }
       setBookingSuccess(true);
-    } catch (error) { console.error(error); } finally { setIsSubmitting(false); }
+    } catch (error) {
+      console.error("Booking submit failed:", error);
+      setErrors({ submit: error instanceof Error ? error.message : "Couldn't submit booking. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const lowestIndividualPrice = allClasses
@@ -519,7 +610,7 @@ export default function TutorProfile() {
           {bookingSuccess ? (
             <SuccessPanel name={bookingForm.studentName} tutorName={tutor.profile.fullName} classCount={selectedClasses.length}
               onHome={() => router.push("/")}
-              onBookAnother={() => { setBookingSuccess(false); setCurrentStep(0); setSelectedClassCodes(new Set()); setBookingForm({ studentName: "", studentEmail: "", studentPhone: "" }); setAgreeRules(false); }}
+              onBookAnother={() => { setBookingSuccess(false); setCurrentStep(0); setSelectedClassCodes(new Set()); setBookingForm({ studentName: "", studentEmail: "", studentPhone: "", country: "LK" }); setAgreeRules(false); }}
             />
           ) : (
             <>
@@ -735,9 +826,52 @@ export default function TutorProfile() {
                           value={bookingForm.studentName} onChange={(e) => { setBookingForm({ ...bookingForm, studentName: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentName; return n; }); }} placeholder="e.g. Kasun Perera" error={errors.studentName} />
                         <FormInput icon={<Mail className="h-4 w-4" />} label="Email Address (optional)" id="studentEmail" type="email"
                           value={bookingForm.studentEmail} onChange={(e) => { setBookingForm({ ...bookingForm, studentEmail: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentEmail; return n; }); }} placeholder="kasun@email.com" error={errors.studentEmail} />
-                        <FormInput required icon={<Phone className="h-4 w-4" />} label="Phone Number" id="studentPhone" type="tel"
-                          value={bookingForm.studentPhone} onChange={(e) => { setBookingForm({ ...bookingForm, studentPhone: e.target.value.replace(/\D/g, "") }); setErrors(prev => { const n = { ...prev }; delete n.studentPhone; return n; }); }} placeholder="94707072072" error={errors.studentPhone}
-                          hint="Digits only, starting with country code" />
+                        <div>
+                          <label htmlFor="studentCountry" className="text-[11px] font-bold uppercase tracking-wider text-[#64748b] block mb-2">
+                            Country
+                            <span className="text-red-500 ml-1">*</span>
+                          </label>
+                          <select
+                            id="studentCountry"
+                            value={bookingForm.country}
+                            onChange={(e) => {
+                              const country = e.target.value as CountryCode;
+                              setBookingForm({ ...bookingForm, country });
+                              setErrors((prev) => { const n = { ...prev }; delete n.studentPhone; return n; });
+                            }}
+                            className="w-full pl-4 pr-10 py-3.5 text-[14px] font-semibold text-[#102033] focus:outline-none appearance-none cursor-pointer"
+                            style={{ borderRadius: "14px", border: "2px solid #e2e8f0", background: "#fafbfc", transition: "border-color 200ms, box-shadow 200ms" }}
+                            onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.08)"; }}
+                            onBlur={(e) => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
+                          >
+                            {countryOptions.map((c) => (
+                              <option key={c.code} value={c.code}>
+                                {c.name} (+{c.callingCode})
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <FormInput
+                          required
+                          icon={<Phone className="h-4 w-4" />}
+                          label="Phone Number"
+                          id="studentPhone"
+                          type="tel"
+                          value={bookingForm.studentPhone}
+                          onChange={(e) => {
+                            // Allow digits, +, space, dash, parens during typing; we
+                            // strip non-digits at validation/normalization time.
+                            const cleaned = e.target.value.replace(/[^\d+\s\-()]/g, "");
+                            setBookingForm({ ...bookingForm, studentPhone: cleaned });
+                            setErrors((prev) => { const n = { ...prev }; delete n.studentPhone; return n; });
+                          }}
+                          placeholder={(() => {
+                            const c = countryOptions.find((o) => o.code === bookingForm.country);
+                            return c ? `e.g. 0707072525 or +${c.callingCode}707072525` : "Enter phone number";
+                          })()}
+                          error={errors.studentPhone}
+                          hint="We'll add the country code automatically based on your selection above."
+                        />
                       </div>
                       <WizardNav onNext={() => { if (validateStep2()) setCurrentStep(3); }} onBack={() => setCurrentStep(1)} />
                     </motion.div>
@@ -758,7 +892,10 @@ export default function TutorProfile() {
                             {bookingForm.studentEmail.trim() && (
                               <SummaryRow label="Email" value={bookingForm.studentEmail} />
                             )}
-                            <SummaryRow label="Phone" value={bookingForm.studentPhone} />
+                            <SummaryRow
+                              label="Phone"
+                              value={normalizePhone(bookingForm.studentPhone, bookingForm.country) || bookingForm.studentPhone}
+                            />
                             <div className="my-3" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }} />
                             {selectedClasses.map((cls) => {
                               const p = getClassPrice(cls);
@@ -835,6 +972,14 @@ export default function TutorProfile() {
                           <span className="text-[13px] text-[#475569] font-medium leading-relaxed">I agree to the Academic & Online Learning Standards and understand an EDUS coordinator will contact me.</span>
                         </label>
 
+                        {errors.submit && (
+                          <div
+                            className="mb-4 p-3 text-[13px] font-semibold"
+                            style={{ borderRadius: "12px", background: "rgba(239,68,68,0.08)", color: "#b91c1c", border: "1px solid rgba(239,68,68,0.25)" }}
+                          >
+                            {errors.submit}
+                          </div>
+                        )}
                         <div className="flex gap-3">
                           <button type="button" onClick={() => setCurrentStep(2)} className="px-5 py-3.5 text-sm font-bold text-[#64748b] cursor-pointer flex-shrink-0 transition-all hover:bg-[#f8fafc]"
                             style={{ borderRadius: "14px", border: "2px solid #e2e8f0" }}>
