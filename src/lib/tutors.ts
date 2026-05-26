@@ -65,15 +65,6 @@ function normalizeStringList(value: string[] | string | undefined): string[] {
   return value ? [value] : [];
 }
 
-function normalizeIndividualClass(classItem: IndividualClass): IndividualClass {
-  const runtimeClass = classItem as IndividualClass & { grades?: string[] | string };
-
-  return {
-    ...classItem,
-    grades: normalizeGrades(runtimeClass.grades),
-  };
-}
-
 function normalizeSyllabus(syllabus: string[] | string | undefined): string {
   if (Array.isArray(syllabus)) {
     const first = syllabus.map((s) => s.trim()).find(Boolean);
@@ -82,8 +73,25 @@ function normalizeSyllabus(syllabus: string[] | string | undefined): string {
   return syllabus?.trim() || "National";
 }
 
-function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
-  const runtimeClass = classItem as Partial<GroupClass> & { grades?: string[] | string; syllabus?: string[] | string };
+// Some class records ship `medium` as an array (e.g. ["Tamil","English"]).
+// Collapse to the first non-empty entry; fall back to the tutor's profile medium.
+function normalizeMedium(medium: string[] | string | undefined, profileMediums: string[]): string {
+  if (Array.isArray(medium)) {
+    const first = medium.map((m) => m.trim()).find(Boolean);
+    if (first) return first;
+  } else if (typeof medium === "string" && medium.trim()) {
+    return medium.trim();
+  }
+  return profileMediums[0] || "Tamil";
+}
+
+function normalizeIndividualClass(classItem: IndividualClass, tutor: Tutor): IndividualClass {
+  const runtimeClass = classItem as IndividualClass & {
+    grades?: string[] | string;
+    medium?: string[] | string;
+    syllabus?: string[] | string;
+    subject?: string;
+  };
   const profileSubjects = normalizeStringList(
     (tutor.profile as TutorProfile & { subjects?: string[] | string }).subjects
   );
@@ -91,7 +99,30 @@ function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
     (tutor.profile as TutorProfile & { mediums?: string[] | string }).mediums
   );
   const subject = runtimeClass.subject || profileSubjects[0] || "General";
-  const medium = runtimeClass.medium || profileMediums[0] || "Tamil";
+
+  return {
+    ...classItem,
+    subject,
+    grades: normalizeGrades(runtimeClass.grades),
+    medium: normalizeMedium(runtimeClass.medium, profileMediums),
+    syllabus: normalizeSyllabus(runtimeClass.syllabus),
+  };
+}
+
+function normalizeGroupClass(classItem: GroupClass, tutor: Tutor): GroupClass {
+  const runtimeClass = classItem as Partial<GroupClass> & {
+    grades?: string[] | string;
+    medium?: string[] | string;
+    syllabus?: string[] | string;
+  };
+  const profileSubjects = normalizeStringList(
+    (tutor.profile as TutorProfile & { subjects?: string[] | string }).subjects
+  );
+  const profileMediums = normalizeStringList(
+    (tutor.profile as TutorProfile & { mediums?: string[] | string }).mediums
+  );
+  const subject = runtimeClass.subject || profileSubjects[0] || "General";
+  const medium = normalizeMedium(runtimeClass.medium, profileMediums);
 
   return {
     ...classItem,
@@ -153,11 +184,11 @@ function collectTutorRecords(value: unknown): Tutor[] {
 }
 
 function isIndividualClass(classItem: unknown): classItem is IndividualClass {
+  // Subject may be missing on some records — the normalizer fills it from the tutor profile.
   return (
     isRecord(classItem) &&
     classItem.classType === "INDIVIDUAL" &&
     typeof classItem.classCode === "string" &&
-    typeof classItem.subject === "string" &&
     Array.isArray(classItem.pricing)
   );
 }
@@ -212,7 +243,7 @@ function normalizeTutor(tutor: Tutor): Tutor {
     },
     individualClasses: (runtimeTutor.individualClasses || [])
       .filter(isIndividualClass)
-      .map(normalizeIndividualClass),
+      .map((classItem) => normalizeIndividualClass(classItem, tutor)),
     groupClasses: (runtimeTutor.groupClasses || [])
       .filter(isGroupClass)
       .map((classItem) => normalizeGroupClass(classItem, tutor)),

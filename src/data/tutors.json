@@ -1879,10 +1879,7 @@
             "10",
             "11"
           ],
-          "medium": [
-            "Tamil",
-            "English"
-          ],
+          "medium": "Tamil",
           "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
@@ -3536,11 +3533,7 @@
             "6"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3570,11 +3563,7 @@
             "7"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -3604,11 +3593,7 @@
             "8"
           ],
           "medium": "English",
-          "syllabus": [
-            "National",
-            "Cambridge",
-            " Edexcel"
-          ],
+          "syllabus": "National",
           "monthlyFee": {
             "amount": 1000,
             "currency": "LKR"
@@ -4268,6 +4253,8 @@
         {
           "classCode": "GT7Maths",
           "classType": "GROUP",
+          "title": "Grade 7 : Maths (Tamil Medium)",
+          "subject": "Maths",
           "grades": [
             "7"
           ],
@@ -4291,6 +4278,8 @@
         {
           "classCode": "GT9Maths",
           "classType": "GROUP",
+          "title": "Grade 9 : Maths (Tamil Medium)",
+          "subject": "Maths",
           "grades": [
             "9"
           ],
