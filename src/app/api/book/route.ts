@@ -46,6 +46,21 @@ const SOURCE = process.env.EDUS_CRM_DEFAULT_SOURCE || "15";
 const STATUS = process.env.EDUS_CRM_DEFAULT_STATUS || "12";
 const ASSIGNED = process.env.EDUS_CRM_DEFAULT_ASSIGNED || "1";
 
+// Dev-only structured logger. NODE_ENV is set automatically by Next.js
+// ("development" via `npm run dev`, "production" for built deploys), so these
+// lines print to the dev terminal but stay silent on Vercel production builds.
+// Errors always log (via console.error in the POST handler) so prod failures
+// remain visible in Vercel's runtime logs.
+const IS_DEV = process.env.NODE_ENV !== "production";
+function devLog(tag: string, payload?: unknown) {
+  if (!IS_DEV) return;
+  if (payload === undefined) {
+    console.log(`[CRM] ${tag}`);
+  } else {
+    console.log(`[CRM] ${tag}`, payload);
+  }
+}
+
 // The CRM is a CodeIgniter / Perfex-style PHP API with an asymmetric body
 // requirement that we verified live with curl:
 //   - POST /leads        → application/x-www-form-urlencoded  (rejects JSON with 404 "field required")
@@ -83,14 +98,19 @@ function toFormBody(obj: Record<string, unknown>): string {
 // Lookup. Returns the lead if found, null on 404 (CRM's "no match" code),
 // throws on any other failure so callers see a real error.
 async function findLeadByPhone(phone: string): Promise<CrmLead | null> {
+  devLog("SEARCH → GET /leads/search/" + phone);
   const res = await fetch(`${BASE}/leads/search/${encodeURIComponent(phone)}`, {
     method: "GET",
     headers: { authtoken: TOKEN!, Accept: "application/json" },
     cache: "no-store",
   });
+  devLog(`SEARCH ← HTTP ${res.status}`);
 
   // 404 = "No data were found" — explicit not-found signal from the CRM.
-  if (res.status === 404) return null;
+  if (res.status === 404) {
+    devLog("SEARCH = not found (will CREATE)");
+    return null;
+  }
   if (!res.ok) {
     throw new Error(`CRM search failed (${res.status}): ${await res.text()}`);
   }
@@ -98,11 +118,16 @@ async function findLeadByPhone(phone: string): Promise<CrmLead | null> {
   const data = await res.json().catch(() => null);
   if (!data) return null;
   // CRM responses observed in two shapes: bare object OR {status, data: [...]}.
-  if (data.status === false) return null;
-  const lead = Array.isArray(data) ? data[0] : (data.data?.[0] ?? data);
-  if (!lead || typeof lead !== "object" || Object.keys(lead).length === 0) {
+  if (data.status === false) {
+    devLog("SEARCH = not found via status:false (will CREATE)");
     return null;
   }
+  const lead = Array.isArray(data) ? data[0] : (data.data?.[0] ?? data);
+  if (!lead || typeof lead !== "object" || Object.keys(lead).length === 0) {
+    devLog("SEARCH = empty body (will CREATE)");
+    return null;
+  }
+  devLog("SEARCH = found existing lead", { id: lead.id, name: lead.name, phonenumber: lead.phonenumber });
   return lead as CrmLead;
 }
 
@@ -117,12 +142,22 @@ async function createLead(payload: BookingPayload) {
     status: STATUS,
     assigned: ASSIGNED,
   });
+  devLog("CREATE → POST /leads", {
+    name: payload.studentName,
+    phonenumber: payload.studentPhone,
+    email: payload.studentEmail || "(omitted)",
+    descriptionChars: payload.description.length,
+    source: SOURCE,
+    status: STATUS,
+    assigned: ASSIGNED,
+  });
   const res = await fetch(`${BASE}/leads`, {
     method: "POST",
     headers: crmHeadersForm(),
     body,
   });
   const data = await res.json().catch(() => null);
+  devLog(`CREATE ← HTTP ${res.status}`, data);
   if (!res.ok || data?.status === false) {
     throw new Error(
       `CRM create failed (${res.status}): ${data?.message || JSON.stringify(data) || "(no body)"}`
@@ -163,12 +198,20 @@ async function updateLead(existing: CrmLead, payload: BookingPayload) {
   // PUT → JSON body (verified live; form-encoded returns 406 "Data Not
   // Acceptable" because PHP doesn't populate $_POST for PUT and Perfex's
   // PUT handler reads php://input as JSON).
+  devLog(`UPDATE → PUT /leads/${existing.id}`, {
+    name: fields.name,
+    phonenumber: fields.phonenumber,
+    descriptionChars: typeof fields.description === "string" ? fields.description.length : null,
+    emailAdded: "email" in fields ? fields.email : "(kept existing)",
+    status: fields.status,
+  });
   const res = await fetch(`${BASE}/leads/${existing.id}`, {
     method: "PUT",
     headers: crmHeadersJson(),
     body: JSON.stringify(fields),
   });
   const data = await res.json().catch(() => null);
+  devLog(`UPDATE ← HTTP ${res.status}`, data);
   if (!res.ok || data?.status === false) {
     throw new Error(
       `CRM update failed (${res.status}): ${data?.message || JSON.stringify(data) || "(no body)"}`
@@ -200,16 +243,26 @@ export async function POST(request: Request) {
     );
   }
 
+  devLog("───────── booking received ─────────");
+  devLog("PAYLOAD", {
+    studentName,
+    studentPhone,
+    studentEmail: payload.studentEmail || "(omitted)",
+    descriptionChars: description.length,
+  });
+
   try {
     const existing = await findLeadByPhone(studentPhone);
     const result = existing
       ? await updateLead(existing, { studentName, studentPhone, studentEmail: payload.studentEmail, description })
       : await createLead({ studentName, studentPhone, studentEmail: payload.studentEmail, description });
 
+    const leadId = existing?.id ?? result?.id ?? null;
+    devLog(`DONE: ${existing ? "UPDATED" : "CREATED"} lead`, { leadId });
     return NextResponse.json({
       success: true,
       mode: existing ? "updated" : "created",
-      leadId: existing?.id ?? result?.id ?? null,
+      leadId,
     });
   } catch (err) {
     console.error("CRM booking error:", err);

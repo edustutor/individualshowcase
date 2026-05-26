@@ -475,7 +475,9 @@ export default function TutorProfile() {
                     {videos.length > 1 && (
                       <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
                         {videos.map((v, i) => (
-                          <button key={v.videoId} onClick={() => setActiveVideoIndex(i)}
+                          // Composite key: tutors.json sometimes has duplicate
+                          // videoIds (data-entry copy-paste). Index keeps it unique.
+                          <button key={`${v.videoId}-${i}`} onClick={() => setActiveVideoIndex(i)}
                             className="flex items-center gap-2.5 px-3 py-2 min-w-[160px] cursor-pointer flex-shrink-0 transition-all" style={{
                               borderRadius: "10px",
                               background: activeVideoIndex === i ? "#eff6ff" : "#f8fafc",
