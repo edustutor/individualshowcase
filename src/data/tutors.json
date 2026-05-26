@@ -2026,10 +2026,19 @@
         "experienceYears": 6,
         "rating": 4.9,
         "reviewCount": 124,
-        "languages": "Tamil",
-        "mediums": "Tamil",
-        "subjects": "Combined Mathametics",
-        "syllabusSupported": "National",
+        "languages": [
+          "Tamil"
+        ],
+        "mediums": [
+          "Tamil"
+        ],
+        "subjects": [
+          "Combined Mathematics",
+          "Tamil"
+        ],
+        "syllabusSupported": [
+          "National"
+        ],
         "teachingStyle": [
           "Interactive Visual White boarding",
           "Real World Case Applications",
@@ -2065,6 +2074,66 @@
           ],
           "seatCapacity": 30,
           "seatsLeft": 12,
+          "status": "OPEN"
+        },
+        {
+          "classCode": "GT10 Tamil",
+          "classType": "GROUP",
+          "title": "Grade 10 : Tamil (Tamil Medium)",
+          "subject": "Tamil",
+          "grades": [
+            "10"
+          ],
+          "medium": "Tamil",
+          "syllabus": "National",
+          "monthlyFee": {
+            "amount": 1200,
+            "currency": "LKR"
+          },
+          "fixedTimetable": [
+            {
+              "day": "TUE",
+              "startTime": "09:00 PM",
+              "endTime": "10:00 PM"
+            },
+            {
+              "day": "SUN",
+              "startTime": "07:00 PM",
+              "endTime": "08:00 PM"
+            }
+          ],
+          "seatCapacity": 30,
+          "seatsLeft": 8,
+          "status": "OPEN"
+        },
+        {
+          "classCode": "GT11 Tamil",
+          "classType": "GROUP",
+          "title": "Grade 11 : Tamil (Tamil Medium)",
+          "subject": "Tamil",
+          "grades": [
+            "11"
+          ],
+          "medium": "Tamil",
+          "syllabus": "National",
+          "monthlyFee": {
+            "amount": 1200,
+            "currency": "LKR"
+          },
+          "fixedTimetable": [
+            {
+              "day": "THU",
+              "startTime": "08:30 PM",
+              "endTime": "09:30 PM"
+            },
+            {
+              "day": "FRI",
+              "startTime": "09:00 PM",
+              "endTime": "10:00 PM"
+            }
+          ],
+          "seatCapacity": 30,
+          "seatsLeft": 8,
           "status": "OPEN"
         }
       ]
@@ -2206,107 +2275,6 @@
           ],
           "seatCapacity": 30,
           "seatsLeft": 12,
-          "status": "OPEN"
-        }
-      ]
-    },
-    {
-      "tutorId": "EDT206",
-      "featured": true,
-      "isVerified": true,
-      "profile": {
-        "fullName": "",
-        "headline": "Secondary Tutor",
-        "avatarUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/avatar.webp",
-        "demoVideos": [
-          {
-            "videoId": "EDV001",
-            "title": "Grade 10 : Tamil (Tamil Medium)",
-            "subject": "Tamil",
-            "videoUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/demos/maths-demo.mp4",
-            "durationSeconds": 95,
-            "isPrimary": true
-          },
-          {
-            "videoId": "EDV002",
-            "title": "Grade 11 : Tamil (Tamil Medium)",
-            "subject": "Tamil",
-            "videoUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/demos/physics-demo.mp4",
-            "durationSeconds": 110,
-            "isPrimary": false
-          }
-        ],
-        "about": "Experienced tutor for Secondary Student with strong focus on concept clarity, exam preparation, and structured learning.",
-        "experienceYears": 16,
-        "rating": 4.9,
-        "reviewCount": 124,
-        "languages": "Tamil",
-        "mediums": "Tamil",
-        "subjects": "Tamil"
-      },
-      "syllabusSupported": [
-        "National"
-      ],
-      "teachingStyle": [
-        "Interactive Visual White boarding",
-        "Real World Case Applications",
-        "Custom Mastery Question Banks"
-      ],
-      "groupClasses": [
-        {
-          "classCode": "GT10 Tamil",
-          "classType": "GROUP",
-          "title": "Grade 10 : Tamil (Tamil Medium)",
-          "subject": "Tamil",
-          "grades": "10",
-          "medium": "Tamil",
-          "syllabus": "National",
-          "monthlyFee": {
-            "amount": 1200,
-            "currency": "LKR"
-          },
-          "fixedTimetable": [
-            {
-              "day": "TUE",
-              "startTime": "09:00 PM",
-              "endTime": "10:00 PM"
-            },
-            {
-              "day": "SUN",
-              "startTime": "07:00 PM",
-              "endTime": "08:00 PM"
-            }
-          ],
-          "seatCapacity": 30,
-          "seatsLeft": 8,
-          "status": "OPEN"
-        },
-        {
-          "classCode": "GT11 Tamil",
-          "classType": "GROUP",
-          "title": "Grade 11 : Tamil (Tamil Medium)",
-          "subject": "Tamil",
-          "grades": "11",
-          "medium": "Tamil",
-          "syllabus": "National",
-          "monthlyFee": {
-            "amount": 1200,
-            "currency": "LKR"
-          },
-          "fixedTimetable": [
-            {
-              "day": "THU",
-              "startTime": "08:30 PM",
-              "endTime": "09:30 PM"
-            },
-            {
-              "day": "FRI",
-              "startTime": "09:00 PM",
-              "endTime": "10:00 PM"
-            }
-          ],
-          "seatCapacity": 30,
-          "seatsLeft": 8,
           "status": "OPEN"
         }
       ]
@@ -3937,79 +3905,6 @@
           ],
           "seatCapacity": 25,
           "seatsLeft": 5,
-          "status": "OPEN"
-        }
-      ]
-    },
-    {
-      "tutorId": "EDT198",
-      "featured": true,
-      "isVerified": true,
-      "profile": {
-        "fullName": "Mr. Vallipuram Ainkaran",
-        "headline": "Senior Secondary Tutor",
-        "avatarUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/avatar.webp",
-        "demoVideos": [
-          {
-            "videoId": "EDV001",
-            "title": "Grade 11 : Maths (Tamil Medium)",
-            "subject": "Maths",
-            "videoUrl": "https://cdn.edus.lk/tutors/dr-aruni-perera/demos/maths-demo.mp4",
-            "durationSeconds": 95,
-            "isPrimary": true
-          }
-        ],
-        "about": "Experienced tutor for Secondary Student with strong focus on concept clarity, exam preparation, and structured learning.",
-        "experienceYears": 22,
-        "rating": 4.9,
-        "reviewCount": 124,
-        "languages": [
-          "Tamil"
-        ],
-        "mediums": [
-          "Tamil"
-        ],
-        "subjects": [
-          "Maths"
-        ],
-        "syllabusSupported": [
-          "National"
-        ],
-        "teachingStyle": [
-          "Interactive Visual White boarding",
-          "Real World Case Applications",
-          "Custom Mastery Question Banks"
-        ]
-      },
-      "groupClasses": [
-        {
-          "classCode": "GT11Maths",
-          "classType": "GROUP",
-          "title": "Grade 11 : Maths (Tamil Medium)",
-          "subject": "Maths",
-          "grades": [
-            "11"
-          ],
-          "medium": "Tamil",
-          "syllabus": "National",
-          "monthlyFee": {
-            "amount": 1200,
-            "currency": "LKR"
-          },
-          "fixedTimetable": [
-            {
-              "day": "MON",
-              "startTime": "08:00 PM",
-              "endTime": "09:00 PM"
-            },
-            {
-              "day": "SAT",
-              "startTime": "06:45 PM",
-              "endTime": "07:45 PM"
-            }
-          ],
-          "seatCapacity": 35,
-          "seatsLeft": 12,
           "status": "OPEN"
         }
       ]
