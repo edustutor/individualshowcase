@@ -363,6 +363,15 @@ export function getAllFlattenedClasses(tutor: Tutor): FlattenedTutorClass[] {
   return [...individualClasses, ...groupClasses];
 }
 
+// Case-insensitive membership test used by tutor-match + filter cascading.
+function listIncludes(list: string[], value: string): boolean {
+  const needle = value.toLowerCase();
+  return list.some((item) => item.toLowerCase() === needle);
+}
+
+// Subject, medium, and syllabus can be satisfied by EITHER a matching class OR the
+// tutor's profile-level capability (profile.subjects / profile.mediums / profile.syllabusSupported).
+// Grade and classType need a real class — no profile-level analogue exists.
 export function tutorMatchesFilters(
   tutor: Tutor,
   filters: {
@@ -385,17 +394,35 @@ export function tutorMatchesFilters(
     : null;
   const normalizedGradeFilter = filters.grade ? normalizeGradeValue(filters.grade) : null;
 
+  const profileCoversSubject = !filters.subject || listIncludes(tutor.profile.subjects, filters.subject);
+  const profileCoversMedium = !filters.medium || listIncludes(tutor.profile.mediums, filters.medium);
+  const profileCoversSyllabus = !filters.syllabus || listIncludes(tutor.profile.syllabusSupported, filters.syllabus);
+
   const classes = getAllFlattenedClasses(tutor);
+  // A tutor matches if at least one class satisfies the class-bound filters
+  // (classType, grade) AND each of subject/medium/syllabus is satisfied by either
+  // that class OR the tutor's profile-level capability.
   return classes.some((classItem) => {
     const matchesClassType = !normalizedClassType || classItem.classType === normalizedClassType;
-    const matchesSubject = !filters.subject || classItem.subject.toLowerCase() === filters.subject.toLowerCase();
-    const matchesMedium = !filters.medium || classItem.medium.toLowerCase() === filters.medium.toLowerCase();
-    const matchesSyllabus = !filters.syllabus || classItem.syllabus.toLowerCase() === filters.syllabus.toLowerCase();
     const matchesGrade = !normalizedGradeFilter || classItem.grades.some((grade) => (
       normalizeGradeValue(grade) === normalizedGradeFilter
     ));
+    if (!matchesClassType || !matchesGrade) return false;
 
-    return matchesClassType && matchesSubject && matchesMedium && matchesSyllabus && matchesGrade;
+    const subjectOk =
+      !filters.subject ||
+      classItem.subject.toLowerCase() === filters.subject.toLowerCase() ||
+      profileCoversSubject;
+    const mediumOk =
+      !filters.medium ||
+      classItem.medium.toLowerCase() === filters.medium.toLowerCase() ||
+      profileCoversMedium;
+    const syllabusOk =
+      !filters.syllabus ||
+      classItem.syllabus.toLowerCase() === filters.syllabus.toLowerCase() ||
+      profileCoversSyllabus;
+
+    return subjectOk && mediumOk && syllabusOk;
   });
 }
 

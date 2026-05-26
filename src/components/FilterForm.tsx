@@ -4,37 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, ChevronDown, X } from "lucide-react";
-import { formatGradeLabel, normalizeGradeValue, tutors } from "@/lib/tutors";
-import type { IndividualClass, GroupClass } from "@/types/tutor";
-
-interface ClassRecord {
-  subject: string;
-  grades: string[];
-  medium: string;
-  syllabus: string;
-}
-
-/** Flatten every class from every tutor into a simple record for filtering */
-function getAllClassRecords(): ClassRecord[] {
-  const records: ClassRecord[] = [];
-  for (const t of tutors) {
-    const all: Array<IndividualClass | GroupClass> = [
-      ...(t.individualClasses || []),
-      ...(t.groupClasses || []),
-    ];
-    for (const cls of all) {
-      records.push({
-        subject: cls.subject,
-        grades: cls.grades,
-        medium: cls.medium,
-        syllabus: cls.syllabus,
-      });
-    }
-  }
-  return records;
-}
-
-const allRecords = getAllClassRecords();
+import { formatGradeLabel, normalizeGradeValue, tutorMatchesFilters, tutors } from "@/lib/tutors";
 
 export default function FilterForm() {
   const router = useRouter();
@@ -45,35 +15,28 @@ export default function FilterForm() {
     syllabus: "",
   });
 
-  // Filter records that match currently selected values (ignoring the field being computed)
-  function matchingRecords(exclude?: keyof typeof formData): ClassRecord[] {
-    return allRecords.filter((r) => {
-      if (exclude !== "grade" && formData.grade) {
-        const normFilter = normalizeGradeValue(formData.grade);
-        if (!r.grades.some((g) => normalizeGradeValue(g) === normFilter))
-          return false;
-      }
-      if (exclude !== "subject" && formData.subject) {
-        if (r.subject.toLowerCase() !== formData.subject.toLowerCase())
-          return false;
-      }
-      if (exclude !== "medium" && formData.medium) {
-        if (r.medium.toLowerCase() !== formData.medium.toLowerCase())
-          return false;
-      }
-      if (exclude !== "syllabus" && formData.syllabus) {
-        if (r.syllabus.toLowerCase() !== formData.syllabus.toLowerCase())
-          return false;
-      }
-      return true;
-    });
+  // Tutors that would still match if we IGNORE the named filter — used to compute
+  // what's still pickable in each dropdown without auto-zeroing the user's other choices.
+  function matchingTutors(exclude?: keyof typeof formData) {
+    const f = {
+      grade: exclude === "grade" ? null : formData.grade || null,
+      subject: exclude === "subject" ? null : formData.subject || null,
+      medium: exclude === "medium" ? null : formData.medium || null,
+      syllabus: exclude === "syllabus" ? null : formData.syllabus || null,
+    };
+    return tutors.filter((t) => tutorMatchesFilters(t, f));
   }
 
-  // Available options for each filter — only show values that exist given other selections
+  // Available options for each filter — union of class values + tutor profile capability,
+  // across the tutors that still match the other selected filters.
   const availableGrades = useMemo(() => {
-    const records = matchingRecords("grade");
     const set = new Set<string>();
-    for (const r of records) for (const g of r.grades) set.add(g);
+    // Grade only comes from classes — no profile-level grade list exists.
+    for (const t of matchingTutors("grade")) {
+      for (const cls of [...t.individualClasses, ...t.groupClasses]) {
+        for (const g of cls.grades) set.add(g);
+      }
+    }
     // Numeric grades (3, 4, ... 11) come first in ascending order; non-numeric grades
     // like "A/L" and "O/L" go to the end so the dropdown reads in school-progression order.
     return Array.from(set).sort((a, b) => {
@@ -89,49 +52,48 @@ export default function FilterForm() {
   }, [formData.subject, formData.medium, formData.syllabus]);
 
   const availableSubjects = useMemo(() => {
-    const records = matchingRecords("subject");
-    return Array.from(new Set(records.map((r) => r.subject))).sort();
+    const set = new Set<string>();
+    for (const t of matchingTutors("subject")) {
+      for (const cls of [...t.individualClasses, ...t.groupClasses]) set.add(cls.subject);
+      for (const s of t.profile.subjects) set.add(s);
+    }
+    return Array.from(set).sort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.grade, formData.medium, formData.syllabus]);
 
   const availableMediums = useMemo(() => {
-    const records = matchingRecords("medium");
-    return Array.from(new Set(records.map((r) => r.medium))).sort();
+    const set = new Set<string>();
+    for (const t of matchingTutors("medium")) {
+      for (const cls of [...t.individualClasses, ...t.groupClasses]) set.add(cls.medium);
+      for (const m of t.profile.mediums) set.add(m);
+    }
+    return Array.from(set).sort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.grade, formData.subject, formData.syllabus]);
 
   const availableSyllabuses = useMemo(() => {
-    const records = matchingRecords("syllabus");
-    return Array.from(new Set(records.map((r) => r.syllabus))).sort();
+    const set = new Set<string>();
+    for (const t of matchingTutors("syllabus")) {
+      for (const cls of [...t.individualClasses, ...t.groupClasses]) set.add(cls.syllabus);
+      for (const s of t.profile.syllabusSupported) set.add(s);
+    }
+    return Array.from(set).sort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.grade, formData.subject, formData.medium]);
 
-  // Count matching tutors for preview
+  // Count matching tutors for preview — uses the same match logic as the search results page.
   const matchCount = useMemo(() => {
     const hasAnyFilter =
       formData.grade || formData.subject || formData.medium || formData.syllabus;
     if (!hasAnyFilter) return tutors.length;
-
-    return tutors.filter((t) => {
-      const classes: Array<IndividualClass | GroupClass> = [
-        ...t.individualClasses,
-        ...t.groupClasses,
-      ];
-      return classes.some((cls) => {
-        if (formData.grade) {
-          const normFilter = normalizeGradeValue(formData.grade);
-          if (!cls.grades.some((g) => normalizeGradeValue(g) === normFilter))
-            return false;
-        }
-        if (formData.subject && cls.subject.toLowerCase() !== formData.subject.toLowerCase())
-          return false;
-        if (formData.medium && cls.medium.toLowerCase() !== formData.medium.toLowerCase())
-          return false;
-        if (formData.syllabus && cls.syllabus.toLowerCase() !== formData.syllabus.toLowerCase())
-          return false;
-        return true;
-      });
-    }).length;
+    return tutors.filter((t) =>
+      tutorMatchesFilters(t, {
+        grade: formData.grade || null,
+        subject: formData.subject || null,
+        medium: formData.medium || null,
+        syllabus: formData.syllabus || null,
+      })
+    ).length;
   }, [formData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
