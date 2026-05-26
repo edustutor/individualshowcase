@@ -74,11 +74,17 @@ export default function FilterForm() {
     const records = matchingRecords("grade");
     const set = new Set<string>();
     for (const r of records) for (const g of r.grades) set.add(g);
-    return Array.from(set).sort((a, b) =>
-      formatGradeLabel(a).localeCompare(formatGradeLabel(b), undefined, {
+    // Numeric grades (3, 4, ... 11) come first in ascending order; non-numeric grades
+    // like "A/L" and "O/L" go to the end so the dropdown reads in school-progression order.
+    return Array.from(set).sort((a, b) => {
+      const aIsNumeric = /^\d+$/.test(normalizeGradeValue(a));
+      const bIsNumeric = /^\d+$/.test(normalizeGradeValue(b));
+      if (aIsNumeric && !bIsNumeric) return -1;
+      if (!aIsNumeric && bIsNumeric) return 1;
+      return formatGradeLabel(a).localeCompare(formatGradeLabel(b), undefined, {
         numeric: true,
-      })
-    );
+      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.subject, formData.medium, formData.syllabus]);
 
