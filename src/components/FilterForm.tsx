@@ -197,7 +197,7 @@ export default function FilterForm() {
       style={{
         borderRadius: "30px",
         boxShadow:
-          "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+          "rgba(16,32,51,0.12) 0px 0px 0px 1px",
       }}
     >
       <form onSubmit={handleSearch} className="flex flex-col gap-8">
@@ -211,7 +211,7 @@ export default function FilterForm() {
               <div key={field.id} className="flex flex-col gap-2">
                 <label
                   htmlFor={field.id}
-                  className="text-xs font-bold uppercase tracking-[0.15em] text-[#6b7280] ml-1"
+                  className="text-xs font-bold uppercase tracking-[0.15em] text-muted ml-1"
                   style={{ fontFeatureSettings: '"calt"' }}
                 >
                   {field.label}
@@ -237,9 +237,9 @@ export default function FilterForm() {
                       border: isActive
                         ? "2px solid #2563eb"
                         : "2px solid transparent",
-                      boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                      boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
                       background: isActive ? "#eff6ff" : "#f8fafc",
-                      color: isActive ? "#1e3a8a" : "#0e0f0c",
+                      color: isActive ? "#1e3a8a" : "#102033",
                       fontWeight: isActive ? 800 : 600,
                       fontFeatureSettings: '"calt"',
                     }}
@@ -255,7 +255,7 @@ export default function FilterForm() {
                     <ChevronDown
                       className="h-5 w-5"
                       style={{
-                        color: isActive ? "#2563eb" : "#6b7280",
+                        color: isActive ? "#2563eb" : "#64748b",
                       }}
                     />
                   </div>
@@ -302,7 +302,7 @@ export default function FilterForm() {
                   syllabus: "",
                 })
               }
-              className="text-xs font-bold text-[#6b7280] cursor-pointer hover:text-[#374151] transition-colors ml-1"
+              className="text-xs font-bold text-muted cursor-pointer hover:text-ink transition-colors ml-1"
             >
               Clear all
             </button>
@@ -312,10 +312,13 @@ export default function FilterForm() {
         <div className="flex justify-center mt-2">
           <button
             type="submit"
-            className="flex items-center gap-2.5 bg-cta text-cta-text font-bold text-base sm:text-lg cursor-pointer w-full sm:w-auto justify-center"
+            className="flex items-center gap-2.5 text-white font-bold text-base sm:text-lg cursor-pointer w-full sm:w-auto justify-center"
             style={{
               padding: "14px 24px",
               borderRadius: "9999px",
+              // Brand-signature gradient: Primary Blue → Violet, matching the EDUS marketing site.
+              background: "linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%)",
+              boxShadow: "0 4px 16px rgba(37, 99, 235, 0.35)",
               fontFeatureSettings: '"calt"',
               transition: "transform 200ms ease",
             }}
@@ -356,7 +359,7 @@ function FilterChip({
       style={{
         borderRadius: "9999px",
         background: "rgba(37, 99, 235, 0.08)",
-        boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+        boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
       }}
     >
       {label}

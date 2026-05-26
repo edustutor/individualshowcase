@@ -32,7 +32,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-white" style={{ fontFamily: "'Inter', system-ui, sans-serif", fontFeatureSettings: '"calt"' }}>
         <header className="w-full z-50 sticky top-0">
-          <div className="bg-white" style={{ boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px" }}>
+          <div className="bg-white" style={{ boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px" }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[60px] sm:h-[72px] flex items-center justify-between">
               <Link href="/" className="flex items-center gap-3 cursor-pointer group flex-shrink-0">
                 <Image
@@ -48,7 +48,7 @@ export default function RootLayout({
               <div className="flex items-center gap-2 sm:gap-3">
                 <a
                   href="tel:+94707072072"
-                  className="hidden md:flex items-center gap-2 text-[15px] font-semibold text-[#0e0f0c] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                  className="flex items-center gap-2 text-sm sm:text-[15px] font-semibold text-ink transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                   style={{ fontFeatureSettings: '"calt"' }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -56,14 +56,6 @@ export default function RootLayout({
                   </svg>
                   +94 70 707 2072
                 </a>
-
-                <Link
-                  href="/"
-                  className="bg-cta text-cta-text px-4 py-2 sm:px-5 sm:py-2.5 font-bold text-sm sm:text-[15px] transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
-                  style={{ borderRadius: "9999px", fontFeatureSettings: '"calt"' }}
-                >
-                  Find a Tutor
-                </Link>
               </div>
             </div>
           </div>

@@ -165,9 +165,10 @@ export default function TutorProfile() {
     return true;
   }
   function validateStep2(): boolean {
+    // Required: studentName + studentPhone. Email is optional — coordinator
+    // can reach the student via phone, email is just a nice-to-have.
     const newErrors: Record<string, string> = {};
     if (!bookingForm.studentName.trim()) newErrors.studentName = "Enter your name";
-    if (!bookingForm.studentEmail.trim()) newErrors.studentEmail = "Enter your email";
     if (!bookingForm.studentPhone.trim()) newErrors.studentPhone = "Enter your phone number";
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) { scrollToError(`${Object.keys(newErrors)[0]}-error`); return false; }
@@ -180,9 +181,9 @@ export default function TutorProfile() {
       <main className="min-h-screen bg-white flex items-center justify-center px-4">
         <div className="text-center">
           <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center" style={{ borderRadius: "20px", background: "#f1f5f9" }}>
-            <User className="h-8 w-8 text-[#94a3b8]" />
+            <User className="h-8 w-8 text-[#64748b]" />
           </div>
-          <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.03em" }}>Tutor not found</h1>
+          <h1 style={{ fontSize: "2rem", fontWeight: 800, color: "#102033", letterSpacing: "-0.03em" }}>Tutor not found</h1>
           <p className="mt-2" style={{ color: "#64748b", fontSize: "1rem" }}>This profile could not be loaded.</p>
           <button onClick={() => router.push("/")} className="mt-8 inline-flex items-center gap-2 text-white font-bold text-sm cursor-pointer" style={{ padding: "14px 28px", borderRadius: "14px", background: "#2563eb" }}>
             <ArrowLeft className="h-4 w-4" /> Back to Home
@@ -241,7 +242,7 @@ export default function TutorProfile() {
 
       {/* ══════════ HERO ══════════ */}
       <section className="relative" style={{ background: "linear-gradient(165deg, #0c1b3a 0%, #162d5a 40%, #1e40af 100%)" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 0%, rgba(59,130,246,0.25) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 0%, rgba(37,99,235,0.25) 0%, transparent 60%)" }} />
 
         <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
           {/* Nav */}
@@ -298,7 +299,7 @@ export default function TutorProfile() {
             {/* CTA (desktop only) */}
             <div className="hidden sm:block flex-shrink-0">
               <a href="#booking" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white cursor-pointer transition-transform hover:scale-[1.03] active:scale-[0.97]"
-                style={{ borderRadius: "14px", background: "linear-gradient(135deg, #3b82f6, #2563eb)", boxShadow: "0 4px 20px rgba(37,99,235,0.45), inset 0 1px 0 rgba(255,255,255,0.15)" }}>
+                style={{ borderRadius: "14px", background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.45), inset 0 1px 0 rgba(255,255,255,0.15)" }}>
                 <Calendar className="h-4 w-4" /> Book a Class
               </a>
             </div>
@@ -318,8 +319,8 @@ export default function TutorProfile() {
             { label: "Syllabus", value: uniqueSyllabuses.join(", "), icon: <Layers className="h-3.5 w-3.5" /> },
           ].map((item, i) => (
             <div key={item.label} className="flex-1 min-w-[140px] bg-white px-4 py-4 sm:px-5 sm:py-5" style={{ borderRight: i < 3 ? "1px solid #f1f5f9" : "none" }}>
-              <div className="flex items-center gap-1.5 text-[#94a3b8] mb-1">{item.icon}<span className="text-[10px] font-bold uppercase tracking-wider">{item.label}</span></div>
-              <p className="text-[13px] font-semibold text-[#1e293b] leading-snug line-clamp-2">{item.value}</p>
+              <div className="flex items-center gap-1.5 text-[#64748b] mb-1">{item.icon}<span className="text-[10px] font-bold uppercase tracking-wider">{item.label}</span></div>
+              <p className="text-[13px] font-semibold text-[#102033] leading-snug line-clamp-2">{item.value}</p>
             </div>
           ))}
         </div>
@@ -375,10 +376,10 @@ export default function TutorProfile() {
 
                 {currentVideo && (
                   <>
-                    <div className="relative aspect-video overflow-hidden mb-4" style={{ borderRadius: "16px", background: "#0f172a", boxShadow: "0 8px 30px rgba(0,0,0,0.12)" }}>
+                    <div className="relative aspect-video overflow-hidden mb-4" style={{ borderRadius: "16px", background: "#102033", boxShadow: "0 8px 30px rgba(0,0,0,0.12)" }}>
                       <iframe key={currentVideo.videoId} src={currentVideo.videoUrl} className="absolute inset-0 h-full w-full" allowFullScreen title={currentVideo.title} />
                     </div>
-                    <p className="text-sm font-bold text-[#1e293b]">{currentVideo.title} <span className="text-[#94a3b8] font-medium ml-1">{currentVideo.subject}</span></p>
+                    <p className="text-sm font-bold text-[#102033]">{currentVideo.title} <span className="text-[#64748b] font-medium ml-1">{currentVideo.subject}</span></p>
 
                     {videos.length > 1 && (
                       <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
@@ -389,12 +390,12 @@ export default function TutorProfile() {
                               background: activeVideoIndex === i ? "#eff6ff" : "#f8fafc",
                               border: activeVideoIndex === i ? "2px solid #2563eb" : "2px solid #f1f5f9",
                             }}>
-                            <div className="w-8 h-6 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "4px", background: "#0f172a" }}>
+                            <div className="w-8 h-6 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "4px", background: "#102033" }}>
                               <PlayCircle className="h-3 w-3 text-white/50" />
                             </div>
                             <div className="min-w-0">
                               <p className="text-[11px] font-bold truncate" style={{ color: activeVideoIndex === i ? "#1e40af" : "#475569" }}>{v.title}</p>
-                              <p className="text-[10px] text-[#94a3b8]">{v.subject}</p>
+                              <p className="text-[10px] text-[#64748b]">{v.subject}</p>
                             </div>
                           </button>
                         ))}
@@ -424,10 +425,10 @@ export default function TutorProfile() {
                         <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ borderRadius: "5px", background: "#fef3c7", color: "#92400e" }}>
                           {c.medium} Medium
                         </span>
-                        <span className="text-[11px] text-[#94a3b8] font-medium">{c.subject}</span>
+                        <span className="text-[11px] text-[#64748b] font-medium">{c.subject}</span>
                       </div>
-                      <p className="text-[14px] font-bold text-[#1e293b] mb-1">{c.title}</p>
-                      <p className="text-[12px] text-[#94a3b8] mb-2">{c.grades.map(formatGradeLabel).join(", ")}</p>
+                      <p className="text-[14px] font-bold text-[#102033] mb-1">{c.title}</p>
+                      <p className="text-[12px] text-[#64748b] mb-2">{c.grades.map(formatGradeLabel).join(", ")}</p>
 
                       {/* Group class timetable */}
                       {grp && (
@@ -436,7 +437,7 @@ export default function TutorProfile() {
                             <div key={`${sch.day}-${idx}`} className="flex items-center gap-1.5 text-[11px] text-[#64748b]">
                               <Calendar className="h-3 w-3 text-blue-400 flex-shrink-0" />
                               <span className="font-semibold">{formatDayLabel(sch.day)}</span>
-                              <span className="text-[#94a3b8]">{formatTimeRange(sch.startTime, sch.endTime)}</span>
+                              <span className="text-[#64748b]">{formatTimeRange(sch.startTime, sch.endTime)}</span>
                             </div>
                           ))}
                           <div className="flex items-center gap-1.5 text-[11px] text-emerald-600 font-semibold mt-1">
@@ -445,9 +446,9 @@ export default function TutorProfile() {
                         </div>
                       )}
 
-                      <p className="text-[15px] font-extrabold text-[#0f172a]">
+                      <p className="text-[15px] font-extrabold text-[#102033]">
                         {price ? `LKR ${price.amount.toLocaleString()}` : `LKR ${grp?.monthlyFee.amount.toLocaleString()}`}
-                        <span className="text-[11px] font-medium text-[#94a3b8] ml-1">{isInd ? "/session" : "/month"}</span>
+                        <span className="text-[11px] font-medium text-[#64748b] ml-1">{isInd ? "/session" : "/month"}</span>
                       </p>
                     </div>
                   );
@@ -468,12 +469,12 @@ export default function TutorProfile() {
               <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.4 }}
                 className="p-6" style={{ borderRadius: "20px", background: "#fff", border: "1px solid #e2e8f0", boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
 
-                <p className="text-[11px] font-bold uppercase tracking-wider text-[#94a3b8] mb-3">Starting from</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748b] mb-3">Starting from</p>
 
                 {lowestIndividualPrice < Infinity && (
                   <div className="mb-1">
-                    <span style={{ fontSize: "2rem", fontWeight: 900, color: "#0f172a", letterSpacing: "-0.04em", lineHeight: 1 }}>LKR {lowestIndividualPrice.toLocaleString()}</span>
-                    <span className="text-[13px] text-[#94a3b8] font-medium ml-1.5">/session</span>
+                    <span style={{ fontSize: "2rem", fontWeight: 900, color: "#102033", letterSpacing: "-0.04em", lineHeight: 1 }}>LKR {lowestIndividualPrice.toLocaleString()}</span>
+                    <span className="text-[13px] text-[#64748b] font-medium ml-1.5">/session</span>
                   </div>
                 )}
                 {lowestGroupPrice < Infinity && lowestIndividualPrice < Infinity && (
@@ -481,15 +482,15 @@ export default function TutorProfile() {
                 )}
                 {lowestGroupPrice < Infinity && lowestIndividualPrice >= Infinity && (
                   <div className="mb-4">
-                    <span style={{ fontSize: "2rem", fontWeight: 900, color: "#0f172a", letterSpacing: "-0.04em", lineHeight: 1 }}>LKR {lowestGroupPrice.toLocaleString()}</span>
-                    <span className="text-[13px] text-[#94a3b8] font-medium ml-1.5">/month</span>
+                    <span style={{ fontSize: "2rem", fontWeight: 900, color: "#102033", letterSpacing: "-0.04em", lineHeight: 1 }}>LKR {lowestGroupPrice.toLocaleString()}</span>
+                    <span className="text-[13px] text-[#64748b] font-medium ml-1.5">/month</span>
                   </div>
                 )}
 
                 <div className="pt-3 mb-4" style={{ borderTop: "1px solid #f1f5f9" }}>
-                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#94a3b8]">Individual</span><span className="font-semibold text-[#1e293b]">{allClasses.filter(c => c.classType === "INDIVIDUAL").length}</span></div>
-                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#94a3b8]">Group</span><span className="font-semibold text-[#1e293b]">{allClasses.filter(c => c.classType === "GROUP").length}</span></div>
-                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#94a3b8]">Total</span><span className="font-bold text-[#0f172a]">{allClasses.length} classes</span></div>
+                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#64748b]">Individual</span><span className="font-semibold text-[#102033]">{allClasses.filter(c => c.classType === "INDIVIDUAL").length}</span></div>
+                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#64748b]">Group</span><span className="font-semibold text-[#102033]">{allClasses.filter(c => c.classType === "GROUP").length}</span></div>
+                  <div className="flex justify-between py-1.5 text-[13px]"><span className="text-[#64748b]">Total</span><span className="font-bold text-[#102033]">{allClasses.length} classes</span></div>
                 </div>
 
                 <a href="#booking" className="flex items-center justify-center gap-2 w-full py-3.5 text-[15px] font-bold text-white cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98]"
@@ -502,7 +503,7 @@ export default function TutorProfile() {
               {/* Help card */}
               <div className="p-5" style={{ borderRadius: "16px", background: "#f8fafc", border: "1px solid #e2e8f0" }}>
                 <p className="text-[13px] font-semibold text-[#475569] mb-2">Need help choosing?</p>
-                <p className="text-[12px] text-[#94a3b8] leading-relaxed mb-3">Our coordinator will guide you to the right class and schedule.</p>
+                <p className="text-[12px] text-[#64748b] leading-relaxed mb-3">Our coordinator will guide you to the right class and schedule.</p>
                 <a href="tel:+94707072072" className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#2563eb]">
                   <Phone className="h-3.5 w-3.5" /> +94 70 707 2072
                 </a>
@@ -529,8 +530,8 @@ export default function TutorProfile() {
                     <Calendar className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-[#0f172a]" style={{ fontSize: "1.25rem", fontWeight: 800, letterSpacing: "-0.02em" }}>Book a Class</h2>
-                    <p className="text-[12px] text-[#94a3b8] font-medium">Step {currentStep + 1} of {STEPS.length} — {STEPS[currentStep]}</p>
+                    <h2 className="text-[#102033]" style={{ fontSize: "1.25rem", fontWeight: 800, letterSpacing: "-0.02em" }}>Book a Class</h2>
+                    <p className="text-[12px] text-[#64748b] font-medium">Step {currentStep + 1} of {STEPS.length} — {STEPS[currentStep]}</p>
                   </div>
                 </div>
                 <div className="flex gap-1.5 mb-1">
@@ -578,16 +579,16 @@ export default function TutorProfile() {
                                     <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{
                                       borderRadius: "5px", background: isIndividual ? "#dbeafe" : "#dcfce7", color: isIndividual ? "#1e40af" : "#166534",
                                     }}>{isIndividual ? "1-on-1" : "Group"}</span>
-                                    <span className="text-[11px] font-medium text-[#94a3b8]">{c.subject}</span>
+                                    <span className="text-[11px] font-medium text-[#64748b]">{c.subject}</span>
                                   </div>
-                                  <h4 className="text-[#1e293b] font-bold text-[15px] leading-snug">{c.title}</h4>
-                                  <p className="text-[#94a3b8] text-[12px] font-medium mt-0.5">{c.grades.map(formatGradeLabel).join(", ")} · {c.medium} · {c.syllabus}</p>
+                                  <h4 className="text-[#102033] font-bold text-[15px] leading-snug">{c.title}</h4>
+                                  <p className="text-[#64748b] text-[12px] font-medium mt-0.5">{c.grades.map(formatGradeLabel).join(", ")} · {c.medium} · {c.syllabus}</p>
                                 </div>
                                 <div className="text-right flex-shrink-0 ml-2">
-                                  <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0f172a" }}>
+                                  <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#102033" }}>
                                     {price ? `${price.currency} ${price.amount.toLocaleString()}` : `${groupClass?.monthlyFee.currency} ${groupClass?.monthlyFee.amount.toLocaleString()}`}
                                   </p>
-                                  <p className="text-[11px] text-[#94a3b8]">{isIndividual ? "per session" : "per month"}{groupClass ? ` · ${groupClass.seatsLeft} seats` : ""}</p>
+                                  <p className="text-[11px] text-[#64748b]">{isIndividual ? "per session" : "per month"}{groupClass ? ` · ${groupClass.seatsLeft} seats` : ""}</p>
                                 </div>
                               </div>
                             </button>
@@ -618,8 +619,8 @@ export default function TutorProfile() {
                                 <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ borderRadius: "5px", background: indCls ? "#dbeafe" : "#dcfce7", color: indCls ? "#1e40af" : "#166534" }}>
                                   {indCls ? "1-on-1" : "Group"}
                                 </span>
-                                <h4 className="text-sm font-bold text-[#1e293b]">{cls.title}</h4>
-                                <span className="text-[11px] text-[#94a3b8] ml-auto">{cls.subject}</span>
+                                <h4 className="text-sm font-bold text-[#102033]">{cls.title}</h4>
+                                <span className="text-[11px] text-[#64748b] ml-auto">{cls.subject}</span>
                               </div>
 
                               {/* Grade */}
@@ -632,7 +633,7 @@ export default function TutorProfile() {
                                       <button key={g} type="button"
                                         onClick={() => { setGradeByClass(prev => ({ ...prev, [cls.classCode]: g })); setErrors(prev => { const n = { ...prev }; delete n[`grade-${cls.classCode}`]; return n; }); }}
                                         className="py-2 px-4 cursor-pointer text-[13px] transition-all" style={{
-                                          borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                          borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e2e8f0",
                                           background: sel ? "#eff6ff" : "#fff", color: sel ? "#1e40af" : "#475569", fontWeight: 700,
                                         }}>
                                         {formatGradeLabel(g)}
@@ -654,7 +655,7 @@ export default function TutorProfile() {
                                           <button key={p.durationMinutes} type="button"
                                             onClick={() => { setDurationByClass(prev => ({ ...prev, [cls.classCode]: String(p.durationMinutes) })); setErrors(prev => { const n = { ...prev }; delete n[`duration-${cls.classCode}`]; return n; }); }}
                                             className="py-2 px-4 cursor-pointer text-[13px] transition-all" style={{
-                                              borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e5e7eb",
+                                              borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e2e8f0",
                                               background: sel ? "#eff6ff" : "#fff", color: sel ? "#1e40af" : "#475569", fontWeight: 700,
                                             }}>
                                             <Clock3 className="h-3 w-3 inline mr-1 text-blue-500" />{p.durationMinutes}min — {p.currency} {p.amount.toLocaleString()}
@@ -667,14 +668,14 @@ export default function TutorProfile() {
 
                                   <div>
                                     <FieldLabel>Time Slots</FieldLabel>
-                                    <p className="text-[11px] text-[#94a3b8] -mt-1 mb-3">Select one or more</p>
+                                    <p className="text-[11px] text-[#64748b] -mt-1 mb-3">Select one or more</p>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                       {indCls.availableWeeklySlots.filter(s => s.isAvailable).map((slot) => {
                                         const sel = slotsByClass[cls.classCode]?.has(slot.slotId) ?? false;
                                         return (
                                           <button key={slot.slotId} type="button" onClick={() => toggleSlot(cls.classCode, slot.slotId)}
                                             className="flex items-center gap-3 p-3 cursor-pointer transition-all text-left" style={{
-                                              borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e5e7eb", background: sel ? "#eff6ff" : "#fff",
+                                              borderRadius: "10px", border: sel ? "2px solid #2563eb" : "2px solid #e2e8f0", background: sel ? "#eff6ff" : "#fff",
                                             }}>
                                             <div className="w-4.5 h-4.5 flex items-center justify-center flex-shrink-0" style={{
                                               borderRadius: "5px", border: sel ? "none" : "2px solid #cbd5e1", background: sel ? "#2563eb" : "transparent", width: 18, height: 18,
@@ -682,8 +683,8 @@ export default function TutorProfile() {
                                               {sel && <Check className="h-3 w-3 text-white" strokeWidth={3} />}
                                             </div>
                                             <div>
-                                              <p className="font-bold text-[12px] text-[#1e293b]">{formatDayLabel(slot.day)}</p>
-                                              <p className="text-[11px] text-[#94a3b8]">{formatTimeRange(slot.startTime, slot.endTime)}</p>
+                                              <p className="font-bold text-[12px] text-[#102033]">{formatDayLabel(slot.day)}</p>
+                                              <p className="text-[11px] text-[#64748b]">{formatTimeRange(slot.startTime, slot.endTime)}</p>
                                             </div>
                                           </button>
                                         );
@@ -702,11 +703,11 @@ export default function TutorProfile() {
                                   <FieldLabel>Fixed Schedule</FieldLabel>
                                   <div className="grid gap-2 mb-3">
                                     {grpCls.fixedTimetable.map((sch, idx) => (
-                                      <div key={`${sch.day}-${idx}`} className="flex items-center gap-3 p-3 bg-white" style={{ borderRadius: "10px", border: "1px solid #e5e7eb" }}>
+                                      <div key={`${sch.day}-${idx}`} className="flex items-center gap-3 p-3 bg-white" style={{ borderRadius: "10px", border: "1px solid #e2e8f0" }}>
                                         <Calendar className="h-4 w-4 text-blue-500 flex-shrink-0" />
                                         <div>
-                                          <p className="font-bold text-[12px] text-[#1e293b]">{formatDayLabel(sch.day)}</p>
-                                          <p className="text-[11px] text-[#94a3b8]">{formatTimeRange(sch.startTime, sch.endTime)}</p>
+                                          <p className="font-bold text-[12px] text-[#102033]">{formatDayLabel(sch.day)}</p>
+                                          <p className="text-[11px] text-[#64748b]">{formatTimeRange(sch.startTime, sch.endTime)}</p>
                                         </div>
                                       </div>
                                     ))}
@@ -730,11 +731,11 @@ export default function TutorProfile() {
                     <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
                       <p className="text-[#64748b] text-sm font-medium mb-6">Enter your contact information.</p>
                       <div className="space-y-4 max-w-lg">
-                        <FormInput icon={<User className="h-4 w-4" />} label="Student Name" id="studentName" type="text"
+                        <FormInput required icon={<User className="h-4 w-4" />} label="Student Name" id="studentName" type="text"
                           value={bookingForm.studentName} onChange={(e) => { setBookingForm({ ...bookingForm, studentName: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentName; return n; }); }} placeholder="e.g. Kasun Perera" error={errors.studentName} />
-                        <FormInput icon={<Mail className="h-4 w-4" />} label="Email Address" id="studentEmail" type="email"
+                        <FormInput icon={<Mail className="h-4 w-4" />} label="Email Address (optional)" id="studentEmail" type="email"
                           value={bookingForm.studentEmail} onChange={(e) => { setBookingForm({ ...bookingForm, studentEmail: e.target.value }); setErrors(prev => { const n = { ...prev }; delete n.studentEmail; return n; }); }} placeholder="kasun@email.com" error={errors.studentEmail} />
-                        <FormInput icon={<Phone className="h-4 w-4" />} label="Phone Number" id="studentPhone" type="tel"
+                        <FormInput required icon={<Phone className="h-4 w-4" />} label="Phone Number" id="studentPhone" type="tel"
                           value={bookingForm.studentPhone} onChange={(e) => { setBookingForm({ ...bookingForm, studentPhone: e.target.value.replace(/\D/g, "") }); setErrors(prev => { const n = { ...prev }; delete n.studentPhone; return n; }); }} placeholder="94707072072" error={errors.studentPhone}
                           hint="Digits only, starting with country code" />
                       </div>
@@ -747,14 +748,16 @@ export default function TutorProfile() {
                     <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
                       <form onSubmit={handleBookingSubmit}>
                         {/* Dark summary */}
-                        <div className="p-5 sm:p-6 mb-5" style={{ borderRadius: "18px", background: "linear-gradient(145deg, #0f172a, #1e293b)", color: "#fff" }}>
+                        <div className="p-5 sm:p-6 mb-5" style={{ borderRadius: "18px", background: "linear-gradient(145deg, #102033, #102033)", color: "#fff" }}>
                           <div className="flex items-center justify-between mb-4 pb-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                             <span className="text-[11px] font-bold uppercase tracking-wider text-white/30">Booking Summary</span>
                             <span className="text-[11px] font-bold px-2.5 py-1 text-white/60" style={{ borderRadius: "8px", background: "rgba(255,255,255,0.06)" }}>{selectedClasses.length} class{selectedClasses.length > 1 ? "es" : ""}</span>
                           </div>
                           <div className="space-y-2.5 text-sm">
                             <SummaryRow label="Student" value={bookingForm.studentName} />
-                            <SummaryRow label="Email" value={bookingForm.studentEmail} />
+                            {bookingForm.studentEmail.trim() && (
+                              <SummaryRow label="Email" value={bookingForm.studentEmail} />
+                            )}
                             <SummaryRow label="Phone" value={bookingForm.studentPhone} />
                             <div className="my-3" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }} />
                             {selectedClasses.map((cls) => {
@@ -834,7 +837,7 @@ export default function TutorProfile() {
 
                         <div className="flex gap-3">
                           <button type="button" onClick={() => setCurrentStep(2)} className="px-5 py-3.5 text-sm font-bold text-[#64748b] cursor-pointer flex-shrink-0 transition-all hover:bg-[#f8fafc]"
-                            style={{ borderRadius: "14px", border: "2px solid #e5e7eb" }}>
+                            style={{ borderRadius: "14px", border: "2px solid #e2e8f0" }}>
                             <ArrowLeft className="h-4 w-4 inline mr-1" /> Back
                           </button>
                           <button type="submit" disabled={isSubmitting || !agreeRules || selectedClasses.length === 0}
@@ -861,14 +864,14 @@ export default function TutorProfile() {
 function SectionTitle({ children, badge }: { readonly children: ReactNode; readonly badge?: string }) {
   return (
     <div className="flex items-center gap-2 mb-4">
-      <h3 className="text-[#0f172a] text-[17px]" style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>{children}</h3>
-      {badge && <span className="text-[12px] font-bold text-[#94a3b8]">({badge})</span>}
+      <h3 className="text-[#102033] text-[17px]" style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>{children}</h3>
+      {badge && <span className="text-[12px] font-bold text-[#64748b]">({badge})</span>}
     </div>
   );
 }
 
 function SubLabel({ children }: { readonly children: ReactNode }) {
-  return <p className="text-[11px] font-bold uppercase tracking-wider text-[#94a3b8] mb-2.5">{children}</p>;
+  return <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748b] mb-2.5">{children}</p>;
 }
 
 function FieldLabel({ children }: { readonly children: ReactNode }) {
@@ -880,7 +883,7 @@ function WizardNav({ onNext, onBack }: { readonly onNext: () => void; readonly o
     <div className="flex gap-3 mt-8">
       {onBack && (
         <button type="button" onClick={onBack} className="px-5 py-3.5 text-sm font-bold text-[#64748b] cursor-pointer transition-all hover:bg-[#f8fafc]"
-          style={{ borderRadius: "14px", border: "2px solid #e5e7eb" }}>
+          style={{ borderRadius: "14px", border: "2px solid #e2e8f0" }}>
           <ArrowLeft className="h-4 w-4 inline mr-1" /> Back
         </button>
       )}
@@ -893,21 +896,24 @@ function WizardNav({ onNext, onBack }: { readonly onNext: () => void; readonly o
   );
 }
 
-function FormInput({ icon, label, hint, error, ...props }: { readonly icon: ReactNode; readonly label: string; readonly hint?: string; readonly error?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+function FormInput({ icon, label, hint, error, required, ...props }: { readonly icon: ReactNode; readonly label: string; readonly hint?: string; readonly error?: string; readonly required?: boolean } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div>
-      <label htmlFor={props.id} className="text-[11px] font-bold uppercase tracking-wider text-[#64748b] block mb-2">{label}</label>
+      <label htmlFor={props.id} className="text-[11px] font-bold uppercase tracking-wider text-[#64748b] block mb-2">
+        {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
+      </label>
       <div className="relative">
-        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94a3b8]">{icon}</div>
+        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#64748b]">{icon}</div>
         <input {...props}
-          className="w-full pl-10 pr-4 py-3.5 text-[14px] font-semibold text-[#1e293b] placeholder-[#c0c7d0] focus:outline-none"
-          style={{ borderRadius: "14px", border: error ? "2px solid #ef4444" : "2px solid #e5e7eb", background: "#fafbfc", transition: "border-color 200ms, box-shadow 200ms" }}
+          className="w-full pl-10 pr-4 py-3.5 text-[14px] font-semibold text-[#102033] placeholder-[#c0c7d0] focus:outline-none"
+          style={{ borderRadius: "14px", border: error ? "2px solid #ef4444" : "2px solid #e2e8f0", background: "#fafbfc", transition: "border-color 200ms, box-shadow 200ms" }}
           onFocus={(e) => { if (!error) { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.08)"; } }}
-          onBlur={(e) => { e.currentTarget.style.borderColor = error ? "#ef4444" : "#e5e7eb"; e.currentTarget.style.boxShadow = "none"; }}
+          onBlur={(e) => { e.currentTarget.style.borderColor = error ? "#ef4444" : "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
         />
       </div>
       {error && <p id={`${props.id}-error`} className="text-red-500 text-xs font-semibold mt-1.5">{error}</p>}
-      {hint && !error && <p className="text-[10px] text-[#94a3b8] mt-1.5 ml-1">{hint}</p>}
+      {hint && !error && <p className="text-[10px] text-[#64748b] mt-1.5 ml-1">{hint}</p>}
     </div>
   );
 }
@@ -930,12 +936,12 @@ function SuccessPanel({ name, tutorName, classCount, onHome, onBookAnother }: {
       <div className="w-16 h-16 flex items-center justify-center mb-5" style={{ borderRadius: "18px", background: "linear-gradient(135deg, #22c55e, #16a34a)", boxShadow: "0 6px 20px rgba(34,197,94,0.3)" }}>
         <CheckCircle className="h-8 w-8 text-white" />
       </div>
-      <h2 className="text-[#0f172a] mb-2" style={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.03em" }}>You&apos;re all set!</h2>
+      <h2 className="text-[#102033] mb-2" style={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.03em" }}>You&apos;re all set!</h2>
       <p className="text-[#64748b] max-w-md text-[14px]" style={{ fontWeight: 500, lineHeight: 1.6 }}>
-        Thank you, <strong className="text-[#1e293b]">{name}</strong>. Your booking for <strong className="text-[#1e293b]">{classCount} class{classCount > 1 ? "es" : ""}</strong> with <strong className="text-[#1e293b]">{tutorName}</strong> has been submitted.
+        Thank you, <strong className="text-[#102033]">{name}</strong>. Your booking for <strong className="text-[#102033]">{classCount} class{classCount > 1 ? "es" : ""}</strong> with <strong className="text-[#102033]">{tutorName}</strong> has been submitted.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 mt-8 w-full sm:w-auto">
-        <button onClick={onHome} className="px-6 py-3 text-sm font-bold text-[#64748b] cursor-pointer transition-all hover:bg-[#f8fafc]" style={{ borderRadius: "14px", border: "2px solid #e5e7eb" }}>Back to Home</button>
+        <button onClick={onHome} className="px-6 py-3 text-sm font-bold text-[#64748b] cursor-pointer transition-all hover:bg-[#f8fafc]" style={{ borderRadius: "14px", border: "2px solid #e2e8f0" }}>Back to Home</button>
         <button onClick={onBookAnother} className="px-6 py-3 text-sm font-bold text-white cursor-pointer transition-all hover:scale-[1.02]"
           style={{ borderRadius: "14px", background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 14px rgba(37,99,235,0.3)" }}>Book Another</button>
       </div>

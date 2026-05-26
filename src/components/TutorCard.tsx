@@ -21,16 +21,16 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
         className="bg-white overflow-hidden flex flex-col h-full relative cursor-pointer"
         style={{
           borderRadius: "30px",
-          boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+          boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
           transition: "transform 200ms ease, box-shadow 200ms ease",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "translateY(-6px) scale(1.02)";
-          e.currentTarget.style.boxShadow = "rgba(14,15,12,0.12) 0px 0px 0px 1px, rgba(59,130,246,0.12) 0px 20px 40px";
+          e.currentTarget.style.boxShadow = "rgba(16,32,51,0.12) 0px 0px 0px 1px, rgba(37,99,235,0.12) 0px 20px 40px";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0) scale(1)";
-          e.currentTarget.style.boxShadow = "rgba(14,15,12,0.12) 0px 0px 0px 1px";
+          e.currentTarget.style.boxShadow = "rgba(16,32,51,0.12) 0px 0px 0px 1px";
         }}
       >
         {/* Top accent */}
@@ -42,9 +42,9 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
             className="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold"
             style={{
               borderRadius: "9999px",
-              background: "rgba(59, 130, 246, 0.08)",
+              background: "rgba(37, 99, 235, 0.08)",
               color: "#2563eb",
-              boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+              boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
               fontFeatureSettings: '"calt"',
             }}
           >
@@ -56,7 +56,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
             className="w-20 h-20 sm:w-24 sm:h-24 overflow-hidden mb-5 relative"
             style={{
               borderRadius: "9999px",
-              boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 3px",
+              boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 3px",
             }}
           >
             <Image
@@ -70,7 +70,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
 
           {/* Name */}
           <h3
-            className="text-[#0e0f0c] text-center"
+            className="text-ink text-center"
             style={{
               fontSize: "1.375rem",
               fontWeight: 800,
@@ -84,7 +84,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
 
           {/* Description */}
           <p
-            className="text-[#6b7280] mt-2 text-center px-2 line-clamp-2"
+            className="text-muted mt-2 text-center px-2 line-clamp-2"
             style={{
               fontSize: "0.875rem",
               fontWeight: 600,
@@ -103,11 +103,11 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
             style={{
               borderRadius: "16px",
               background: "#f8fafc",
-              boxShadow: "rgba(14,15,12,0.08) 0px 0px 0px 1px",
+              boxShadow: "rgba(16,32,51,0.08) 0px 0px 0px 1px",
             }}
           >
             <span
-              className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280] block mb-2.5"
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted block mb-2.5"
               style={{ fontFeatureSettings: '"calt"' }}
             >
               Expertise
@@ -116,10 +116,10 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
               {tutorSubjects.slice(0, 3).map((subject) => (
                 <span
                   key={subject}
-                  className="text-xs font-semibold text-[#0e0f0c] px-3 py-1.5 bg-white"
+                  className="text-xs font-semibold text-ink px-3 py-1.5 bg-white"
                   style={{
                     borderRadius: "9999px",
-                    boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                    boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
                     fontFeatureSettings: '"calt"',
                   }}
                 >
@@ -131,8 +131,8 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
                   className="text-xs font-bold text-cta px-3 py-1.5"
                   style={{
                     borderRadius: "9999px",
-                    background: "rgba(59, 130, 246, 0.08)",
-                    boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                    background: "rgba(37, 99, 235, 0.08)",
+                    boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
                     fontFeatureSettings: '"calt"',
                   }}
                 >
@@ -146,14 +146,14 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
           <div className="flex items-center justify-between mt-1">
             <div className="flex flex-col">
               <span
-                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b7280] mb-0.5"
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted mb-0.5"
                 style={{ fontFeatureSettings: '"calt"' }}
               >
                 From
               </span>
               <div className="flex items-baseline gap-1">
                 <span
-                  className="text-[#0e0f0c]"
+                  className="text-ink"
                   style={{
                     fontSize: "1.25rem",
                     fontWeight: 900,
@@ -163,7 +163,7 @@ export default function TutorCard({ tutor, selectedClassType }: { readonly tutor
                 >
                   {currentPricing?.currency || "LKR"} {currentPricing?.amount ?? "N/A"}
                 </span>
-                <span className="text-sm text-[#6b7280] font-semibold">
+                <span className="text-sm text-muted font-semibold">
                   /{currentPricing?.billingLabel === "session" ? "session" : "mo"}
                 </span>
               </div>

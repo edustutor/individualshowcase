@@ -38,7 +38,7 @@ function SearchContent() {
       <div className="flex flex-col items-center justify-center py-40">
         <Loader2 className="w-12 h-12 animate-spin text-cta mb-6" />
         <p
-          className="text-[#6b7280] text-lg animate-pulse"
+          className="text-muted text-lg animate-pulse"
           style={{ fontWeight: 600, fontFeatureSettings: '"calt"' }}
         >
           Finding the perfect match...
@@ -66,26 +66,26 @@ function SearchContent() {
         className="py-32 bg-white flex flex-col items-center justify-center text-center"
         style={{
           borderRadius: "30px",
-          boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+          boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
         }}
       >
         <div
           className="w-20 h-20 flex items-center justify-center mb-6"
           style={{
             borderRadius: "9999px",
-            background: "rgba(59, 130, 246, 0.08)",
+            background: "rgba(37, 99, 235, 0.08)",
           }}
         >
           <SearchX className="w-10 h-10 text-cta" />
         </div>
         <h3
-          className="text-[#0e0f0c] mb-3"
+          className="text-ink mb-3"
           style={{ fontSize: "1.625rem", fontWeight: 800, fontFeatureSettings: '"calt"' }}
         >
           No tutors found
         </h3>
         <p
-          className="text-[#6b7280] max-w-md text-lg leading-relaxed"
+          className="text-muted max-w-md text-lg leading-relaxed"
           style={{ fontWeight: 500, fontFeatureSettings: '"calt"' }}
         >
           We couldn&apos;t find any tutors matching your exact criteria. Try adjusting your filters.
@@ -115,11 +115,11 @@ function SearchContent() {
       {/* Header area */}
       <div
         className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8"
-        style={{ borderBottom: "1px solid rgba(14,15,12,0.12)" }}
+        style={{ borderBottom: "1px solid rgba(16,32,51,0.12)" }}
       >
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <h1
-            className="text-[#0e0f0c]"
+            className="text-ink"
             style={{
               fontSize: "clamp(2rem, 5vw, 4rem)",
               fontWeight: 900,
@@ -133,7 +133,7 @@ function SearchContent() {
 
           {hasFilters ? (
             <div className="flex flex-wrap items-center gap-2 mt-4">
-              <span className="text-[#6b7280] text-base font-semibold" style={{ fontFeatureSettings: '"calt"' }}>
+              <span className="text-muted text-base font-semibold" style={{ fontFeatureSettings: '"calt"' }}>
                 Showing results for
               </span>
               {[
@@ -148,8 +148,8 @@ function SearchContent() {
                   className="inline-flex items-center px-3 py-1.5 text-sm font-bold text-cta"
                   style={{
                     borderRadius: "9999px",
-                    background: "rgba(59, 130, 246, 0.08)",
-                    boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                    background: "rgba(37, 99, 235, 0.08)",
+                    boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
                     fontFeatureSettings: '"calt"',
                   }}
                 >
@@ -159,7 +159,7 @@ function SearchContent() {
             </div>
           ) : (
             <p
-              className="text-[#6b7280] mt-3 text-lg"
+              className="text-muted mt-3 text-lg"
               style={{ fontWeight: 600, fontFeatureSettings: '"calt"' }}
             >
               All subjects and grades available.
@@ -170,10 +170,10 @@ function SearchContent() {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <Link href="/">
             <span
-              className="flex items-center gap-2 text-sm font-bold text-[#0e0f0c] bg-white px-5 py-2.5 cursor-pointer"
+              className="flex items-center gap-2 text-sm font-bold text-ink bg-white px-5 py-2.5 cursor-pointer"
               style={{
                 borderRadius: "9999px",
-                boxShadow: "rgba(14,15,12,0.12) 0px 0px 0px 1px",
+                boxShadow: "rgba(16,32,51,0.12) 0px 0px 0px 1px",
                 fontFeatureSettings: '"calt"',
                 transition: "transform 200ms ease",
               }}

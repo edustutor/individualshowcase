@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0e0f0c;
+  --foreground: #102033;
 }
 
 @theme inline {
@@ -10,33 +10,64 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
 
-  /* ── Wise-inspired Blue Design System ── */
+  /* ── EDUS Brand Palette ──
+     Source of truth: the 6-tile brand palette card. Every other token
+     in this file derives from one of these six values. Do not introduce
+     new brand colors here without updating the palette card first. */
 
-  /* Primary Brand Blue */
+  /* Primary Blue — main CTAs, links, brand emphasis */
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-primary-dark: #1e3a8a;
   --color-primary-light: #dbeafe;
   --color-primary-surface: #eff6ff;
 
-  /* CTA — Bright Blue (like Wise Green, but blue) */
-  --color-cta: #3b82f6;
-  --color-cta-hover: #60a5fa;
-  --color-cta-text: #0c1e4a;
+  /* Violet Accent — secondary accent + gradient companion to Primary Blue */
+  --color-violet: #8b5cf6;
+  --color-violet-hover: #7c3aed;
+  --color-violet-light: #ede9fe;
+  --color-violet-surface: #f5f3ff;
 
-  /* Accent — Warm Yellow */
-  --color-accent: #facc15;
+  /* Cyan — tertiary highlight */
+  --color-cyan: #06b6d4;
+  --color-cyan-hover: #0891b2;
+  --color-cyan-light: #cffafe;
 
-  /* Semantic */
-  --color-success: #059669;
+  /* Sunshine — warm accent / secondary CTA (e.g. "Talk to US") */
+  --color-sunshine: #facc15;
+  --color-sunshine-hover: #eab308;
+  --color-sunshine-text: #102033;
+
+  /* Success Green — checkmarks, status OK */
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+  --color-success-light: #dcfce7;
+
+  /* Ink — headings, primary text */
+  --color-ink: #102033;
+  --color-ink-soft: #1f2d44;
+
+  /* ── Derived semantic tokens (existing callers reference these names) ── */
+
+  /* Primary CTA = Primary Blue */
+  --color-cta: var(--color-primary);
+  --color-cta-hover: var(--color-primary-hover);
+  --color-cta-text: #ffffff;
+
+  /* Secondary CTA = Sunshine */
+  --color-accent: var(--color-sunshine);
+  --color-accent-hover: var(--color-sunshine-hover);
+  --color-accent-text: var(--color-sunshine-text);
+
+  /* Status */
   --color-danger: #dc2626;
   --color-warning: #f59e0b;
 
-  /* Neutral */
-  --color-dark: #0e0f0c;
-  --color-muted: #6b7280;
+  /* Neutral — Ink is the canonical text color */
+  --color-dark: var(--color-ink);
+  --color-muted: #64748b;
   --color-subtle: #f1f5f9;
-  --color-border: rgba(14, 15, 12, 0.12);
+  --color-border: rgba(16, 32, 51, 0.12);
 
   /* Animations */
   --animate-blob: blob 7s infinite;
@@ -73,7 +104,7 @@ body {
 
 /* ── Selection ── */
 ::selection {
-  background: #3b82f6;
+  background: #2563eb;
   color: #ffffff;
 }
 
@@ -85,17 +116,25 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(14, 15, 12, 0.15);
+  background: rgba(16, 32, 51, 0.15);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(14, 15, 12, 0.25);
+  background: rgba(16, 32, 51, 0.25);
 }
 
-/* ── Focus Ring (Wise-style ring shadow) ── */
+/* ── Focus Ring ── */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #2563eb;
   outline-offset: 2px;
+}
+
+/* ── Brand gradient: used on hero accent words ("Online Tuition" style) ── */
+.brand-gradient-text {
+  background-image: linear-gradient(90deg, #2563eb 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @layer utilities {
